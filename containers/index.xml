@@ -2,28 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Containers on Scientific Programming</title>
-    <link>http://scientific-programming.github.io/containers/</link>
+    <link>https://scientific-programming.github.io/containers/</link>
     <description>Recent content in Containers on Scientific Programming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 25 Oct 2018 10:30:22 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 09:41:56 +0100</lastBuildDate>
     
-	<atom:link href="http://scientific-programming.github.io/containers/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://scientific-programming.github.io/containers/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Getting Started</title>
-      <link>http://scientific-programming.github.io/containers/tutorial/</link>
-      <pubDate>Thu, 25 Oct 2018 10:30:22 +0100</pubDate>
-      
-      <guid>http://scientific-programming.github.io/containers/tutorial/</guid>
-      <description>1) Make an account on the website hub.docker.com
-Make the username something sensible as we&amp;rsquo;ll have to use it soon!
-2) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.
-3) Now, we&amp;rsquo;ll create a file called &amp;ldquo;Dockerfile&amp;rdquo; in a single folder. The Dockerfile is a configuration script for building an image.
- Create a directory by doing:   mkdir docker-tutorial
-  Change directory into the folder:   cd docker-tutorial</description>
-    </item>
     
   </channel>
 </rss>

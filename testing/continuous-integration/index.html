@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scientific Programming</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.49.2" />
+<title>Continuous Integration :: Scientific Programming</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/scientific-programming.github.io";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/testing/continuous-integration/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://scientific-programming.github.io">Scientific Programming</a>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/scientific-programming"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/introduction/" class="dd-item
+        ">
+      <div>
+      <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/version-control/" class="dd-item
+        ">
+      <div>
+      <a href="/version-control/">Version Control</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/containers/" class="dd-item
+        ">
+      <div>
+      <a href="/containers/">Containers</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
+        <div>
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item active">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/documentation/" class="dd-item
+        ">
+      <div>
+      <a href="/documentation/">Documentation</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/introduction/" >
+   Software Engineering in Science</option>
+    <option value="/version-control/" >
+   Version Control</option>
+    <option value="/containers/" >
+   Containers</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
+      <option value="/testing/continuous-integration/"  selected>- Continuous Integration</option>
+  
+    <option value="/documentation/" >
+   Documentation</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/scientific-programming.github.io";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Continuous Integration</h1>
+    
+    
+    
+    
+
+<h3 id="continuous-integration">Continuous Integration</h3>
+
+<p>What is CI?</p>
+
+<ul>
+<li><p>Runs the tests repeatedly, every time you make a change.</p></li>
+
+<li><p>Sends you angry emails when tests fail!</p></li>
+
+<li><p>Usually done remotely, on a server.</p></li>
+
+<li><p>Requires you to be using version control.</p></li>
+
+<li><p>Can help when you’re developing features in a branch/fork.</p></li>
+
+<li><p>Remote services: TravisCI, CircleCI, GitLab,</p></li>
+
+<li><p>Self Hosted Services: Jenkins, Buildbot</p></li>
+</ul>
+
+<h3 id="travisci">TravisCI</h3>
+
+<p>Pick this as it’s easy to set up from what we’ve already done:</p>
+
+<ul>
+<li><p>Build Dockerfile from the repository</p></li>
+
+<li><p>Test software using a Docker container.</p></li>
+</ul>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/testing/complex-tests/" title="Writing Complex Tests"> <i class="fa fa-chevron-left"></i><label>Writing Complex Tests</label></a>
+    <a class="nav nav-next" href="/documentation/" title="Documentation" style="margin-right: 0px;"><label>Documentation</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 26/10/2018
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/testing/continuous-integration.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

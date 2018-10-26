@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scientific Programming</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.49.2" />
+<title>Software Engineering in Science :: Scientific Programming</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/scientific-programming.github.io";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/introduction/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://scientific-programming.github.io">Scientific Programming</a>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/scientific-programming"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/introduction/" class="dd-item parent active
+        ">
+      <div>
+      <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/version-control/" class="dd-item
+        ">
+      <div>
+      <a href="/version-control/">Version Control</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/containers/" class="dd-item
+        ">
+      <div>
+      <a href="/containers/">Containers</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
+        <div>
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/documentation/" class="dd-item
+        ">
+      <div>
+      <a href="/documentation/">Documentation</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/introduction/"  selected>
+   Software Engineering in Science</option> 
+  
+    <option value="/version-control/" >
+   Version Control</option>
+    <option value="/containers/" >
+   Containers</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option>
+    <option value="/documentation/" >
+   Documentation</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/scientific-programming.github.io";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Software Engineering in Science</h1>
+    
+    
+    
+
+
+
+<h2 id="why-is-it-needed">Why is it needed?</h2>
+
+<p>The expectation is that your scientific code must be error free, within reason. However, there are many places where errors can creep in, and in general, scientists do not perform basic software engineering techniques which are designed to minimise &ldquo;stupid&rdquo; mistakes. Sources of errors can either be conceptual - a mistake in understanding of the theory - or in the implementation of the software used to solve problems. Here, we&rsquo;re going to focus on the mistakes that come in from implementation issues, which really, are the easier ones to deal with. Let&rsquo;s try and think about the issues that might happen when when things go wrong with software, both scientific and general.</p>
+
+<p>There are a number of high profile examples which can illustrate for us the issues that might occur from coding errors.</p>
+
+<h3 id="geoffrey-chang">Geoffrey Chang</h3>
+
+<p><img src="chang_jeff.jpg" alt="Geoffrey Chang" /></p>
+
+<p>Geoffrey Chang and coauthors published a series of papers in high profile journals which attempted to determine the structure of molecules through analysing X-Ray crystallography data. The research groups papers were very highly cited and influential. However, in 2006 Kasper Locher performed a similar technique to Chang to determine the structure for what should have been a similar crystal to one studied by Chang&rsquo;s group. Instead, he found a 180&deg; flip in the orientation of one helix, which suggested that the results were incorrect. Chang went back and looked at his software, and realised that two columns of data had been accidentally transposed, which resulted in the signs of charges in the molecular structure being flipped. In total, this led to retraction of 6 papers, and around five years of work.</p>
+
+<p>You can read more about the impact of this <a href="https://dx.doi.org/10.1126/science.314.5807.1856">here</a>.</p>
+
+<h3 id="reinhart-and-rogoff">Reinhart and Rogoff</h3>
+
+<p>Two economists, Reinhart and Rogoff published an influential paper \&ldquo;Growth in a time of Debt\&rdquo; on the topic of government debt to gross domestic product ratios.
+The results from their study showed that growth declined once the ratio reached around 60%, the growth in countries historically had begun to decline.
+The paper was notable for it&rsquo;s use in political circles; it was cited by government figues in the UK, EU and US as the basis for reducing government spending.</p>
+
+<p>A PhD student in the US, Herndon, struggled to reproduce the results of the study, and eventually contacted the original authors of the paper requesting the non-public data that the study was based on.
+The authors passed this on, but Herndon and found a number of spreadsheet errors which meant that certain countries were not included in the historical data. On inclusion of these countries, the results from the paper still showed a decline in growth, but one which was substantially lower than as originally presented.</p>
+
+<h3 id="ariane-5-rocket-launch-1996">Ariane 5 Rocket Launch 1996</h3>
+
+<p>The launch of the first Ariane 5 rocket was a 10 year development and a $7 Billion cost for the European Space Agency. On the first test launch in June 1996 the trajectory of the rocket went of course 37 seconds in and
+the self destruct mechanism kicked in.</p>
+
+<div style='width: 507px; height: 380px; margin: auto;'>
+<iframe width="507" height="380" src="https://www.youtube.com/embed/gp_D8r-2hwk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<p>Investigations found that the inertial reference system had software bug, which was caused by the conversion of a 64-bit float containing the velocity into a 16-bit integer, and this caused an integer overflow. It turned out that this calculation was not even necessary on the Ariane 5, and had been inherited from software on the Ariane 4, but because this rocket reached much higher speeds, the rocket attempted to make correction for altitude deviation which hadn&rsquo;t happened.</p>
+
+<p>This was a particularly expensive mistake!</p>
+
+<h3 id="nhs-connecting-for-health">NHS Connecting for Health</h3>
+
+<p>Stepping away from scientific software bugs, let&rsquo;s look at how poor software design and oversight may hamper a different type of large software project, even when professional software developers are the ones writing it. It may surprise you to find out that in the UK, there is no national database of patient records. If you go to A&amp;E on a Saturday night unconscious, in general, doctors will not be able to see your medical records until the Monday morning when your GP opens again.</p>
+
+<p>In 2002, Tony Blair&rsquo;s Labour government decided to rectify this, and in 2003 and 2004 awarded contracts to Accenture, Fujitsu, BT Health and Computer Sciences Corporation between 2002 and 2004, which the intention of building a complex set of regional systems which could integrate with one another. The initial projected timescale for this project was three years. The proposed system had an expected cost 2.3 Billion and would have been the biggest government IT project in the world.</p>
+
+<p>The scheme was eventually cancelled in 2011 but 16 years later costs from fallout of this project are still escalating - currently at over £20 billion. Compare this, for example, to the UK budget which in 2018 is 5 billion. A government report &ldquo;Government and IT - a recipe for rip offs&rdquo; in 2011 blamed <strong>lack of in-house technical knowledge</strong> and a <strong>tendency to build large complex projects that cannot adapt to changing requirements</strong>.</p>
+
+<h3 id="more-examples">More examples</h3>
+
+<ul>
+<li>Trading glitch cost Knight Capital \$440 Million dollars in 30 minutes.</li>
+<li>Therac-25 Radiation Therapy machine bug killed 4 patients and injured two others because of integer overflow in software written by a single programmer.</li>
+<li>Mars Orbiter crashed in 1998 because of imperial vs metric units in interface between software.</li>
+<li>Y2K bug was caused by 32-bit integer commonly used to store dates overflowing.</li>
+<li>1999 Study on suicides after natural disasters counted deaths in one year twice and had to be retracted.</li>
+<li>Sainsbury&rsquo;s wrote off \$526 Million investment in 2004 because of software bugs.</li>
+</ul>
+
+<h2 id="what-are-the-implications-of-badly-written-software">What are the implications of badly written software?</h2>
+
+<ul>
+<li>It&rsquo;s clear that complex systems are very hard to get right. This means that starting out when writing a programme is usually not the best way of approaching it - take some time to plan.</li>
+<li>Getting things wrong for you means bad science and a damaged career. If you have to retract some work, youre</li>
+<li>If you work on large projects it can mean huge costs.</li>
+<li>Wasted time and money dealing with fallout of mistakes.</li>
+<li>Poorly designed software is just as bad as bugs in well designed software!</li>
+</ul>
+
+<h2 id="what-should-we-draw-from-this">What should we draw from this?</h2>
+
+<ul>
+<li>Clear that even professional software developers can get it wrong.</li>
+<li>Scientists in particular are not generally good programmers and are mostly self taught.</li>
+<li>Scientists do not have the resources to use all of the techniques from industry to avoid problems.</li>
+</ul>
+
+<h2 id="reproducibility-and-repeatability">Reproducibility and Repeatability</h2>
+
+<ul>
+<li><strong>Reproducibility - Gaining results which are close in agreement using the same methodology described</strong></li>
+<li>Key concept of the scientific method</li>
+<li><strong>Often scientific papers cannot be reproduced</strong> solely from the paper alone.</li>
+<li>How many of you have ever struggled to reproduce a result from a computational paper?</li>
+<li>Often this comes from inherent assumptions in modelling which are not discussed in the research literature itself.</li>
+<li>Very challenging to write a paper which is complete.</li>
+<li>Large and well discussed \&ldquo;reproducibility crisis\&rdquo;</li>
+</ul>
+
+<h3 id="a-changing-landscape">A Changing Landscape?</h3>
+
+<ul>
+<li>Increasing pressure from funders - all UK research data must be made public. Similar story in other countries.</li>
+<li>However, papers and the data are still are not generally enough to reproduce methods.</li>
+<li>Organisations like the Software Sustainability Institute and Software Carpentry have been leads in giving scientists better software development training.</li>
+<li>Well written open projects in Python/C/Fortran like AstroPy, SciPy and NumPy are well documented and serve as great examples for writing well tested and usable software.</li>
+<li>Time commitment to getting there is hard at first but leads you to do better science and have more confidence in your results.</li>
+</ul>
+
+<h3 id="a-changing-landscape-1">A Changing Landscape?</h3>
+
+<p>It is becoming increasingly necessary for you to release the source code that generates your publications. It is highly likely you won&rsquo;t be able to decline in future! See, for example, Nature Publishing Group&rsquo;s <a href="https://www.nature.com/documents/GuidelinesCodePublication.pdf">publication guidelines</a>, which are moving in this direction. Where high quality journals start, others will follow!</p>
+
+<p>Everything in the following courses is designed to make it easier for you to writing good software. In the software industry these just some starting points from which all else follows. If you are not doing any one of these things (with the exception of containerisation), you are almost certainly not writing good software. The main point is that scientific software is not some special case - it is just as complex as software in industry, where all of these are standard practice.</p>
+
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/version-control/" title="Version Control" style="margin-right: 0px;"><label>Version Control</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/introduction/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

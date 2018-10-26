@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scientific Programming</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.49.2" />
+<title>Writing Simple Tests :: Scientific Programming</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/scientific-programming.github.io";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/testing/simple-tests/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://scientific-programming.github.io">Scientific Programming</a>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/scientific-programming"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/introduction/" class="dd-item
+        ">
+      <div>
+      <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/version-control/" class="dd-item
+        ">
+      <div>
+      <a href="/version-control/">Version Control</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/containers/" class="dd-item
+        ">
+      <div>
+      <a href="/containers/">Containers</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item active">
+        <div>
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/documentation/" class="dd-item
+        ">
+      <div>
+      <a href="/documentation/">Documentation</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/introduction/" >
+   Software Engineering in Science</option>
+    <option value="/version-control/" >
+   Version Control</option>
+    <option value="/containers/" >
+   Containers</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/"  selected>- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
+      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
+  
+    <option value="/documentation/" >
+   Documentation</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/scientific-programming.github.io";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Writing Simple Tests</h1>
+    
+    
+    
+    
+
+<h4 id="starting-off-simply-squaring-a-number">Starting off simply: Squaring a number</h4>
+
+<p>Consider as a really simple example, a function which takes a number and computes the square of that number.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">square</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span></code></pre></div>
+<p>Various appropriate tests of this could check:</p>
+
+<ul>
+<li>Is the correct answer given for positive integers?</li>
+<li>Is the correct answer given for negative integers?</li>
+<li>Is the correct answer given for zero?</li>
+<li>Is the correct answer given for positive and negative decimals?</li>
+<li>What is the behaviour for complex numbers?</li>
+<li>How does the function behave when an input argument is not of the type specified is passed in (such as a string)?</li>
+</ul>
+
+<p>It&rsquo;s clear that all of these would be sensible, but considering it carefully, it shows immediately the difficulty of actually applying testing in practice. There are an infinite amount of numerical input arguments - we cannot reasonably test them all.</p>
+
+<p>How can we therefore reduce it down to a more manageable set of tests? We by necessity have to restrict our tests to a subset of all of the possible outcomes, and have to exercise some thought.</p>
+
+<p>In Python, we can write tests using the Pytest framework. Pytest goes through all of the files in a directory with a &ldquo;.py&rdquo; file extension, and looks for normal Python functions which have names that start with &ldquo;test&rdquo;. It then runs all of these functions in sequence.</p>
+
+<p>In general, it&rsquo;s a good idea to write tests in a separate file to the function implementation.</p>
+
+<p>So, to keep track of what we&rsquo;re doing, we&rsquo;ll create a new folder and a new Git repository:</p>
+
+<pre><code>mkdir python-testing-tutorial
+cd python-testing-tutorial
+git init
+</code></pre>
+
+<p>In this folder, we&rsquo;ll create &lsquo;functions.py&rsquo; and &lsquo;test_functions.py&rsquo;</p>
+
+<p>In functions.py add the function from above.</p>
+
+<p>Now, in test_functions.py, we&rsquo;ll write a test. As mentioned before, you write a normal Python function. However, we use something that you may not have seen before - the assert statement:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">test_square_positive_integers</span><span style="color:#111">():</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#75715e"># Note the mistake here! We&#39;ll leave this here to</span>
+    <span style="color:#75715e"># show what happens when a test fails.</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">4</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">16</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">100</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">10000</span></code></pre></div>
+<p>Now, using our Docker knowledge from before, we&rsquo;re going to run this test with Python from a container. Create a Dockerfile with the following contents:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get update<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get install -y python3<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> pip3 install pytest<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">WORKDIR</span><span style="color:#d88200"> /io</span></code></pre></div>
+<p>Here, we&rsquo;re using Pip, the Python package installer to install the Python package pytest.</p>
+
+<p>Build the container:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build . -t python-testing</code></pre></div>
+<p>Now, we can run the tests with:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v<span style="color:#d88200">`</span><span style="color:#111">pwd</span><span style="color:#d88200">`</span>:/io python-testing pytest -v .</code></pre></div>
+<p>You should see output something like this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">=============================</span> <span style="color:#111">test</span> session <span style="color:#111">starts</span> <span style="color:#f92672">==============================</span>
+platform linux -- Python <span style="color:#ae81ff">3</span>.6.6, pytest-3.9.2, py-1.7.0, pluggy-0.8.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /io, inifile:
+collecting ... collected <span style="color:#ae81ff">1</span> item
+
+test_functions.py::test_square_positive_integers FAILED                  <span style="color:#f92672">[</span><span style="color:#ae81ff">100</span>%<span style="color:#f92672">]</span>
+
+<span style="color:#f92672">===================================</span> <span style="color:#111">FAILURES</span> <span style="color:#f92672">===================================</span>
+________________________ test_square_positive_integers _________________________
+
+    def test_square_positive_integers<span style="color:#f92672">()</span>:
+        assert square<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#75715e"># Note the mistake here! We&#39;ll leave this here to
+</span><span style="color:#75715e"></span>        <span style="color:#75715e"># show what happens when a test fails.
+</span><span style="color:#75715e"></span>&gt;       assert square<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>
+E       assert <span style="color:#111">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>
+E        +  where <span style="color:#111">4</span> <span style="color:#f92672">=</span> square<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>
+
+test_functions.py:10: <span style="color:#111">AssertionError</span>
+<span style="color:#f92672">===========================</span> <span style="color:#ae81ff">1</span> failed in <span style="color:#ae81ff">0</span>.16 <span style="color:#111">seconds</span> <span style="color:#f92672">===========================</span></code></pre></div>
+<p>Note now, that we can see that a test has failed where we introduced the error in the test. We can now correct the test so that it&rsquo;s expecting the correct answer:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">test_square_positive_integers</span><span style="color:#111">():</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">4</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">16</span>
+    <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">100</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">10000</span></code></pre></div>
+<p>Now if we rerun pytest, we see something different:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">=============================</span> <span style="color:#111">test</span> session <span style="color:#111">starts</span> <span style="color:#f92672">==============================</span>
+platform linux -- Python <span style="color:#ae81ff">3</span>.6.6, pytest-3.9.2, py-1.7.0, pluggy-0.8.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /io, inifile:
+collecting ... collected <span style="color:#ae81ff">1</span> item
+
+test_functions.py::test_square_positive_integers PASSED                  <span style="color:#f92672">[</span><span style="color:#ae81ff">100</span>%<span style="color:#f92672">]</span>
+
+<span style="color:#f92672">===========================</span> <span style="color:#ae81ff">1</span> passed in <span style="color:#ae81ff">0</span>.21 <span style="color:#111">seconds</span> <span style="color:#f92672">===========================</span></code></pre></div>
+<p>As many tests as are necessary can be written.</p>
+
+<h3 id="exceptions">Exceptions</h3>
+
+<p>Most programming languages have the concept of exceptions. An exception is just a way of handling conditions which happen while a programme is running which require special handling.</p>
+
+<h3 id="aside-debug-mode">Aside: Debug Mode</h3>
+
+<p>Many people do not know that the Python interpreter runs in &lsquo;debug&rsquo; mode by default. When it is disabled, by running Python with the &lsquo;-O&rsquo; flag, all asserts are skipped, and the flag &lsquo;<strong>debug</strong>&rsquo; is set to True. Utilising this can be useful when you want to check code for correctness, but know that some checks you are running can be costly in performance. It can also be used to provide more</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">square</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+  <span style="color:#00a8c8">if</span> <span style="color:#111">__debug__</span><span style="color:#111">:</span>
+    <span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;We&#39;re in debug mode!&#34;</span><span style="color:#111">)</span>
+  <span style="color:#00a8c8">assert</span> <span style="color:#111">type</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">in</span> <span style="color:#111">[</span><span style="color:#111">int</span><span style="color:#111">,</span> <span style="color:#111">float</span><span style="color:#111">,</span> <span style="color:#111">complex</span><span style="color:#111">],</span> <span style="color:#d88200">&#34;Input argument x is not of a numeric type int, complex or float&#34;</span>
+  <span style="color:#00a8c8">return</span> <span style="color:#111">x</span><span style="color:#f92672">*</span><span style="color:#111">x</span></code></pre></div>
+<p>In debug mode, if we run the function, we get the following output:</p>
+
+<pre><code>&gt;&gt;&gt; square(2)
+We're in debug mode!
+4
+&gt;&gt;&gt; square('a')
+We're in debug mode!
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;stdin&gt;&quot;, line 4, in square
+AssertionError: Argument is not of a numeric type
+</code></pre>
+
+<p>When we instead run &lsquo;python3 -O&rsquo;, we see:</p>
+
+<pre><code>&gt;&gt;&gt; square(2)
+4
+&gt;&gt;&gt; square('a')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;stdin&gt;&quot;, line 5, in square
+TypeError: can't multiply sequence by non-int of type 'str'
+</code></pre>
+
+<p>We can see that the print statement is completely skipped, and instead of our helpful error message which resulted from our check, we get Python&rsquo;s slightly less helpful one.</p>
+
+<h3 id="exercise-write-a-first-function-and-test">Exercise: Write a first function and test</h3>
+
+<p>The Couloumb potential is given by $$ V\left(r\right) = \frac{q}{|r|} $$</p>
+
+<ul>
+<li><p>Write a function that takes two parameters, x and q, and returns this potential.</p></li>
+
+<li><p>Write a test for the function, and</p></li>
+</ul>
+
+<p>Note: The power operator in Python is &ldquo;**&ldquo;, so to take the square root:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>
+<span style="color:#ae81ff">2</span></code></pre></div>
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/testing/" title="Testing Scientific Code"> <i class="fa fa-chevron-left"></i><label>Testing Scientific Code</label></a>
+    <a class="nav nav-next" href="/testing/complex-tests/" title="Writing Complex Tests" style="margin-right: 0px;"><label>Writing Complex Tests</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 26/10/2018
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/testing/simple-tests.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
