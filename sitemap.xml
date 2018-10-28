@@ -8,17 +8,7 @@
   </url>
   
   <url>
-    <loc>https://scientific-programming.github.io/testing/simple-tests/</loc>
-    <lastmod>2018-10-26T10:56:09+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://scientific-programming.github.io/introduction/</loc>
-  </url>
-  
-  <url>
-    <loc>https://scientific-programming.github.io/testing/complex-tests/</loc>
-    <lastmod>2018-10-26T10:56:09+01:00</lastmod>
   </url>
   
   <url>
@@ -27,8 +17,8 @@
   </url>
   
   <url>
-    <loc>https://scientific-programming.github.io/containers/tutorial/</loc>
-    <lastmod>2018-10-26T09:41:56+01:00</lastmod>
+    <loc>https://scientific-programming.github.io/testing/</loc>
+    <lastmod>2018-10-26T10:55:14+01:00</lastmod>
   </url>
   
   <url>
@@ -37,18 +27,33 @@
   </url>
   
   <url>
-    <loc>https://scientific-programming.github.io/testing/</loc>
-    <lastmod>2018-10-26T10:55:14+01:00</lastmod>
+    <loc>https://scientific-programming.github.io/containers/tutorial/</loc>
+    <lastmod>2018-10-26T09:41:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scientific-programming.github.io/testing/complex-tests/</loc>
+    <lastmod>2018-10-26T10:56:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scientific-programming.github.io/testing/simple-tests/</loc>
+    <lastmod>2018-10-26T10:56:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scientific-programming.github.io/testing/continuous-integration/</loc>
+    <lastmod>2018-10-26T10:56:15+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scientific-programming.github.io/testing/writing-tests/</loc>
+    <lastmod>2018-10-26T10:56:03+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://scientific-programming.github.io/documentation/</loc>
     <lastmod>2018-10-26T10:58:18+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://scientific-programming.github.io/cheatsheet/</loc>
-    <lastmod>2018-10-26T09:41:56+01:00</lastmod>
   </url>
   
   <url>
@@ -67,13 +72,8 @@
   </url>
   
   <url>
-    <loc>https://scientific-programming.github.io/testing/continuous-integration/</loc>
-    <lastmod>2018-10-26T10:56:15+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://scientific-programming.github.io/testing/writing-tests/</loc>
-    <lastmod>2018-10-26T10:56:03+01:00</lastmod>
+    <loc>https://scientific-programming.github.io/cheatsheet/</loc>
+    <lastmod>2018-10-26T09:41:56+01:00</lastmod>
   </url>
   
   <url>

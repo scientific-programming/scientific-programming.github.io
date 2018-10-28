@@ -12,14 +12,16 @@
     
     
     <item>
-      <title>Writing Simple Tests</title>
-      <link>https://scientific-programming.github.io/testing/simple-tests/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
+      <title>Getting Started with Docker</title>
+      <link>https://scientific-programming.github.io/containers/tutorial/</link>
+      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
       
-      <guid>https://scientific-programming.github.io/testing/simple-tests/</guid>
-      <description>Starting off simply: Squaring a number Consider as a really simple example, a function which takes a number and computes the square of that number.
-def square(x): return x * x Various appropriate tests of this could check:
- Is the correct answer given for positive integers? Is the correct answer given for negative integers? Is the correct answer given for zero? Is the correct answer given for positive and negative decimals?</description>
+      <guid>https://scientific-programming.github.io/containers/tutorial/</guid>
+      <description>First Steps 1) Make an account on the website https://hub.docker.com
+Make the username something sensible as we&amp;rsquo;ll have to use it soon!
+1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.
+2) Now, we&amp;rsquo;ll create a file called &amp;ldquo;Dockerfile&amp;rdquo; in a single folder. The Dockerfile is a configuration script for building an image.
+ Create a directory by doing:  mkdir docker-tutorial  Change directory into the folder:  cd docker-tutorial 3) Create a file called Dockerfile in this directory, and put as the first line:</description>
     </item>
     
     <item>
@@ -33,16 +35,33 @@ def square(x): return x * x Various appropriate tests of this could check:
     </item>
     
     <item>
-      <title>Getting Started with Docker</title>
-      <link>https://scientific-programming.github.io/containers/tutorial/</link>
-      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
+      <title>Writing Simple Tests</title>
+      <link>https://scientific-programming.github.io/testing/simple-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
       
-      <guid>https://scientific-programming.github.io/containers/tutorial/</guid>
-      <description>First Steps 1) Make an account on the website https://hub.docker.com
-Make the username something sensible as we&amp;rsquo;ll have to use it soon!
-1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.
-2) Now, we&amp;rsquo;ll create a file called &amp;ldquo;Dockerfile&amp;rdquo; in a single folder. The Dockerfile is a configuration script for building an image.
- Create a directory by doing:  mkdir docker-tutorial  Change directory into the folder:  cd docker-tutorial 3) Create a file called Dockerfile in this directory, and put as the first line:</description>
+      <guid>https://scientific-programming.github.io/testing/simple-tests/</guid>
+      <description>Starting off simply: Squaring a number Consider as a really simple example, a function which takes a number and computes the square of that number.
+def square(x): return x * x Various appropriate tests of this could check:
+ Is the correct answer given for positive integers? Is the correct answer given for negative integers? Is the correct answer given for zero? Is the correct answer given for positive and negative decimals?</description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
+      <description>Continuous Integration What is Continuous Integration?
+ Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
+    </item>
+    
+    <item>
+      <title>Writing Tests</title>
+      <link>https://scientific-programming.github.io/testing/writing-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:03 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/writing-tests/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -76,25 +95,6 @@ docker build . -t documentation docker run -v `pwd`:/app -it documentation sphin
 fromubuntu:18.04ENVTZ &amp;#34;Europe/London&amp;#34;RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezoneRUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pip python3-sphinxWORKDIR/app with the command:
 docker build . -t sphinx Note that we&amp;rsquo;ve had to add some timezone information into the container here; don&amp;rsquo;t worry too much about this.
 Now, go to the repository in which you have your Python files.</description>
-    </item>
-    
-    <item>
-      <title>Continuous Integration</title>
-      <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
-      <description>Continuous Integration What is Continuous Integration?
- Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
-    </item>
-    
-    <item>
-      <title>Writing Tests</title>
-      <link>https://scientific-programming.github.io/testing/writing-tests/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:03 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/writing-tests/</guid>
-      <description></description>
     </item>
     
   </channel>
