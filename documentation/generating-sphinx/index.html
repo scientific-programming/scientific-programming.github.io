@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title> :: Scientific Programming</title>
+<title>Generating documentation with Sphinx :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/documentation/generating-sphinx/">
     
       <header>
   <div class="logo">
@@ -122,13 +122,14 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/documentation/" class="dd-item haschildren
+    <li data-nav-id="/documentation/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/documentation/">Documentations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/documentation/">Documentations</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
+      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item active">
         <div>
           <a href="/documentation/generating-sphinx/">
             Generating documentation with Sphinx
@@ -160,7 +161,9 @@
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/documentation/" >
-   Documentations</option>
+   Documentations</option> 
+      <option value="/documentation/generating-sphinx/"  selected>- Generating documentation with Sphinx</option>
+  
 
 
 
@@ -183,40 +186,115 @@
       </div>
     
 
+    <h1>Generating documentation with Sphinx</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
-
-<h1 id="scientific-programming">Scientific Programming</h1>
-
-<p>This website aims to be a self contained basics course designed
-for scientists who need to do some programming as part of their
-research. The topics covered are:</p>
+<h1 id="quick-notes">Quick Notes</h1>
 
 <ul>
-<li><p>Containerisation - How can a team of developers, often working remotely from one another set up a consistent environment for developing their software? If you have ever been sent code by someone and not been able to run it, this section is for you&hellip; We will show you how to configure a container to run a C/C++ or Python application using Docker.</p></li>
+<li>Pip install sphinx rather than through apt-get bceause otherwise TZ settings do not work well</li>
+<li>sphinx-quickstart</li>
 
-<li><p>Version Control - No longer will you have 5 versions of your code in a folder with names like &lsquo;main-working-18-04-2017.cpp&rsquo;, &lsquo;main-not-working-16-08-2018.cpp&rsquo;&hellip; We&rsquo;ll teach how to set up a history of code development using the tool Git.</p></li>
+<li><p>Most defaults are OK but:</p>
 
-<li><p>Continuous integration and Testing - If you make a change to your code, how do you know that it&rsquo;s not broken? If you&rsquo;ve ever come to use a part of your code and realised that it no longer works because you changed something else, this will be useful to you. We will teach you how to write appropriate tests for scientific codes, and show you how to set up a continuous integration system for Git repositories.</p></li>
+<ul>
+<li>We want to set default document to markdown rather than RST</li>
+<li>We want to enable MathJax</li>
+<li></li>
+</ul></li>
 
-<li><p>Documentation - What makes good documentation? At a minimum, what should the requirements be? In this, we&rsquo;ll go through some examples and talk about and show some of the tools for documenting software.</p></li>
+<li><p>Edit conf.py:</p></li>
+
+<li><p>If you want to change the default theme, we can use RTD by changing the line to:</p>
+
+<pre><code>html_theme = 'sphinx_rtd_theme'
+</code></pre>
+
+<ul>
+<li>Uncomment the lines of code here:
+```python</li>
+</ul></li>
 </ul>
 
+<h1 id="if-extensions-or-modules-to-document-with-autodoc-are-in-another-directory">If extensions (or modules to document with autodoc) are in another directory,</h1>
 
+<h1 id="add-these-directories-to-sys-path-here-if-the-directory-is-relative-to-the">add these directories to sys.path here. If the directory is relative to the</h1>
+
+<h1 id="documentation-root-use-os-path-abspath-to-make-it-absolute-like-shown-here">documentation root, use os.path.abspath to make it absolute, like shown here.</h1>
+
+<p>#</p>
+
+<h1 id="import-os">import os</h1>
+
+<h1 id="import-sys">import sys</h1>
+
+<h1 id="sys-path-insert-0-os-path-abspath">sys.path.insert(0, os.path.abspath(&lsquo;.&rsquo;))</h1>
+
+<pre><code>
+  - to extensions add sphinx.extensions.doctest and sphinx.extensions.napoleon
+  - napoleon allows NumPy style documentation
+  - after extension declarations add following:
+
+```python
+napoleon_google_docstring = False
+
+doctest_global_setup = &quot;&quot;&quot;
+from quicktest import *
+&quot;&quot;&quot;
+</code></pre>
+
+<p>Then, from root dir:</p>
+
+<pre><code>sphinx-apidoc -s md -o source ../quicktest 
+make html
+</code></pre>
+
+<p>Note: -s flag changes suffix from rst autodoc to md autodoc.
+source is output directory
+quicktest is source code directory</p>
+
+<ul>
+<li>Create a file called tutorial.rst</li>
+</ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">Tutorial
+========
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>This is a tutorial.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>Subheading
+----------
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>Here is some text under a subheading</code></pre></div>
+<p>In index, change the toctree (table of contents tree) to:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst"><span style="color:#111">..</span> <span style="color:#f92672">toctree</span><span style="color:#111">::</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:maxdepth:</span> <span style="color:#75af00">2</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:caption:</span> <span style="color:#75af00">Contents:</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   tutorial</code></pre></div>
+<p>Now, &lsquo;make html&rsquo;</p>
+
+<p>You can see that the tutorial page has appeared in the documentation.</p>
+
+<h1 id="putting-online">Putting online</h1>
+
+<ul>
+<li><p>Log in to RTD with GitHub acct</p></li>
+
+<li><p>Import Repository</p></li>
+
+<li></li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Software Engineering in Science" style="margin-right: 0px;"><label>Software Engineering in Science</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/documentation/" title="Documentations"> <i class="fa fa-chevron-left"></i><label>Documentations</label></a>
+    <a class="nav nav-next" href="/introduction/" title="Software Engineering in Science" style="margin-right: 0px;"><label>Software Engineering in Science</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -237,7 +315,7 @@ research. The topics covered are:</p>
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/documentation/generating-sphinx.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

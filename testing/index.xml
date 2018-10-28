@@ -38,15 +38,8 @@ def square(x): return x * x Various appropriate tests of this could check:
       <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
-      <description>Continuous Integration What is CI?
- Runs the tests repeatedly, every time you make a change.
- Sends you angry emails when tests fail!
- Usually done remotely, on a server.
- Requires you to be using version control.
- Can help when you’re developing features in a branch/fork.
- Remote services: TravisCI, CircleCI, GitLab,
- Self Hosted Services: Jenkins, Buildbot
-  TravisCI Pick this as it’s easy to set up from what we’ve already done:</description>
+      <description>Continuous Integration What is Continuous Integration?
+ Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
     </item>
     
   </channel>

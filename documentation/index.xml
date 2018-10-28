@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Documentation on Scientific Programming</title>
+    <title>Documentations on Scientific Programming</title>
     <link>https://scientific-programming.github.io/documentation/</link>
-    <description>Recent content in Documentation on Scientific Programming</description>
+    <description>Recent content in Documentations on Scientific Programming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 26 Oct 2018 10:58:18 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 22:07:04 +0100</lastBuildDate>
     
 	<atom:link href="https://scientific-programming.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Generating documentation with Sphinx</title>
+      <link>https://scientific-programming.github.io/documentation/generating-sphinx/</link>
+      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/documentation/generating-sphinx/</guid>
+      <description>Quick Notes  Pip install sphinx rather than through apt-get bceause otherwise TZ settings do not work well sphinx-quickstart Most defaults are OK but:
+ We want to set default document to markdown rather than RST We want to enable MathJax   Edit conf.py:
+ If you want to change the default theme, we can use RTD by changing the line to:
+html_theme = &#39;sphinx_rtd_theme&#39;   Uncomment the lines of code here: ```python   If extensions (or modules to document with autodoc) are in another directory, add these directories to sys.</description>
+    </item>
     
   </channel>
 </rss>

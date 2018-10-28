@@ -33,20 +33,38 @@ def square(x): return x * x Various appropriate tests of this could check:
     </item>
     
     <item>
+      <title>Getting Started with Docker</title>
+      <link>https://scientific-programming.github.io/containers/tutorial/</link>
+      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/containers/tutorial/</guid>
+      <description>First Steps 1) Make an account on the website https://hub.docker.com
+Make the username something sensible as we&amp;rsquo;ll have to use it soon!
+1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.
+2) Now, we&amp;rsquo;ll create a file called &amp;ldquo;Dockerfile&amp;rdquo; in a single folder. The Dockerfile is a configuration script for building an image.
+ Create a directory by doing:  mkdir docker-tutorial  Change directory into the folder:  cd docker-tutorial 3) Create a file called Dockerfile in this directory, and put as the first line:</description>
+    </item>
+    
+    <item>
+      <title>Generating documentation with Sphinx</title>
+      <link>https://scientific-programming.github.io/documentation/generating-sphinx/</link>
+      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/documentation/generating-sphinx/</guid>
+      <description>Quick Notes  Pip install sphinx rather than through apt-get bceause otherwise TZ settings do not work well sphinx-quickstart Most defaults are OK but:
+ We want to set default document to markdown rather than RST We want to enable MathJax   Edit conf.py:
+ If you want to change the default theme, we can use RTD by changing the line to:
+html_theme = &#39;sphinx_rtd_theme&#39;   Uncomment the lines of code here: ```python   If extensions (or modules to document with autodoc) are in another directory, add these directories to sys.</description>
+    </item>
+    
+    <item>
       <title>Continuous Integration</title>
       <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
       <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
-      <description>Continuous Integration What is CI?
- Runs the tests repeatedly, every time you make a change.
- Sends you angry emails when tests fail!
- Usually done remotely, on a server.
- Requires you to be using version control.
- Can help when you’re developing features in a branch/fork.
- Remote services: TravisCI, CircleCI, GitLab,
- Self Hosted Services: Jenkins, Buildbot
-  TravisCI Pick this as it’s easy to set up from what we’ve already done:</description>
+      <description>Continuous Integration What is Continuous Integration?
+ Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
     </item>
     
   </channel>

@@ -78,11 +78,21 @@
       <a href="/version-control/">Version Control</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/containers/" class="dd-item parent active
+    <li data-nav-id="/containers/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/containers/">Containers</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/containers/">Containers</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
+        <ul>
+      <li data-nav-id="/containers/tutorial/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial/">
+            Getting Started with Docker
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
     <li data-nav-id="/testing/" class="dd-item haschildren
         ">
@@ -113,11 +123,20 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/documentation/" class="dd-item
+    <li data-nav-id="/documentation/" class="dd-item haschildren
         ">
       <div>
-      <a href="/documentation/">Documentation</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/documentation/">Documentations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
+        <ul>
+      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-sphinx/">
+            Generating documentation with Sphinx
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
 
 
@@ -139,11 +158,12 @@
    Version Control</option>
     <option value="/containers/"  selected>
    Containers</option> 
+      <option value="/containers/tutorial/" >- Getting Started with Docker</option>
   
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/documentation/" >
-   Documentation</option>
+   Documentations</option>
 
 
 
@@ -173,158 +193,61 @@
 
 
 
-<h3 id="first-steps">First Steps</h3>
-
-<p>1) Make an account on the website <a href="https://hub.docker.com">https://hub.docker.com</a></p>
-
-<p>Make the username something sensible as we&rsquo;ll have to use it soon!</p>
-
-<p>1) If you haven&rsquo;t already, try &ldquo;docker run ubuntu:18.04&rdquo;. This downloads an image containing Ubuntu 18.04.</p>
-
-<p>2) Now, we&rsquo;ll create a file called &ldquo;Dockerfile&rdquo; in a single folder. The Dockerfile is a configuration script for building an image.</p>
+<h3 id="what-are-containers">What are containers?</h3>
 
 <ul>
-<li>Create a directory by doing:</li>
+<li>Mechanism for setting up environment</li>
+<li>Allows control of dependencies</li>
+<li>Describes setup process through scripting in standardised manner</li>
+<li>Can be easily distributed to others (binary vs script)</li>
+<li>Not a virtual machine (in most cases&hellip;)</li>
 </ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir docker-tutorial</code></pre></div>
-<ul>
-<li>Change directory into the folder:</li>
-</ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">cd</span> docker-tutorial</code></pre></div>
-<p>3) Create a file called Dockerfile in this directory, and put as the first line:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04&#39;</span></code></pre></div>
-<p>4) Now, we can start installing things inside the image. We do this by adding lines to the Dockerfile; a command to run is prefaced by &ldquo;RUN&rdquo;. If you&rsquo;re not familiar with Linux, and are primarily a Windows or Mac user, it may seem a little odd to install programmes using typed out commands, but it can be very powerful. For Ubuntu, there are basically two commands you need to know.</p>
 
-<p>First, we&rsquo;ll update the list of Ubuntu packages which can be installed; note that this is almost always necessary. To do this, add:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">RUN</span> apt-get update</code></pre></div>
-<p>to the file.</p>
-
-<p>6) Once this is completed, you can then choose to install programmes. We&rsquo;re going to use Python for this example, but you can pick any programmes you like for your own Docker containers. Here, we just add the line:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">RUN</span> apt-get install -y python3</code></pre></div>
-<p>which tells Ubuntu to install Python 3 in the container. The &ldquo;-y&rdquo; flag here just tells apt-get, the programme used in Ubuntu for installing programmes, not to prompt for confirmation.</p>
-
-<p>Now, you have a script which tells Docker to build a container which:
-* Is based on Ubuntu 18.04. You could change this to another Linux distribution if you wanted, such as CentOS.
-* Contains Python 3.</p>
-
-<p>This is the general principle of containers - you build them up in steps until they have everything you need to run real applications.</p>
-
-<p>Now, we can tell Docker to run a command when the container is launched. We do this using a slightly different syntax:</p>
-
-<pre><code>CMD /bin/bash
-</code></pre>
-
-<p>This just tells Docker to launch the Bash shell. From this, we can launch all of the programmes installed into the container. Alternatively, we could just as easily write:</p>
-
-<pre><code>CMD /
-
-7) Now let's actually build the container image from the script file. We do this using the following command - replace &quot;YOURUSERNAME&quot; with your username for the account we created with Dockerhub earlier.
-
-```Bash
-docker build . -t YOURUSERNAME/myimage
-</code></pre>
-
-<p>Breaking this command down:</p>
+<h3 id="terminology">Terminology</h3>
 
 <ul>
-<li><p>Docker is the application.</p></li>
-
-<li><p>We&rsquo;re running Docker&rsquo;s build command</p></li>
-
-<li><p>&rdquo;.&rdquo; refers to the file location - it&rsquo;s saying &ldquo;build the Dockerfile in this folder&rdquo;</p></li>
-
-<li><p>-t YOURUSERNAME/myimage - if you&rsquo;re not familiar with Linux, adding a dash is a common way of signalling how to pass information to a command. Here, &ldquo;-t&rdquo; just means build the image with the tag YOURUSERNAME/myimage</p></li>
+<li>Host - Computer running VM/container.</li>
+<li>Image - Binary file</li>
+<li>Hypervisor - software running VM.</li>
+<li>Kernel - Core OS components</li>
 </ul>
 
-<h3 id="more-concepts">More concepts</h3>
+<h3 id="comparisons-with-virtual-machines">Comparisons with Virtual Machines</h3>
 
-<p>Every time you add another command to the script, you create a new <em>layer</em>.
-A layer is the essentially just a list of differences between the previous command and the present one. Your container image is built up of multiple layers. If you want to add a new command, you don&rsquo;t have to rebuild completely from scratch - Docker is clever enough to start from the <em>last common layer</em>. These layers do take up storage space, however.</p>
+<p>=================================</p>
 
-<p>That means though, if you change the programmes installed with apt-get on the second line of the script, all subsequent steps must be repeated, because Docker can&rsquo;t work out if subsequent steps are independent or not of each other.</p>
+<h4 id="how-are-containers-like-vms">How are containers like VMs?</h4>
 
-<p>7) Now we&rsquo;ve installed python3 in the image, how do we use it?</p>
+<h4 id="how-are-containers-like-vms-1">How are containers like VMs?</h4>
 
-<p>We can do this in two ways - similar but quite different!</p>
-
-<p>1) Start a container from the image interactively, and launch the programme:</p>
-
-<p>To run interactively, we must add the &ldquo;-i&rdquo; flag. If we don&rsquo;t do this, the programme will launch, but will freeze!</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i -t YOURUSERNAME/myimage</code></pre></div>
-<p>Then, just run</p>
-
-<pre><code>python3
-</code></pre>
-
-<p>to launch the Python interpreter.</p>
-
-<p>2)
-* Create a container from the image, and give it the name &lsquo;mytest&rsquo;</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker create --name mytest YOURUSERNAME/myimage</code></pre></div>
 <ul>
-<li>Then, start the container:</li>
+<li><em>Isolated environment</em> - Processes run isolated from other processes -
+they can’t access hardware resources they aren’t allocated.</li>
+<li><em>They are independent</em> - Generally you can be given a container image or
+a virtual machine image and use that to run a piece of software without
+doing anything else.</li>
 </ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker start --name mytest</code></pre></div>
-<p>*</p>
 
-<h3 id="saving-the-container">Saving the Container</h3>
+<h3 id="how-are-containers-not-like-vms">How are containers not like VMs?</h3>
 
-<p>1) We can save the docker container to a file with</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker save YOURUSERNAME/mycontainer &gt; myimage.tar</code></pre></div>
-<p>You can compress the image if you want with the command</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gzip -f myimage.tar</code></pre></div>
-<p>You can load it again with</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker load myimage.tar.gz</code></pre></div>
-<p>2) However, it&rsquo;s not normally necessary to save containers like this - much easier just to use Docker Hub. Free uploads of containers if public, one private container per account.</p>
+<ul>
+<li><p><em>They use Kernel features of the host</em>  Linux supports process and
+resource partitioning and isolation (cgroups, OverlayFS, kernel
+namespacing), which allows containers to use a subset of resources.</p></li>
 
-<p>Make a repository called &lsquo;mycontainer&rsquo; on your Dockerhub account</p>
+<li><p><em>VMs require a Hypervisor</em> The hypervisor is a software based
+emulation layer for computer hardware and so it is generally  20% slower
+running software in a VM than natively, even with Intel Vf-X, Sun
+GridEngine. Free hypervisors slow; commercial are expensive!</p></li>
 
-<p>3) Now, on your computer, run the command:</p>
+<li><p><em>Generally containers are command-line only</em> With VMs it is very easy
+to get a full desktop environment. With containers this use case is generally not
+well supported.</p></li>
 
-<pre><code>docker login
-</code></pre>
-
-<p>You will be prompted for your username and password for Dockerhub. Enter them.</p>
-
-<p>11) Now, we can publish the container online using:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker push YOURUSERNAME/mycontainer</code></pre></div>
-<p>12) Your container should now be available online. That means, someone else can download it using the &lsquo;docker pull&rsquo; command, and run the same programmes as you in the same way.</p>
-
-<p>13) Just to prove it to you, let&rsquo;s now delete the containers.</p>
-
-<p>There are lots of commands for deleting containers and images - this is quite confusing!</p>
-
-<p>If you want to remove <em>everything</em>, you can run:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker system prune</code></pre></div>
-<p>Deletes everything that are not associated with a running container - &ldquo;dangling&rdquo;. Add the &ldquo;-a&rdquo; flag to remove additionally any stopped containers and all unused images.</p>
-
-<p>If you just want to remove a specific image, you can run</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">docker images</code></pre></div>
-<p>This gives a list of all images you&rsquo;ve created, including intermediate layers.
-Copy the image id (the long string of numbers) of the image you want to remove:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker rmi IMAGEID</code></pre></div>
-<p>You may need to add the flag &lsquo;-f&rsquo; if you get an error here:</p>
-
-<pre><code>docker rmi IMAGEID -f
-</code></pre>
-
-<p>Note: if other images depend on the image you are deleting, they will also be deleted!</p>
-
-<p>Remove all images:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker images -a
-docker rmi <span style="color:#00a8c8">$(</span>docker images -a -q<span style="color:#00a8c8">)</span></code></pre></div>
-<p>14) Now pull the image we uploaded:</p>
-
-<pre><code>docker pull YOURUSERNAME/dependencies
-</code></pre>
-
-<h3 id="further-steps">Further steps</h3>
-
-<p>TBD: Check Windows mount path syntax</p>
-
-<p>Often, we want to install programmes in the container in order to manage dependencies, but we need to have them act on files stored on the computer itself. This can easily be achieved by mounting folders into the container, so that they are visible inside it.</p>
-
-<p>TBD: Mounting Ports: Explain what ports are? Networking end points - send messags between? Is this sufficient? TCP vs UDB - Docker uses TCP by default. Not sure this is relevant to mention.</p>
+<li><p><em>They take up much less space</em> Virtual Machines have to bundle the whole operating system,
+including components which would be the same on the host system. Containers, by virtue of using the
+host system&rsquo;s kernel (at least on Linux), can therefore take up much less room.</p></li>
+</ul>
 
 
 
@@ -333,7 +256,7 @@ docker rmi <span style="color:#00a8c8">$(</span>docker images -a -q<span style="
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/version-control/" title="Version Control"> <i class="fa fa-chevron-left"></i><label>Version Control</label></a>
-    <a class="nav nav-next" href="/testing/" title="Testing Scientific Code" style="margin-right: 0px;"><label>Testing Scientific Code</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/containers/tutorial/" title="Getting Started with Docker" style="margin-right: 0px;"><label>Getting Started with Docker</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
