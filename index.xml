@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scientific Programming</title>
+    <title>Homepage on Scientific Programming</title>
     <link>https://scientific-programming.github.io/</link>
-    <description>Recent content on Scientific Programming</description>
+    <description>Recent content in Homepage on Scientific Programming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 26 Oct 2018 10:56:09 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 17:49:03 +0100</lastBuildDate>
     
 	<atom:link href="https://scientific-programming.github.io/index.xml" rel="self" type="application/rss+xml" />
     
