@@ -46,16 +46,6 @@ Make the username something sensible as we&amp;rsquo;ll have to use it soon!
     </item>
     
     <item>
-      <title>Command Cheatsheet</title>
-      <link>https://scientific-programming.github.io/cheatsheet/</link>
-      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/cheatsheet/</guid>
-      <description>The following is a list of standard commands in cmd on Windows or Bash on *nix systems. It&amp;rsquo;s by no means a comprehensive list - these are just to help you
-Sometimes the commands I&amp;rsquo;ll show (which are used for navigating around on Linux or Unix based systems like Macs) don&amp;rsquo;t work in Windows. So here, I&amp;rsquo;ve put a list of things you might want to do, and the commands in both Windows and Linux.</description>
-    </item>
-    
-    <item>
       <title>Generating Docs</title>
       <link>https://scientific-programming.github.io/documentation/generating-docs/</link>
       <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
