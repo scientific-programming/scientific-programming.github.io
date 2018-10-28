@@ -25,6 +25,18 @@ Make the username something sensible as we&amp;rsquo;ll have to use it soon!
     </item>
     
     <item>
+      <title>Getting Started</title>
+      <link>https://scientific-programming.github.io/version-control/tutorial1/</link>
+      <pubDate>Thu, 25 Oct 2018 17:49:03 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/version-control/tutorial1/</guid>
+      <description>Getting Started with Version Control 1) Open your terminal, or Git Bash.
+2) Set your name and username with Git. This labels modifications to files you do and associates them with you!
+git config --global user.name &amp;#34;Ryan Pepper&amp;#34; git config --global user.email &amp;#34;ryan.pepper@soton.ac.uk&amp;#34; 3) Set your favourite text editor by running the appropriate command below:
+# Atom git config --global core.editor &amp;#34;atom --wait&amp;#34; # nano git config --global core.editor &amp;#34;nano -w&amp;#34; # Sublime Text (Mac) git config --global core.</description>
+    </item>
+    
+    <item>
       <title>Writing Complex Tests</title>
       <link>https://scientific-programming.github.io/testing/complex-tests/</link>
       <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
@@ -32,6 +44,17 @@ Make the username something sensible as we&amp;rsquo;ll have to use it soon!
       <guid>https://scientific-programming.github.io/testing/complex-tests/</guid>
       <description>Principles of Software Testing What are the main principles of software testing? Generally, people don&amp;rsquo;t start out writing software with no idea what it should do - they should have some idea of the requirements. The written software must then:
  Meet the original requirements Must respond correctly to different inputs Software must run in a reasonable amount of time Can be installed and run in the intended environment  Static vs Dynamic Testing [Static Testing]{}</description>
+    </item>
+    
+    <item>
+      <title>GitHub and Collaborating</title>
+      <link>https://scientific-programming.github.io/version-control/tutorial2/</link>
+      <pubDate>Thu, 25 Oct 2018 17:49:03 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/version-control/tutorial2/</guid>
+      <description>Storing your repository somewhere safe You have a history of your changes locally, but that&amp;rsquo;s not much good if your hard drive fails. We&amp;rsquo;ll now show you how keep a history remotely.
+Git is known as a &amp;lsquo;distributed version control&amp;rsquo; system. Generally, you host a repository somewhere online. There are lots of different providers for this.
+ GitHub - free! Lots of integrations with other services. Limited number or private repositories, but you can send off proof of academic status to get an unlimited number.</description>
     </item>
     
     <item>
@@ -43,6 +66,18 @@ Make the username something sensible as we&amp;rsquo;ll have to use it soon!
       <description>Starting off simply: Squaring a number Consider as a really simple example, a function which takes a number and computes the square of that number.
 def square(x): return x * x Various appropriate tests of this could check:
  Is the correct answer given for positive integers? Is the correct answer given for negative integers? Is the correct answer given for zero? Is the correct answer given for positive and negative decimals?</description>
+    </item>
+    
+    <item>
+      <title>Discarding Temporary Changes</title>
+      <link>https://scientific-programming.github.io/version-control/tutorial3/</link>
+      <pubDate>Thu, 25 Oct 2018 17:49:03 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/version-control/tutorial3/</guid>
+      <description>Discarding channges 1) If you make some changes to the file workshop.txt, but then decide that they weren&amp;rsquo;t correct or were unnecessary, you can easily get back to the head of the branch with the following command:
+git reset HEAD workshop.txt This permanently discards these changes.
+2) Alternatively, if you want to hide the changes now, but might come back to them, you can use:
+git stash  This creates a list of changes which are stored, but not committed, and which you can recover later.</description>
     </item>
     
     <item>

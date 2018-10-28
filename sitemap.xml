@@ -12,8 +12,8 @@
   </url>
   
   <url>
-    <loc>https://scientific-programming.github.io/version-control/</loc>
-    <lastmod>2018-10-25T17:49:03+01:00</lastmod>
+    <loc>https://scientific-programming.github.io/containers/</loc>
+    <lastmod>2018-10-26T09:41:56+01:00</lastmod>
   </url>
   
   <url>
@@ -22,8 +22,8 @@
   </url>
   
   <url>
-    <loc>https://scientific-programming.github.io/containers/</loc>
-    <lastmod>2018-10-26T09:41:56+01:00</lastmod>
+    <loc>https://scientific-programming.github.io/version-control/</loc>
+    <lastmod>2018-10-25T17:49:03+01:00</lastmod>
   </url>
   
   <url>
@@ -32,13 +32,28 @@
   </url>
   
   <url>
+    <loc>https://scientific-programming.github.io/version-control/tutorial1/</loc>
+    <lastmod>2018-10-25T17:49:03+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://scientific-programming.github.io/testing/complex-tests/</loc>
     <lastmod>2018-10-26T10:56:09+01:00</lastmod>
   </url>
   
   <url>
+    <loc>https://scientific-programming.github.io/version-control/tutorial2/</loc>
+    <lastmod>2018-10-25T17:49:03+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://scientific-programming.github.io/testing/simple-tests/</loc>
     <lastmod>2018-10-26T10:56:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://scientific-programming.github.io/version-control/tutorial3/</loc>
+    <lastmod>2018-10-25T17:49:03+01:00</lastmod>
   </url>
   
   <url>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Homepage :: Scientific Programming</title>
+<title>GitHub and Collaborating :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/version-control/tutorial2/">
     
       <header>
   <div class="logo">
@@ -123,10 +123,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/version-control/" class="dd-item haschildren
+    <li data-nav-id="/version-control/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/version-control/">Version Control</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/version-control/">Version Control</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/version-control/tutorial1/" class="dd-item">
@@ -136,7 +137,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/version-control/tutorial2/" class="dd-item">
+      <li data-nav-id="/version-control/tutorial2/" class="dd-item active">
         <div>
           <a href="/version-control/tutorial2/">
             GitHub and Collaborating
@@ -208,7 +209,11 @@
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/version-control/" >
-   Version Control</option>
+   Version Control</option> 
+      <option value="/version-control/tutorial1/" >- Getting Started</option>
+      <option value="/version-control/tutorial2/"  selected>- GitHub and Collaborating</option>
+      <option value="/version-control/tutorial3/" >- Discarding Temporary Changes</option>
+  
     <option value="/documentation/" >
    Documentation</option>
     <option value="/cheatsheet/" >
@@ -235,40 +240,90 @@
       </div>
     
 
+    <h1>GitHub and Collaborating</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<h1 id="storing-your-repository-somewhere-safe">Storing your repository somewhere safe</h1>
 
-<h1 id="scientific-programming">Scientific Programming</h1>
+<p>You have a history of your changes locally, but that&rsquo;s not much good
+if your hard drive fails.  We&rsquo;ll now show you how keep a history
+remotely.</p>
 
-<p>This website aims to be a self contained basics course designed
-for scientists who need to do some programming as part of their
-research. The topics covered are:</p>
+<p>Git is known as a &lsquo;distributed version control&rsquo; system. Generally, you
+host a repository somewhere online. There are lots of different
+providers for this.</p>
 
 <ul>
-<li><p>Containerisation - How can a team of developers, often working remotely from one another set up a consistent environment for developing their software? If you have ever been sent code by someone and not been able to run it, this section is for you&hellip; We will show you how to configure a container to run a C/C++ or Python application using Docker.</p></li>
+<li><p>GitHub - free! Lots of integrations with other services. Limited
+number or private repositories, but you can send off proof of academic
+status to get an unlimited number.</p></li>
 
-<li><p>Version Control - No longer will you have 5 versions of your code in a folder with names like &lsquo;main-working-18-04-2017.cpp&rsquo;, &lsquo;main-not-working-16-08-2018.cpp&rsquo;&hellip; We&rsquo;ll teach how to set up a history of code development using the tool Git.</p></li>
+<li><p>GitLab - also free. Unlimited number of private repositories.  Also
+allows local hosting - for e.g. in the University of Southampton,
+there is a private GitLab instance hosted internally, which can be
+used for sensitive projects.</p></li>
 
-<li><p>Continuous integration and Testing - If you make a change to your code, how do you know that it&rsquo;s not broken? If you&rsquo;ve ever come to use a part of your code and realised that it no longer works because you changed something else, this will be useful to you. We will teach you how to write appropriate tests for scientific codes, and show you how to set up a continuous integration system for Git repositories.</p></li>
-
-<li><p>Documentation - What makes good documentation? At a minimum, what should the requirements be? In this, we&rsquo;ll go through some examples and talk about and show some of the tools for documenting software.</p></li>
+<li><p>BitBucket - Has a lot of commercial products that are used in
+industry - good issue trackers.</p></li>
 </ul>
 
+<p>For this exercise, we&rsquo;ll use GitHub, but in practice there is not much
+between them.</p>
 
+<p>1) Create an account on github.com</p>
+
+<p>2) Once done, click the &ldquo;+&rdquo; arrow in the top right hand corner, and click &ldquo;New repository&rdquo;</p>
+
+<p>3) Type in a name and description for your repository:</p>
+
+<p><img src="drawing.jpg" alt="Image showing repository creation" style="width:300px;"/></p>
+
+<p>You&rsquo;ll now get a list of commands to type; the ones you want are:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git remote add origin https://github.com/rpep/mytestrepo.git
+git push -u origin master</code></pre></div>
+<p>You&rsquo;ll get asked for your username and password for GitHub - enter these.</p>
+
+<p>Now refresh the page, and you&rsquo;ll see the file you had has appeared online!</p>
+
+<p>4) Now - in pairs - one of you go to the Git repository of your neighbour. This will be</p>
+
+<p><a href="https://github.com/their-username/their-repository-name">https://github.com/their-username/their-repository-name</a></p>
+
+<p>Click &lsquo;Fork&rsquo;. This will make a copy of their repository on your GitHub.</p>
+
+<p>5) Now, copy their repository to your computer with the command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/yourusername/their-repository-name.git</code></pre></div>
+<p>6) Move into the folder:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">cd</span> their-repository-name</code></pre></div>
+<p>And make your own change to the file.</p>
+
+<p>7) Commit it as before:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit -m <span style="color:#d88200">&#34;Making a change to my partner&#39;s repository&#34;</span></code></pre></div>
+<p>8) Now push the change online:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git push</code></pre></div>
+<p>9) Go back to GitHub.</p>
+
+<p>Click &ldquo;New Pull Request, and then &ldquo;Create New Pull Request&rdquo; on the next page.</p>
+
+<p>Add in some information about the changes you made, and then &ldquo;Create pull request&rdquo;</p>
+
+<p>10) Now, your partner needs to go back to their version of the repository, and look at
+    the tab labelled &ldquo;Pull Requests&rdquo;</p>
+
+<p>Scroll to the bottom, and then press &ldquo;Merge pull request&rdquo;</p>
+
+<p>12) Pull these changes to your repository using &lsquo;git pull&rsquo;.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Software Engineering in Science" style="margin-right: 0px;"><label>Software Engineering in Science</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/version-control/tutorial1/" title="Getting Started"> <i class="fa fa-chevron-left"></i><label>Getting Started</label></a>
+    <a class="nav nav-next" href="/version-control/tutorial3/" title="Discarding Temporary Changes" style="margin-right: 0px;"><label>Discarding Temporary Changes</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -289,7 +344,7 @@ research. The topics covered are:</p>
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/version-control/tutorial2.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

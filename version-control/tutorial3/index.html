@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Homepage :: Scientific Programming</title>
+<title>Discarding Temporary Changes :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/version-control/tutorial3/">
     
       <header>
   <div class="logo">
@@ -123,10 +123,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/version-control/" class="dd-item haschildren
+    <li data-nav-id="/version-control/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/version-control/">Version Control</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/version-control/">Version Control</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/version-control/tutorial1/" class="dd-item">
@@ -143,7 +144,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/version-control/tutorial3/" class="dd-item">
+      <li data-nav-id="/version-control/tutorial3/" class="dd-item active">
         <div>
           <a href="/version-control/tutorial3/">
             Discarding Temporary Changes
@@ -208,7 +209,11 @@
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/version-control/" >
-   Version Control</option>
+   Version Control</option> 
+      <option value="/version-control/tutorial1/" >- Getting Started</option>
+      <option value="/version-control/tutorial2/" >- GitHub and Collaborating</option>
+      <option value="/version-control/tutorial3/"  selected>- Discarding Temporary Changes</option>
+  
     <option value="/documentation/" >
    Documentation</option>
     <option value="/cheatsheet/" >
@@ -235,40 +240,50 @@
       </div>
     
 
+    <h1>Discarding Temporary Changes</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<h3 id="discarding-channges">Discarding channges</h3>
 
-<h1 id="scientific-programming">Scientific Programming</h1>
+<p>1) If you make some changes to the file workshop.txt, but then decide that they weren&rsquo;t correct or were unnecessary, you can easily get back to the head of the branch with the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git reset HEAD workshop.txt</code></pre></div>
+<p>This permanently discards these changes.</p>
 
-<p>This website aims to be a self contained basics course designed
-for scientists who need to do some programming as part of their
-research. The topics covered are:</p>
+<p>2) Alternatively, if you want to hide the changes now, but might come back to them, you can use:</p>
 
-<ul>
-<li><p>Containerisation - How can a team of developers, often working remotely from one another set up a consistent environment for developing their software? If you have ever been sent code by someone and not been able to run it, this section is for you&hellip; We will show you how to configure a container to run a C/C++ or Python application using Docker.</p></li>
+<pre><code>git stash
+</code></pre>
 
-<li><p>Version Control - No longer will you have 5 versions of your code in a folder with names like &lsquo;main-working-18-04-2017.cpp&rsquo;, &lsquo;main-not-working-16-08-2018.cpp&rsquo;&hellip; We&rsquo;ll teach how to set up a history of code development using the tool Git.</p></li>
+<p>This creates a list of changes which are stored, but not committed, and which you can recover later. You can stash multiple times. Change your file and then stash it, and then repeat that again a few times.</p>
 
-<li><p>Continuous integration and Testing - If you make a change to your code, how do you know that it&rsquo;s not broken? If you&rsquo;ve ever come to use a part of your code and realised that it no longer works because you changed something else, this will be useful to you. We will teach you how to write appropriate tests for scientific codes, and show you how to set up a continuous integration system for Git repositories.</p></li>
+<p>3) To look at a list of the stashes you&rsquo;ve made, just type:</p>
 
-<li><p>Documentation - What makes good documentation? At a minimum, what should the requirements be? In this, we&rsquo;ll go through some examples and talk about and show some of the tools for documenting software.</p></li>
-</ul>
+<pre><code>git stash list
+</code></pre>
 
+<p>4) To recover the most recent set of changes, you can just type</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash apply</code></pre></div>
+<p>If you want a different set, you can type:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git stash apply stash@<span style="color:#f92672">{</span><span style="color:#ae81ff">2</span><span style="color:#f92672">}</span></code></pre></div>
+<p>If there is a clash between your current commit and the stashed code,
+you will get a merge conflict which you&rsquo;ll need to resolve.</p>
 
+<p>5) If you recover something from a stash, but then decide you don&rsquo;t want it anymore,
+you can achieve this by &lsquo;unapplying&rsquo; the stash, using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash show -p stash@<span style="color:#f92672">{</span><span style="color:#ae81ff">2</span><span style="color:#f92672">}</span><span style="color:#111">|</span> git apply -R</code></pre></div>
+<p>If you don&rsquo;t specify which stash from the list you recovered from, git will
+just assume you chose the most recent one.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Software Engineering in Science" style="margin-right: 0px;"><label>Software Engineering in Science</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/version-control/tutorial2/" title="GitHub and Collaborating"> <i class="fa fa-chevron-left"></i><label>GitHub and Collaborating</label></a>
+    <a class="nav nav-next" href="/documentation/" title="Documentation" style="margin-right: 0px;"><label>Documentation</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -289,7 +304,7 @@ research. The topics covered are:</p>
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/version-control/tutorial3.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     
