@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Documentations :: Scientific Programming</title>
+<title>Documentation :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -120,19 +120,40 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/testing/writing-tests/" class="dd-item">
+        <div>
+          <a href="/testing/writing-tests/">
+            Writing Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/documentation/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/documentation/">Documentations</a>
+      <a href="/documentation/">Documentation</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-docs/">
+            Generating Docs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
             Generating documentation with Sphinx
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/writing-docs/">
+            Sphinx: Python documentation
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -161,8 +182,10 @@
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/documentation/"  selected>
-   Documentations</option> 
+   Documentation</option> 
+      <option value="/documentation/generating-docs/" >- Generating Docs</option>
       <option value="/documentation/generating-sphinx/" >- Generating documentation with Sphinx</option>
+      <option value="/documentation/writing-docs/" >- Sphinx: Python documentation</option>
   
 
 
@@ -186,52 +209,124 @@
       </div>
     
 
-    <h1>Documentations</h1>
+    <h1>Documentation</h1>
     
     
     
 
 
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
+<h3 id="what-makes-good-documentation-on-a-software-project">What makes good documentation on a software project?</h3>
 
-</div>
+<p>Nothing can frustrate a user more than coming across a project which has inadequate documentation; without a knowledge of the underpinnings of a software library, the user must either field questions to the authors if they, indeed, are able to take them, or begin to study the source code in detail. This, however, causes many problems. Perhaps the user has no expertise in the area they wish to look at, and the source code is beyond their understanding. It may be that they get so frustrated that they begin to reimplement parts of a library themselves, to avoid having to work with code that they have not written. A piece of software may provide the most elegant solutions in the world for a particular problem, but if users find that they are unable to work with it through a lack of understanding about what the constituent parts do, it is unlikely to see much uptake.</p>
 
+<h3 id="what-makes-good-documentation">What makes good documentation?</h3>
 
-   <article class="post documentation">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/documentation/generating-sphinx/">Generating documentation with Sphinx</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>Quick Notes  Pip install sphinx rather than through apt-get bceause otherwise TZ settings do not work well sphinx-quickstart Most defaults are OK but:
- We want to set default document to markdown rather than RST We want to enable MathJax   Edit conf.py:
- If you want to change the default theme, we can use RTD by changing the line to:
-html_theme = 'sphinx_rtd_theme'   Uncomment the lines of code here: ```python   If extensions (or modules to document with autodoc) are in another directory, add these directories to sys. <a class="read-more" href="/documentation/generating-sphinx/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
+<p>There are broadly two types of documentation for software libraries:</p>
 
-        
-        
+<ul>
+<li><p>API Documentation - This describes all of the functions that are usable, specifying the input arguments, the behaviour of the function and the return values.</p></li>
 
-    </footer>
-</article>
+<li><p>Examples - Providing examples in context, which show how to use the particular functions, showing particular input values explicitly and what the results are.</p></li>
+</ul>
 
+<p>In general, the best software documentation contains both detailed documentation of the API and examples along with it. Why is this the case?</p>
 
-<div style="margin-bottom:2rem"></div>
+<p>If you want to quickly use a library, and know roughly what you&rsquo;re looking for, examples are normally the quickest way to get started. On the other hand, if you need to use more sophisticated features of a library, you&rsquo;re likely to need the API documentation, because it gives more details of the &lsquo;advanced&rsquo; features. A good rule of thumb when writing documentation is that examples should try and show &lsquo;enough&rsquo; - if there are any pitfalls that might be non-obvious, it&rsquo;s better to point these out and save users any pain.</p>
 
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
+<p>Perhaps the best way to learn what software documentation should look like is the use and study of projects which are well documented. We&rsquo;ll look here at an example from the the Python library SciPy.</p>
 
+<h4 id="newton-raphson-documentation">Newton Raphson documentation</h4>
+
+<p>Consider the <a href="../testing/complex-tests/">Newton-Raphson algorithm</a> we used as an example in the testing section of these tutorials. The iterative procedure for finding the root of a function is given by:</p>
+
+<p>$$
+x_{n+1} = x_{n} - \frac{f(x_n)}{f&rsquo;(x_n)}
+$$</p>
+
+<p>Because this is such a ubiquitous method, it&rsquo;s a good one for us to consider when looking at documentation.</p>
+
+<p>Let&rsquo;s take a look at the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.newton.html">SciPy documentation for this function</a>. The descriptions of the parameters in the whole of the SciPy library (and also the NumPy library) are written to a set of standards. These standards are defined in the documentation <a href="https://www.numpy.org/devdocs/docs/howto_document.html#docstring-standard">here</a>, and they are worth a read to anyone writing software as they are something of a gold standard. Indeed, many other Python projects implement documentation in the same format as these libraries. Here we&rsquo;ll just discuss briefly the main features:</p>
+
+<p>We can see first that it starts first with the function signature (i.e. the input arguments), and both a brief and long form description:</p>
+
+<pre><code>scipy.optimize.newton(func, x0, fprime=None, args=(),
+tol=1.48e-08, maxiter=50, fprime2=None)
+Find a zero using the Newton-Raphson or secant method.
+
+Find a zero of the function func given a nearby starting point x0. The
+Newton-Raphson method is used if the derivative fprime of func is provided,
+otherwise the secant method is used. If the second order derivative fprime2 of
+func is provided, then Halley’s method is used.
+</code></pre>
+
+<p>The function signature tells us the input arguments, but without some thought, it would still be difficult to immediately use the function. The description tells us the key information about the particular function, and a bit of brief clarifying information about the function. The key parts, however, are really what follow:</p>
+
+<pre><code>
+Parameters:
+func : function
+  The function whose zero is wanted. It must be a function of a single variable
+  of the form f(x,a,b,c…), where a,b,c… are extra arguments that can be passed
+  in the args parameter.
+
+x0 : float
+  An initial estimate of the zero that should be somewhere near the actual zero.
+
+fprime : function, optional
+  The derivative of the function when available and convenient. If it is None
+  (default), then the secant method is used.
+
+args : tuple, optional
+  Extra arguments to be used in the function call.
+
+tol : float, optional
+  The allowable error of the zero value.
+
+maxiter : int, optional
+  Maximum number of iterations.
+
+fprime2 : function, optional
+  The second order derivative of the function when available and convenient. If
+  it is None (default), then the normal Newton-Raphson or the secant method is
+  used. If it is not None, then Halley’s method is used.
+
+Returns:
+  zero : float
+  Estimated location where function is zero.
+</code></pre>
+
+<p>Each input and output parameter has its type specified - especially necessary in Python given that it is a dynamically-typed language. Some parameters, which are optional, are stated as such. We note that the default values for the optional arguments were given above in the function signature. Then, following each parameter is a description of the input parameters.</p>
+
+<p>Following these, examples are given on how to use the function:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#00a8c8">def</span> <span style="color:#75af00">f</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+<span style="color:#f92672">...</span>     <span style="color:#00a8c8">return</span> <span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">3</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>  <span style="color:#75715e"># only one real root at x = 1</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> <span style="color:#111">scipy</span> <span style="color:#f92672">import</span> <span style="color:#111">optimize</span>
+<span style="color:#75715e"># fprime not provided, use secant method</span>
+
+<span style="color:#f92672">&gt;&gt;&gt;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span> <span style="color:#f92672">=</span> <span style="color:#111">optimize</span><span style="color:#f92672">.</span><span style="color:#111">newton</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.5</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span>
+<span style="color:#ae81ff">1.0000000000000016</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span> <span style="color:#f92672">=</span> <span style="color:#111">optimize</span><span style="color:#f92672">.</span><span style="color:#111">newton</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.5</span><span style="color:#111">,</span> <span style="color:#111">fprime2</span><span style="color:#f92672">=</span><span style="color:#00a8c8">lambda</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span>
+<span style="color:#ae81ff">1.0000000000000016</span>
+<span style="color:#75715e"># Only fprime provided, use Newton Raphson method</span>
+
+<span style="color:#f92672">&gt;&gt;&gt;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span> <span style="color:#f92672">=</span> <span style="color:#111">optimize</span><span style="color:#f92672">.</span><span style="color:#111">newton</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.5</span><span style="color:#111">,</span> <span style="color:#111">fprime</span><span style="color:#f92672">=</span><span style="color:#00a8c8">lambda</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span>
+<span style="color:#ae81ff">1.0</span>
+<span style="color:#75715e"># Both fprime2 and fprime provided, use Halley’s method</span>
+
+<span style="color:#f92672">&gt;&gt;&gt;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span> <span style="color:#f92672">=</span> <span style="color:#111">optimize</span><span style="color:#f92672">.</span><span style="color:#111">newton</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.5</span><span style="color:#111">,</span> <span style="color:#111">fprime</span><span style="color:#f92672">=</span><span style="color:#00a8c8">lambda</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span>
+<span style="color:#f92672">...</span>                        <span style="color:#111">fprime2</span><span style="color:#f92672">=</span><span style="color:#00a8c8">lambda</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">root</span>
+<span style="color:#ae81ff">1.0</span></code></pre></div>
+<p>Note that several different perturbations of the input arguments are given. For most people, it would be enough to briefly look at the examples here, and they would immediately be able to get started with using the code.</p>
+
+<p>What&rsquo;s particularly invaluable here is that both the function API documentation and the examples are given <em>in the same place</em>. This makes it quick to get started with using the code. In contrast, many software libraries provide examples and the API, but separate from each other.</p>
 
 
 
@@ -239,8 +334,8 @@ html_theme = 'sphinx_rtd_theme'   Uncomment the lines of code here: ```python   
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/testing/continuous-integration/" title="Continuous Integration"> <i class="fa fa-chevron-left"></i><label>Continuous Integration</label></a>
-    <a class="nav nav-next" href="/documentation/generating-sphinx/" title="Generating documentation with Sphinx" style="margin-right: 0px;"><label>Generating documentation with Sphinx</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/testing/writing-tests/" title="Writing Tests"> <i class="fa fa-chevron-left"></i><label>Writing Tests</label></a>
+    <a class="nav nav-next" href="/documentation/generating-docs/" title="Generating Docs" style="margin-right: 0px;"><label>Generating Docs</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -261,7 +356,7 @@ html_theme = 'sphinx_rtd_theme'   Uncomment the lines of code here: ```python   
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/documentation/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

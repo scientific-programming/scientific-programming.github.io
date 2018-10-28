@@ -46,15 +46,46 @@ Make the username something sensible as we&amp;rsquo;ll have to use it soon!
     </item>
     
     <item>
+      <title>Cheatsheet</title>
+      <link>https://scientific-programming.github.io/cheatsheet/</link>
+      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/cheatsheet/</guid>
+      <description>The following is a list of standard commands in cmd on Windows or Bash on *nix systems. It&amp;rsquo;s by no means a comprehensive list - these are just to help you
+Sometimes the commands I&amp;rsquo;ll show (which are used for navigating around on Linux or Unix based systems like Macs) don&amp;rsquo;t work in Windows. So here, I&amp;rsquo;ve put a list of things you might want to do, and the commands in both Windows and Linux.</description>
+    </item>
+    
+    <item>
+      <title>Generating Docs</title>
+      <link>https://scientific-programming.github.io/documentation/generating-docs/</link>
+      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/documentation/generating-docs/</guid>
+      <description>How can we generate documentation from code? There are a number of different tools for automatically generating documentation for different languages. For Python, a common tool is Sphinx. For projects which combine several languages, sometimes the tool Doxygen is preferred.
+Here, we&amp;rsquo;ll focus on Sphinx, but generally all tools work by similar principles; the source code of a library is parsed, and the author of code annotates it in order to provide the documentation.</description>
+    </item>
+    
+    <item>
       <title>Generating documentation with Sphinx</title>
       <link>https://scientific-programming.github.io/documentation/generating-sphinx/</link>
       <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/documentation/generating-sphinx/</guid>
-      <description>Quick Notes  Pip install sphinx rather than through apt-get bceause otherwise TZ settings do not work well sphinx-quickstart Most defaults are OK but:
- We want to set default document to markdown rather than RST We want to enable MathJax   Edit conf.py:
- If you want to change the default theme, we can use RTD by changing the line to:
-html_theme = &#39;sphinx_rtd_theme&#39;   Uncomment the lines of code here: ```python   If extensions (or modules to document with autodoc) are in another directory, add these directories to sys.</description>
+      <description>Quick Notes  Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well  fromubuntu:18.04RUN apt-get update &amp;amp;&amp;amp; apt-get install python3 python3-pipRUN pip3 installWORKDIR/app Then
+docker build . -t documentation docker run -v `pwd`:/app -it documentation sphinx-quickstart  Most defaults are OK but:
+ We want to set default document to markdown rather than RST We want to enable MathJax  Now Edit conf.py:</description>
+    </item>
+    
+    <item>
+      <title>Sphinx: Python documentation</title>
+      <link>https://scientific-programming.github.io/documentation/writing-docs/</link>
+      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/documentation/writing-docs/</guid>
+      <description>Installing Sphinx We&amp;rsquo;ll start with a Docker container (again!). Build the following:
+fromubuntu:18.04ENVTZ &amp;#34;Europe/London&amp;#34;RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezoneRUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pip python3-sphinxWORKDIR/app with the command:
+docker build . -t sphinx Note that we&amp;rsquo;ve had to add some timezone information into the container here; don&amp;rsquo;t worry too much about this.
+Now, go to the repository in which you have your Python files.</description>
     </item>
     
     <item>
@@ -65,6 +96,15 @@ html_theme = &#39;sphinx_rtd_theme&#39;   Uncomment the lines of code here: ```p
       <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
       <description>Continuous Integration What is Continuous Integration?
  Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
+    </item>
+    
+    <item>
+      <title>Writing Tests</title>
+      <link>https://scientific-programming.github.io/testing/writing-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:03 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/writing-tests/</guid>
+      <description></description>
     </item>
     
   </channel>

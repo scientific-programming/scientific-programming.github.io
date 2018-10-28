@@ -120,18 +120,39 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/testing/writing-tests/" class="dd-item">
+        <div>
+          <a href="/testing/writing-tests/">
+            Writing Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/documentation/" class="dd-item haschildren
         ">
       <div>
-      <a href="/documentation/">Documentations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/documentation/">Documentation</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-docs/">
+            Generating Docs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
             Generating documentation with Sphinx
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/writing-docs/">
+            Sphinx: Python documentation
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -161,7 +182,7 @@
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/documentation/" >
-   Documentations</option>
+   Documentation</option>
 
 
 
@@ -214,6 +235,8 @@ The paper was notable for it&rsquo;s use in political circles; it was cited by g
 <p>A PhD student in the US, Herndon, struggled to reproduce the results of the study, and eventually contacted the original authors of the paper requesting the non-public data that the study was based on.
 The authors passed this on, but Herndon and found a number of spreadsheet errors which meant that certain countries were not included in the historical data. On inclusion of these countries, the results from the paper still showed a decline in growth, but one which was substantially lower than as originally presented.</p>
 
+<p><img src="reinhart.png" alt="Reinhart and Rogoff BBC Article" /></p>
+
 <h3 id="ariane-5-rocket-launch-1996">Ariane 5 Rocket Launch 1996</h3>
 
 <p>The launch of the first Ariane 5 rocket was a 10 year development and a $7 Billion cost for the European Space Agency. On the first test launch in June 1996 the trajectory of the rocket went of course 37 seconds in and
@@ -227,7 +250,14 @@ the self destruct mechanism kicked in.</p>
 
 <p>This was a particularly expensive mistake!</p>
 
+<h3 id="supercooled-water">Supercooled Water</h3>
+
+<p><img src="supercooled-water-1.png" alt="Supercooled Water War" />
+<a href="https://physicstoday.scitation.org/do/10.1063/PT.6.1.20180822a/full/">Very recent case</a> - but went on for years. Researchers had conflicting results in simulations of supercooled water. Eventually, one group published all of their research software, which put pressure on the other group to do so. When they eventually did, it was found that they were using a very unconventional method of initialising their molecular dynamics simulations, which led to the spurious results.</p>
+
 <h3 id="nhs-connecting-for-health">NHS Connecting for Health</h3>
+
+<p><img src="NHS.gif" alt="NHS Connecting for Health logo" /></p>
 
 <p>Stepping away from scientific software bugs, let&rsquo;s look at how poor software design and oversight may hamper a different type of large software project, even when professional software developers are the ones writing it. It may surprise you to find out that in the UK, there is no national database of patient records. If you go to A&amp;E on a Saturday night unconscious, in general, doctors will not be able to see your medical records until the Monday morning when your GP opens again.</p>
 
@@ -238,21 +268,20 @@ the self destruct mechanism kicked in.</p>
 <h3 id="more-examples">More examples</h3>
 
 <ul>
-<li>Trading glitch cost Knight Capital \$440 Million dollars in 30 minutes.</li>
-<li>Therac-25 Radiation Therapy machine bug killed 4 patients and injured two others because of integer overflow in software written by a single programmer.</li>
-<li>Mars Orbiter crashed in 1998 because of imperial vs metric units in interface between software.</li>
-<li>Y2K bug was caused by 32-bit integer commonly used to store dates overflowing.</li>
-<li>1999 Study on suicides after natural disasters counted deaths in one year twice and had to be retracted.</li>
-<li>Sainsbury&rsquo;s wrote off \$526 Million investment in 2004 because of software bugs.</li>
+<li>A <a href="https://www.cio.com/article/2393212/agile-development/software-testing-lessons-learned-from-knight-capital-fiasco.html">trading glitch</a> cost Knight Capital $440 Million dollars in 30 minutes.</li>
+<li>The Therac-25 Radiation Therapy machine bug <a href="https://hackaday.com/2015/10/26/killed-by-a-machine-the-therac-25/">killed 4 patients and injured two others because of integer overflow</a> in software written by a single programmer.</li>
+<li>In 1998 the <a href="https://en.wikipedia.org/wiki/Mars_Climate_Orbiter">Mars Climate Orbiter</a> crashed because of imperial vs metric units in interface between software.</li>
+<li><a href="https://en.wikipedia.org/wiki/Year_2000_problem">Y2K</a> was caused by 32-bit integer commonly used to store dates overflowing. <a href="https://en.wikipedia.org/wiki/Year_2038_problem">(Upcoming again in 2038&hellip;)</a></li>
+<li>A 1999 Study on suicides after natural disasters counted deaths in one year twice and <a href="https://www.nejm.org/doi/full/10.1056/NEJM199901143400213">had to be retracted.</a>
+*</li>
 </ul>
 
 <h2 id="what-are-the-implications-of-badly-written-software">What are the implications of badly written software?</h2>
 
 <ul>
 <li>It&rsquo;s clear that complex systems are very hard to get right. This means that starting out when writing a programme is usually not the best way of approaching it - take some time to plan.</li>
-<li>Getting things wrong for you means bad science and a damaged career. If you have to retract some work, youre</li>
-<li>If you work on large projects it can mean huge costs.</li>
-<li>Wasted time and money dealing with fallout of mistakes.</li>
+<li>Getting things wrong for you means bad science and a damaged career. If you have to retract some work because of what amounts to carelessness, you&rsquo;re going to be known in your field for getting it wrong, and it will take a lot of work to recover your reputation. <a href="http://retractiondatabase.org/">Retractions are also becoming more visible!</a></li>
+<li>If you work on large projects it can mean huge costs in time and money if you have to redo analysis.</li>
 <li>Poorly designed software is just as bad as bugs in well designed software!</li>
 </ul>
 
@@ -278,17 +307,18 @@ the self destruct mechanism kicked in.</p>
 
 <h3 id="a-changing-landscape">A Changing Landscape?</h3>
 
-<ul>
-<li>Increasing pressure from funders - all UK research data must be made public. Similar story in other countries.</li>
-<li>However, papers and the data are still are not generally enough to reproduce methods.</li>
-<li>Organisations like the Software Sustainability Institute and Software Carpentry have been leads in giving scientists better software development training.</li>
-<li>Well written open projects in Python/C/Fortran like AstroPy, SciPy and NumPy are well documented and serve as great examples for writing well tested and usable software.</li>
-<li>Time commitment to getting there is hard at first but leads you to do better science and have more confidence in your results.</li>
-</ul>
+<p>Think now about the requirements you&rsquo;re being asked to meet for research in the UK. As EPSRC funded researchers, you are already required to:
+* Deposit the accepted manuscript in an institutional repository so that they are openly accessible within 3 months of acceptance.
+* All of your research data must now <a href="https://epsrc.ukri.org/about/standards/researchdata/expectations/">be made public and be available for up to 10 years after the last 3rd party access</a>.</p>
 
-<h3 id="a-changing-landscape-1">A Changing Landscape?</h3>
+<p>You need to care about these things if you want to stay in academia, because if you don&rsquo;t meet the requirements, your publications are not countable towards REF, which directly impacts your career path. The motivations behind these policies is that as publicly funded researchers, the general public should be able to access information you produce (with some exceptions on national security or data privacy grounds).</p>
 
-<p>It is becoming increasingly necessary for you to release the source code that generates your publications. It is highly likely you won&rsquo;t be able to decline in future! See, for example, Nature Publishing Group&rsquo;s <a href="https://www.nature.com/documents/GuidelinesCodePublication.pdf">publication guidelines</a>, which are moving in this direction. Where high quality journals start, others will follow!</p>
+<p>Moving on from funder requirements, we need to look at what publishers are starting to demand. It is becoming increasingly necessary for you to release the source code that generates your publications. See, for example, Nature Publishing Group&rsquo;s <a href="https://www.nature.com/documents/GuidelinesCodePublication.pdf">publication guidelines</a>, which are moving in this direction. Where high quality journals start, others will follow! Looking at one particularly odd example, <a href="http://www.sciencemag.org/news/2015/11/paper-retracted-after-scientist-bans-use-his-software-countries-welcome-refugees">a 2004 paper was retracted from BMC Evolutionary Biology</a> after the author refused to let scientists from countries admitting refugees use of the software, as this breached the journal&rsquo;s guidelines on software availability.</p>
+
+<p>The other thing to note is that other scientists - and not just funders and publishers - are becoming more demanding regarding access to software, which the
+recognition that complex software is often not described adequately in research papers, making the results irreproducible. Government funded organisations such as the <a href="https://www.software.ac.uk/">Software Sustainability Institute</a> are actively pushing for more research code to be made open and maintainable, and provide training. There is now a whole new career path for <a href="https://rse.ac.uk/">&lsquo;Research Software Engineers&rsquo;</a> - usually former academics with strong software skills, who can provide training to academics and who are included on grant applications to work on making the research software used maintainable.</p>
+
+<h3 id="what-will-this-course-teach-you">What will this course teach you?</h3>
 
 <p>Everything in the following courses is designed to make it easier for you to writing good software. In the software industry these just some starting points from which all else follows. If you are not doing any one of these things (with the exception of containerisation), you are almost certainly not writing good software. The main point is that scientific software is not some special case - it is just as complex as software in industry, where all of these are standard practice.</p>
 

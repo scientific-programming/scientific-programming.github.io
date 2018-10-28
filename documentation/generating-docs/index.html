@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Generating documentation with Sphinx :: Scientific Programming</title>
+<title>Generating Docs :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/documentation/generating-sphinx/">
+  <body data-url="/documentation/generating-docs/">
     
       <header>
   <div class="logo">
@@ -136,14 +136,14 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
+      <li data-nav-id="/documentation/generating-docs/" class="dd-item active">
         <div>
           <a href="/documentation/generating-docs/">
             Generating Docs
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item active">
+      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
             Generating documentation with Sphinx
@@ -183,8 +183,8 @@
    Testing Scientific Code</option>
     <option value="/documentation/" >
    Documentation</option> 
-      <option value="/documentation/generating-docs/" >- Generating Docs</option>
-      <option value="/documentation/generating-sphinx/"  selected>- Generating documentation with Sphinx</option>
+      <option value="/documentation/generating-docs/"  selected>- Generating Docs</option>
+      <option value="/documentation/generating-sphinx/" >- Generating documentation with Sphinx</option>
       <option value="/documentation/writing-docs/" >- Sphinx: Python documentation</option>
   
 
@@ -209,110 +209,84 @@
       </div>
     
 
-    <h1>Generating documentation with Sphinx</h1>
+    <h1>Generating Docs</h1>
     
     
     
     
 
-<h1 id="quick-notes">Quick Notes</h1>
+<h4 id="how-can-we-generate-documentation-from-code">How can we generate documentation from code?</h4>
 
-<ul>
-<li>Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well</li>
-</ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install python3 python3-pip<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> pip3 install<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">WORKDIR</span><span style="color:#d88200"> /app</span></code></pre></div>
-<p>Then</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build . -t documentation
-docker run -v <span style="color:#d88200">`</span><span style="color:#111">pwd</span><span style="color:#d88200">`</span>:/app -it documentation
-sphinx-quickstart</code></pre></div>
-<ul>
-<li><p>Most defaults are OK but:</p>
+<p>There are a number of different tools for automatically generating documentation
+for different languages. For Python, a common tool is <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>.
+For projects which combine several languages, sometimes the tool <a href="http://www.doxygen.org/">Doxygen</a> is preferred.</p>
 
-<ul>
-<li>We want to set default document to markdown rather than RST</li>
-<li>We want to enable MathJax</li>
-</ul></li>
+<p>Here, we&rsquo;ll focus on Sphinx, but generally all tools work by similar principles;
+the source code of a library is parsed, and the author of code annotates it
+in order to provide the documentation.</p>
 
-<li><p>Now Edit conf.py:</p></li>
-</ul>
+<p>In Python, we can document a function with a documentation string, or &lsquo;docstring.&rsquo;
+These are provided as a multi-line string just under the function signature in
+the source code.</p>
 
-<p>Uncomment these lines of code in conf.py</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># If extensions (or modules to document with autodoc) are in another directory,</span>
-<span style="color:#75715e"># add these directories to sys.path here. If the directory is relative to the</span>
-<span style="color:#75715e"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
-<span style="color:#75715e">#</span>
-<span style="color:#75715e"># import os</span>
-<span style="color:#75715e"># import sys</span>
-<span style="color:#75715e"># sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span></code></pre></div>
-<ul>
-<li>to extensions add sphinx.extensions.doctest and sphinx.extensions.napoleon</li>
-<li>napoleon allows NumPy style documentation</li>
-<li>after extension declarations add following:</li>
-</ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">napoleon_google_docstring</span> <span style="color:#f92672">=</span> <span style="color:#111">False</span>
+<p>Consider our simple &lsquo;squared&rsquo; and &lsquo;power&rsquo; functions from the testing tutorial:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#00a8c8">def</span> <span style="color:#75af00">squared</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span>
 
-<span style="color:#111">doctest_global_setup</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;&#34;&#34;
-</span><span style="color:#d88200">from quicktest import *
-</span><span style="color:#d88200">&#34;&#34;&#34;</span></code></pre></div>
-<p>Then, from root dir:</p>
+<span style="color:#00a8c8">def</span> <span style="color:#75af00">power</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">n</span><span style="color:#111">):</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">**</span> <span style="color:#111">n</span></code></pre></div>
+<p>An annotated version of &lsquo;squared&rsquo;, using the NumPy documentation standard, could be:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#00a8c8">def</span> <span style="color:#75af00">squared</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+    <span style="color:#d88200">&#34;&#34;&#34;
+</span><span style="color:#d88200">    Returns the square of the input x
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Parameters:
+</span><span style="color:#d88200">    -----------
+</span><span style="color:#d88200">    x, float:
+</span><span style="color:#d88200">       Base number
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Returns:
+</span><span style="color:#d88200">    --------
+</span><span style="color:#d88200">    float:
+</span><span style="color:#d88200">       Base number raised to power 2
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    See Also:
+</span><span style="color:#d88200">    ------
+</span><span style="color:#d88200">    pow : raise an argument to an arbitrary power
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Examples
+</span><span style="color:#d88200">    --------
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(2)
+</span><span style="color:#d88200">    4
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(8)
+</span><span style="color:#d88200">    64
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt; squared(-1)
+</span><span style="color:#d88200">    1
+</span><span style="color:#d88200">    &#34;&#34;&#34;</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span><span style="color:#f92672">*</span><span style="color:#111">x</span></code></pre></div>
+<p>This might seem verbose, but, everything that&rsquo;s needed is there.</p>
 
-<pre><code>sphinx-apidoc -s md -o source ../quicktest
-make html
-</code></pre>
+<h3 id="accessing-the-documentation-from-python">Accessing the documentation from Python</h3>
 
-<p>Note: -s flag changes suffix from rst autodoc to md autodoc.
-source is output directory
-quicktest is source code directory</p>
+<div class="panel panel-info">
+	<div class="panel-heading">Accessing Documentation from Python</div>
+	<div class="panel-body"><p>If you&rsquo;re in a Python interpreter, you can access the documentation by calling the
+help function with the name of the function or class you&rsquo;re interested in:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">help</span><span style="color:#111">(</span><span style="color:#111">function_name</span><span style="color:#111">)</span></code></pre></div></div>
+	
+</div>
 
-<ul>
-<li>Create a file called tutorial.rst</li>
-</ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">Tutorial
-========
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>This is a tutorial.<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>Subheading
-----------
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>Here is some text under a subheading</code></pre></div>
-<p>In index, change the toctree (table of contents tree) to:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst"><span style="color:#111">..</span> <span style="color:#f92672">toctree</span><span style="color:#111">::</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:maxdepth:</span> <span style="color:#75af00">2</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:caption:</span> <span style="color:#75af00">Contents:</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>   tutorial</code></pre></div>
-<p>Now, &lsquo;make html&rsquo;</p>
-
-<p>You can see that the tutorial page has appeared in the documentation.</p>
-
-<h1 id="putting-online">Putting online</h1>
-
-<ul>
-<li><p>Log in to RTD with GitHub acct</p></li>
-
-<li><p>Import Repository</p></li>
-
-<li><p>Select correct repo</p></li>
-
-<li><p>Click build</p></li>
-
-<li><p>Builds automatically</p></li>
-</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/documentation/generating-docs/" title="Generating Docs"> <i class="fa fa-chevron-left"></i><label>Generating Docs</label></a>
-    <a class="nav nav-next" href="/documentation/writing-docs/" title="Sphinx: Python documentation" style="margin-right: 0px;"><label>Sphinx: Python documentation</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/documentation/" title="Documentation"> <i class="fa fa-chevron-left"></i><label>Documentation</label></a>
+    <a class="nav nav-next" href="/documentation/generating-sphinx/" title="Generating documentation with Sphinx" style="margin-right: 0px;"><label>Generating documentation with Sphinx</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -333,7 +307,7 @@ quicktest is source code directory</p>
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/documentation/generating-sphinx.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/documentation/generating-docs.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

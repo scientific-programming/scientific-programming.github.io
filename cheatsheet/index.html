@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Containers :: Scientific Programming</title>
+<title>Cheatsheet :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/containers/">
+  <body data-url="/cheatsheet/">
     
       <header>
   <div class="logo">
@@ -78,11 +78,10 @@
       <a href="/version-control/">Version Control</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/containers/" class="dd-item parent active haschildren
+    <li data-nav-id="/containers/" class="dd-item haschildren
         ">
       <div>
-      <a href="/containers/">Containers</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/containers/tutorial/" class="dd-item">
@@ -177,10 +176,8 @@
    Software Engineering in Science</option>
     <option value="/version-control/" >
    Version Control</option>
-    <option value="/containers/"  selected>
-   Containers</option> 
-      <option value="/containers/tutorial/" >- Getting Started with Docker</option>
-  
+    <option value="/containers/" >
+   Containers</option>
     <option value="/testing/" >
    Testing Scientific Code</option>
     <option value="/documentation/" >
@@ -207,99 +204,89 @@
       </div>
     
 
-    <h1>Containers</h1>
+    <h1>Cheatsheet</h1>
     
     
     
+    <p>The following is a list of standard commands in cmd on Windows or Bash on *nix systems.
+It&rsquo;s by no means a comprehensive list - these are just to help you</p>
 
+<p>Sometimes the commands I&rsquo;ll show (which are used for navigating around on Linux or
+Unix based systems like Macs) don&rsquo;t work in Windows. So here, I&rsquo;ve put a list of
+things you might want to do, and the commands in both Windows and Linux.</p>
 
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Windows cmd command</th>
+<th>Linux</th>
+</tr>
+</thead>
 
-<h3 id="what-are-containers">What are containers?</h3>
+<tbody>
+<tr>
+<td>Run a file</td>
+<td>filenme</td>
+<td>./filename</td>
+</tr>
 
-<ul>
-<li>Mechanism for setting up environment</li>
-<li>Allows control of dependencies</li>
-<li>Describes setup process through scripting in standardised manner</li>
-<li>Can be easily distributed to other developers (binary vs script)</li>
-<li>Not a virtual machine (in most cases&hellip;)</li>
-</ul>
+<tr>
+<td>Change directory into folder X</td>
+<td>cd X</td>
+<td>cd X</td>
+</tr>
 
-<h3 id="what-are-containers-not">What are containers not?</h3>
+<tr>
+<td>List files</td>
+<td>dir</td>
+<td>ls</td>
+</tr>
 
-<ul>
-<li>Not the best way to <em>distribute</em> software, especially in scientific use cases.</li>
-<li>An excuse not to write down strict dependency requirements for your software (e.g. versions of libraries).</li>
-<li>A way of avoiding updating scientific software because it now runs everywhere.</li>
-</ul>
+<tr>
+<td>Show the current directory</td>
+<td>cd</td>
+<td>pwd</td>
+</tr>
 
-<h3 id="terminology">Terminology</h3>
+<tr>
+<td>Copy filenamed A to B</td>
+<td>copy A B</td>
+<td>cp A B</td>
+</tr>
 
-<ul>
-<li>Host - Computer running VM/container.</li>
-<li>Image - Binary file</li>
-<li>Hypervisor - software running VM.</li>
-<li>Kernel - Core OS components</li>
-</ul>
+<tr>
+<td>Delete file A</td>
+<td>del A</td>
+<td>rm A</td>
+</tr>
 
-<h3 id="comparisons-with-virtual-machines">Comparisons with Virtual Machines</h3>
+<tr>
+<td>Delete folder A</td>
+<td>rmdir A</td>
+<td>rm -r A</td>
+</tr>
 
-<h4 id="how-are-containers-like-vms">How are containers like VMs?</h4>
+<tr>
+<td>Move file A to B</td>
+<td>move A B</td>
+<td>mv A B</td>
+</tr>
 
-<ul>
-<li><em>Isolated environment</em> - Processes run isolated from other processes -
-they can’t access hardware resources they aren’t allocated.</li>
-<li><em>They are independent</em> - Generally you can be given a container image or
-a virtual machine image and use that to run a piece of software without
-doing anything else.</li>
-</ul>
-
-<h3 id="how-are-containers-not-like-vms">How are containers not like VMs?</h3>
-
-<ul>
-<li><p><em>They use Kernel features of the host</em>  Linux supports process and
-resource partitioning and isolation (cgroups, OverlayFS, kernel
-namespacing), which allows containers to use a subset of resources.</p></li>
-
-<li><p><em>VMs require a Hypervisor</em> The hypervisor is a software based
-emulation layer for computer hardware and so it is generally  20% slower
-running software in a VM than natively, even with Intel Vf-X, Sun
-GridEngine. Free hypervisors slow; commercial are expensive!</p></li>
-
-<li><p><em>Generally containers are command-line only</em> With VMs it is very easy
-to get a full desktop environment. With containers this use case is generally not
-well supported.</p></li>
-
-<li><p><em>They take up much less space</em> Virtual Machines have to bundle the whole operating system,
-including components which would be the same on the host system. Containers, by virtue of using the
-host system&rsquo;s kernel (at least on Linux), can therefore take up much less room.</p></li>
-</ul>
-
-<h3 id="potential-use-cases-for-containers">Potential Use Cases for Containers</h3>
-
-<ul>
-<li><p>A new PhD student joins your lab. He isn&rsquo;t an experienced programmer, and setting
-him up with all of the dependencies will take some time. Using a container means he can
-get <em>all</em> of the dependencies and a copy of the software working on his computer in minutes.</p></li>
-
-<li><p>An old piece of software runs fine on Ubuntu, but a colleague hasn&rsquo;t been able to install
-a necessary package because it&rsquo;s not available on Windows which is what he uses.</p></li>
-
-<li><p>You&rsquo;ve just been given an Microsoft Azure Academic Grant, and you now want to run thousands of
-copies of your research software in the cloud, and you want to avoid a complicated install process.</p></li>
-
-<li><p>You have a data analysis script that chugs away on your desktop for every set of simulation data you produce.
-You want to run it on your Universities HPC cluster, but you&rsquo;re not sure how to compile all of the dependencies
-from source, which is what you&rsquo;d need to do otherwise.</p></li>
-</ul>
-
+<tr>
+<td>Create a folder called A</td>
+<td>mkdir A</td>
+<td>mkdir A</td>
+</tr>
+</tbody>
+</table>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/version-control/" title="Version Control"> <i class="fa fa-chevron-left"></i><label>Version Control</label></a>
-    <a class="nav nav-next" href="/containers/tutorial/" title="Getting Started with Docker" style="margin-right: 0px;"><label>Getting Started with Docker</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-next" href="/introduction/" title="Software Engineering in Science" style="margin-right: 0px;"><label>Software Engineering in Science</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -320,7 +307,7 @@ from source, which is what you&rsquo;d need to do otherwise.</p></li>
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/containers/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/Cheatsheet.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

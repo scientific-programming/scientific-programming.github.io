@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Containers :: Scientific Programming</title>
+<title>Writing Tests :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/containers/">
+  <body data-url="/testing/writing-tests/">
     
       <header>
   <div class="logo">
@@ -78,11 +78,10 @@
       <a href="/version-control/">Version Control</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/containers/" class="dd-item parent active haschildren
+    <li data-nav-id="/containers/" class="dd-item haschildren
         ">
       <div>
-      <a href="/containers/">Containers</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/containers/tutorial/" class="dd-item">
@@ -94,10 +93,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/testing/" class="dd-item haschildren
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/testing/simple-tests/" class="dd-item">
@@ -121,7 +121,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
+      <li data-nav-id="/testing/writing-tests/" class="dd-item active">
         <div>
           <a href="/testing/writing-tests/">
             Writing Tests
@@ -177,12 +177,15 @@
    Software Engineering in Science</option>
     <option value="/version-control/" >
    Version Control</option>
-    <option value="/containers/"  selected>
-   Containers</option> 
-      <option value="/containers/tutorial/" >- Getting Started with Docker</option>
-  
+    <option value="/containers/" >
+   Containers</option>
     <option value="/testing/" >
-   Testing Scientific Code</option>
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
+      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
+      <option value="/testing/writing-tests/"  selected>- Writing Tests</option>
+  
     <option value="/documentation/" >
    Documentation</option>
 
@@ -207,99 +210,18 @@
       </div>
     
 
-    <h1>Containers</h1>
+    <h1>Writing Tests</h1>
     
     
     
-
-
-
-<h3 id="what-are-containers">What are containers?</h3>
-
-<ul>
-<li>Mechanism for setting up environment</li>
-<li>Allows control of dependencies</li>
-<li>Describes setup process through scripting in standardised manner</li>
-<li>Can be easily distributed to other developers (binary vs script)</li>
-<li>Not a virtual machine (in most cases&hellip;)</li>
-</ul>
-
-<h3 id="what-are-containers-not">What are containers not?</h3>
-
-<ul>
-<li>Not the best way to <em>distribute</em> software, especially in scientific use cases.</li>
-<li>An excuse not to write down strict dependency requirements for your software (e.g. versions of libraries).</li>
-<li>A way of avoiding updating scientific software because it now runs everywhere.</li>
-</ul>
-
-<h3 id="terminology">Terminology</h3>
-
-<ul>
-<li>Host - Computer running VM/container.</li>
-<li>Image - Binary file</li>
-<li>Hypervisor - software running VM.</li>
-<li>Kernel - Core OS components</li>
-</ul>
-
-<h3 id="comparisons-with-virtual-machines">Comparisons with Virtual Machines</h3>
-
-<h4 id="how-are-containers-like-vms">How are containers like VMs?</h4>
-
-<ul>
-<li><em>Isolated environment</em> - Processes run isolated from other processes -
-they can’t access hardware resources they aren’t allocated.</li>
-<li><em>They are independent</em> - Generally you can be given a container image or
-a virtual machine image and use that to run a piece of software without
-doing anything else.</li>
-</ul>
-
-<h3 id="how-are-containers-not-like-vms">How are containers not like VMs?</h3>
-
-<ul>
-<li><p><em>They use Kernel features of the host</em>  Linux supports process and
-resource partitioning and isolation (cgroups, OverlayFS, kernel
-namespacing), which allows containers to use a subset of resources.</p></li>
-
-<li><p><em>VMs require a Hypervisor</em> The hypervisor is a software based
-emulation layer for computer hardware and so it is generally  20% slower
-running software in a VM than natively, even with Intel Vf-X, Sun
-GridEngine. Free hypervisors slow; commercial are expensive!</p></li>
-
-<li><p><em>Generally containers are command-line only</em> With VMs it is very easy
-to get a full desktop environment. With containers this use case is generally not
-well supported.</p></li>
-
-<li><p><em>They take up much less space</em> Virtual Machines have to bundle the whole operating system,
-including components which would be the same on the host system. Containers, by virtue of using the
-host system&rsquo;s kernel (at least on Linux), can therefore take up much less room.</p></li>
-</ul>
-
-<h3 id="potential-use-cases-for-containers">Potential Use Cases for Containers</h3>
-
-<ul>
-<li><p>A new PhD student joins your lab. He isn&rsquo;t an experienced programmer, and setting
-him up with all of the dependencies will take some time. Using a container means he can
-get <em>all</em> of the dependencies and a copy of the software working on his computer in minutes.</p></li>
-
-<li><p>An old piece of software runs fine on Ubuntu, but a colleague hasn&rsquo;t been able to install
-a necessary package because it&rsquo;s not available on Windows which is what he uses.</p></li>
-
-<li><p>You&rsquo;ve just been given an Microsoft Azure Academic Grant, and you now want to run thousands of
-copies of your research software in the cloud, and you want to avoid a complicated install process.</p></li>
-
-<li><p>You have a data analysis script that chugs away on your desktop for every set of simulation data you produce.
-You want to run it on your Universities HPC cluster, but you&rsquo;re not sure how to compile all of the dependencies
-from source, which is what you&rsquo;d need to do otherwise.</p></li>
-</ul>
-
-
+    
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/version-control/" title="Version Control"> <i class="fa fa-chevron-left"></i><label>Version Control</label></a>
-    <a class="nav nav-next" href="/containers/tutorial/" title="Getting Started with Docker" style="margin-right: 0px;"><label>Getting Started with Docker</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/testing/continuous-integration/" title="Continuous Integration"> <i class="fa fa-chevron-left"></i><label>Continuous Integration</label></a>
+    <a class="nav nav-next" href="/documentation/" title="Documentation" style="margin-right: 0px;"><label>Documentation</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -320,7 +242,7 @@ from source, which is what you&rsquo;d need to do otherwise.</p></li>
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/containers/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/testing/writing-tests.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     
