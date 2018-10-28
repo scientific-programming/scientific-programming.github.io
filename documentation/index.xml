@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Documentation on Scientific Programming</title>
+    <title>Documentations on Scientific Programming</title>
     <link>https://scientific-programming.github.io/documentation/</link>
-    <description>Recent content in Documentation on Scientific Programming</description>
+    <description>Recent content in Documentations on Scientific Programming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 26 Oct 2018 10:58:18 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 22:07:04 +0100</lastBuildDate>
     
 	<atom:link href="https://scientific-programming.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
@@ -30,18 +30,6 @@ Here, we&amp;rsquo;ll focus on Sphinx, but generally all tools work by similar p
       <description>Quick Notes  Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well  fromubuntu:18.04RUN apt-get update &amp;amp;&amp;amp; apt-get install python3 python3-pipRUN pip3 installWORKDIR/app Then
 docker build . -t documentation docker run -v `pwd`:/app -it documentation sphinx-quickstart  Most defaults are OK but:
  We want to set default document to markdown rather than RST We want to enable MathJax  Now Edit conf.py:</description>
-    </item>
-    
-    <item>
-      <title>Sphinx: Python documentation</title>
-      <link>https://scientific-programming.github.io/documentation/writing-docs/</link>
-      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/documentation/writing-docs/</guid>
-      <description>Installing Sphinx We&amp;rsquo;ll start with a Docker container (again!). Build the following:
-fromubuntu:18.04ENVTZ &amp;#34;Europe/London&amp;#34;RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezoneRUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pip python3-sphinxWORKDIR/app with the command:
-docker build . -t sphinx Note that we&amp;rsquo;ve had to add some timezone information into the container here; don&amp;rsquo;t worry too much about this.
-Now, go to the repository in which you have your Python files.</description>
     </item>
     
   </channel>

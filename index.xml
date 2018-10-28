@@ -46,7 +46,7 @@ Make the username something sensible as we&amp;rsquo;ll have to use it soon!
     </item>
     
     <item>
-      <title>Cheatsheet</title>
+      <title>Command Cheatsheet</title>
       <link>https://scientific-programming.github.io/cheatsheet/</link>
       <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
       
@@ -77,18 +77,6 @@ docker build . -t documentation docker run -v `pwd`:/app -it documentation sphin
     </item>
     
     <item>
-      <title>Sphinx: Python documentation</title>
-      <link>https://scientific-programming.github.io/documentation/writing-docs/</link>
-      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/documentation/writing-docs/</guid>
-      <description>Installing Sphinx We&amp;rsquo;ll start with a Docker container (again!). Build the following:
-fromubuntu:18.04ENVTZ &amp;#34;Europe/London&amp;#34;RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezoneRUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pip python3-sphinxWORKDIR/app with the command:
-docker build . -t sphinx Note that we&amp;rsquo;ve had to add some timezone information into the container here; don&amp;rsquo;t worry too much about this.
-Now, go to the repository in which you have your Python files.</description>
-    </item>
-    
-    <item>
       <title>Continuous Integration</title>
       <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
       <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
@@ -96,15 +84,6 @@ Now, go to the repository in which you have your Python files.</description>
       <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
       <description>Continuous Integration What is Continuous Integration?
  Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
-    </item>
-    
-    <item>
-      <title>Writing Tests</title>
-      <link>https://scientific-programming.github.io/testing/writing-tests/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:03 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/writing-tests/</guid>
-      <description></description>
     </item>
     
   </channel>
