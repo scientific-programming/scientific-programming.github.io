@@ -12,11 +12,22 @@
     
     
     <item>
-      <title>Getting Started with Docker</title>
-      <link>https://scientific-programming.github.io/containers/tutorial/</link>
+      <title>Setting up the Software</title>
+      <link>https://scientific-programming.github.io/containers/tutorial1/</link>
       <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
       
-      <guid>https://scientific-programming.github.io/containers/tutorial/</guid>
+      <guid>https://scientific-programming.github.io/containers/tutorial1/</guid>
+      <description>    For all of the following tutorials, we will use Docker as the container software of choice. How to install Docker varies quite a lot between different operating systems.
+Please follow the instructions relevant to you:
+Linux </description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Docker</title>
+      <link>https://scientific-programming.github.io/containers/tutorial2/</link>
+      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/containers/tutorial2/</guid>
       <description>First Steps 1) Make an account on the website https://hub.docker.com
 Make the username something sensible as we&amp;rsquo;ll have to use it soon!
 1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.

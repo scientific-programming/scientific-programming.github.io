@@ -79,46 +79,17 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item">
         <div>
-          <a href="/containers/tutorial/">
+          <a href="/containers/tutorial1/">
+            Setting up the Software
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial2/">
             Getting Started with Docker
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item">
-        <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item">
-        <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -153,35 +124,6 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/documentation/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/documentation/">Documentation</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
-        <div>
-          <a href="/documentation/generating-docs/">
-            Generating Docs
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
-        <div>
-          <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
-        <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
     <li data-nav-id="/cheatsheet/" class="dd-item
         ">
       <div>
@@ -206,14 +148,11 @@
    Software Engineering in Science</option>
     <option value="/containers/"  selected>
    Containers</option> 
-      <option value="/containers/tutorial/" >- Getting Started with Docker</option>
+      <option value="/containers/tutorial1/" >- Setting up the Software</option>
+      <option value="/containers/tutorial2/" >- Getting Started with Docker</option>
   
-    <option value="/testing/" >
-   Testing Scientific Code</option>
     <option value="/version-control/" >
    Version Control</option>
-    <option value="/documentation/" >
-   Documentation</option>
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -247,32 +186,35 @@
 
 <h3 id="what-are-containers">What are containers?</h3>
 
-<ul>
-<li>Mechanism for setting up environment</li>
-<li>Allows control of dependencies</li>
-<li>Describes setup process through scripting in standardised manner</li>
-<li>Can be easily distributed to other developers (binary vs script)</li>
-<li>Not a virtual machine (in most cases&hellip;)</li>
-</ul>
+<p>Containers provide a mechanism for setting up an environment with many software dependencies. They can be simple, with a limited number of simple programmes installed, or can be used to set up complex software. In addition, they allow software from different operating systems to be used natively; an Ubuntu package could be used on a RHEL Linux system without any issues.</p>
+
+<p>Users write scripts in a simple standardised way, and this is primarily bundled with the project, and passed on to other developers in order to give them the same environment to work from when developing software. A built container can also be hosted online freely, which is useful when building the dependencies takes a long time.</p>
+
+<p>These features might seem familiar if you&rsquo;ve come across Virtual Machines in the past. The primary advantage of containers is that they do not incur the performance penalty that virtual machines do, if they are run on a Linux operating system (in general).</p>
 
 <h3 id="what-are-containers-not">What are containers not?</h3>
 
-<ul>
-<li>Not the best way to <em>distribute</em> software, especially in scientific use cases.</li>
-<li>An excuse not to write down strict dependency requirements for your software (e.g. versions of libraries).</li>
-<li>A way of avoiding updating scientific software because it now runs everywhere.</li>
-</ul>
+<p>Containers are not always a great way to <em>distribute</em> scientific software to people who are going to use it, particularly when the code is compiled. This is because hardware variances mean that software has generally got to be compiled for the oldest possible machine it could be used for. This means that for optimal performance, multiple versions of the same container need to be compiled. This is particularly important when running high performance software which runs on supercomputers.</p>
 
-<h3 id="terminology">Terminology</h3>
+<p>Because of this, making your code run in a container is not &lsquo;enough&rsquo; to distribute software; it is still necessary to make a comprehensive list of the dependencies necessary to run the software, with versions. However, it takes the pain out of having multiple developers working in different environments which what may prove to be incompatible versions of dependencies. It also should not be used as a way of avoiding updating scientific software because it now runs everywhere.</p>
 
-<ul>
-<li>Host - Computer running VM/container.</li>
-<li>Image - Binary file</li>
-<li>Hypervisor - software running VM.</li>
-<li>Kernel - Core OS components</li>
+<div class="panel panel-info">
+	<div class="panel-heading">Terminology</div>
+	<div class="panel-body"><ul>
+<li>Host - A physical computer running VM/container.</li>
+<li>Container - An operating system level virtualised environment in which software is installed.</li>
+<li>Image - A container which has been saved to a file.</li>
+<li>Hypervisor - The software which runs a virtual machine.</li>
+<li>Kernel - Core OS components and functions.</li>
 </ul>
+</div>
+	
+</div>
+
 
 <h3 id="comparisons-with-virtual-machines">Comparisons with Virtual Machines</h3>
+
+<p>As mentioned before, despite not being virtual machines, containers act like them in many ways.</p>
 
 <h4 id="how-are-containers-like-vms">How are containers like VMs?</h4>
 
@@ -287,25 +229,27 @@ doing anything else.</li>
 <h3 id="how-are-containers-not-like-vms">How are containers not like VMs?</h3>
 
 <ul>
-<li><p><em>They use Kernel features of the host</em>  Linux supports process and
+<li><p><em>They use Kernel features of the host</em> - Linux supports process and
 resource partitioning and isolation (cgroups, OverlayFS, kernel
 namespacing), which allows containers to use a subset of resources.</p></li>
 
-<li><p><em>VMs require a Hypervisor</em> The hypervisor is a software based
+<li><p><em>VMs require a Hypervisor</em> - The hypervisor is a software based
 emulation layer for computer hardware and so it is generally  20% slower
 running software in a VM than natively, even with Intel Vf-X, Sun
 GridEngine. Free hypervisors slow; commercial are expensive!</p></li>
 
-<li><p><em>Generally containers are command-line only</em> With VMs it is very easy
+<li><p><em>Generally containers are command-line only</em> - With VMs it is very easy
 to get a full desktop environment. With containers this use case is generally not
 well supported.</p></li>
 
-<li><p><em>They take up much less space</em> Virtual Machines have to bundle the whole operating system,
+<li><p><em>They take up much less space</em> - Virtual Machines have to bundle the whole operating system,
 including components which would be the same on the host system. Containers, by virtue of using the
 host system&rsquo;s kernel (at least on Linux), can therefore take up much less room.</p></li>
 </ul>
 
-<h3 id="potential-use-cases-for-containers">Potential Use Cases for Containers</h3>
+<h3 id="potential-use-cases-for-containers-as-a-scientist">Potential Use Cases for Containers as a Scientist</h3>
+
+<p>Consider the following, which are all valid use cases:</p>
 
 <ul>
 <li><p>A new PhD student joins your lab. He isn&rsquo;t an experienced programmer, and setting
@@ -319,8 +263,8 @@ a necessary package because it&rsquo;s not available on Windows which is what he
 copies of your research software in the cloud, and you want to avoid a complicated install process.</p></li>
 
 <li><p>You have a data analysis script that chugs away on your desktop for every set of simulation data you produce.
-You want to run it on your Universities HPC cluster, but you&rsquo;re not sure how to compile all of the dependencies
-from source, which is what you&rsquo;d need to do otherwise.</p></li>
+However, you run thousands of simulations per week, and the data analysis script takes some time to run. You might install
+this script into a container, and use that as the basis for running the data analysis on a large cluster.</p></li>
 </ul>
 
 
@@ -330,7 +274,7 @@ from source, which is what you&rsquo;d need to do otherwise.</p></li>
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/introduction/" title="Software Engineering in Science"> <i class="fa fa-chevron-left"></i><label>Software Engineering in Science</label></a>
-    <a class="nav nav-next" href="/containers/tutorial/" title="Getting Started with Docker" style="margin-right: 0px;"><label>Getting Started with Docker</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/containers/tutorial1/" title="Setting up the Software" style="margin-right: 0px;"><label>Setting up the Software</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

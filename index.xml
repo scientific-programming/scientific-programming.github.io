@@ -12,11 +12,22 @@
     
     
     <item>
-      <title>Getting Started with Docker</title>
-      <link>https://scientific-programming.github.io/containers/tutorial/</link>
+      <title>Setting up the Software</title>
+      <link>https://scientific-programming.github.io/containers/tutorial1/</link>
       <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
       
-      <guid>https://scientific-programming.github.io/containers/tutorial/</guid>
+      <guid>https://scientific-programming.github.io/containers/tutorial1/</guid>
+      <description>    For all of the following tutorials, we will use Docker as the container software of choice. How to install Docker varies quite a lot between different operating systems.
+Please follow the instructions relevant to you:
+Linux </description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Docker</title>
+      <link>https://scientific-programming.github.io/containers/tutorial2/</link>
+      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/containers/tutorial2/</guid>
       <description>First Steps 1) Make an account on the website https://hub.docker.com
 Make the username something sensible as we&amp;rsquo;ll have to use it soon!
 1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.
@@ -37,16 +48,6 @@ git config --global user.name &amp;#34;Ryan Pepper&amp;#34; git config --global 
     </item>
     
     <item>
-      <title>Writing Complex Tests</title>
-      <link>https://scientific-programming.github.io/testing/complex-tests/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/complex-tests/</guid>
-      <description>Principles of Software Testing What are the main principles of software testing? Generally, people don&amp;rsquo;t start out writing software with no idea what it should do - they should have some idea of the requirements. The written software must then:
- Meet the original requirements Must respond correctly to different inputs Software must run in a reasonable amount of time Can be installed and run in the intended environment  Static vs Dynamic Testing [Static Testing]{}</description>
-    </item>
-    
-    <item>
       <title>GitHub and Collaborating</title>
       <link>https://scientific-programming.github.io/version-control/tutorial2/</link>
       <pubDate>Thu, 25 Oct 2018 17:49:03 +0100</pubDate>
@@ -55,17 +56,6 @@ git config --global user.name &amp;#34;Ryan Pepper&amp;#34; git config --global 
       <description>Storing your repository somewhere safe You have a history of your changes locally, but that&amp;rsquo;s not much good if your hard drive fails. We&amp;rsquo;ll now show you how keep a history remotely.
 Git is known as a &amp;lsquo;distributed version control&amp;rsquo; system. Generally, you host a repository somewhere online. There are lots of different providers for this.
  GitHub - free! Lots of integrations with other services. Limited number or private repositories, but you can send off proof of academic status to get an unlimited number.</description>
-    </item>
-    
-    <item>
-      <title>Writing Simple Tests</title>
-      <link>https://scientific-programming.github.io/testing/simple-tests/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/simple-tests/</guid>
-      <description>Starting off simply: Squaring a number Consider as a really simple example, a function which takes a number and computes the square of that number.
-def square(x): return x * x Various appropriate tests of this could check:
- Is the correct answer given for positive integers? Is the correct answer given for negative integers? Is the correct answer given for zero? Is the correct answer given for positive and negative decimals?</description>
     </item>
     
     <item>
@@ -78,58 +68,6 @@ def square(x): return x * x Various appropriate tests of this could check:
 git reset HEAD workshop.txt This permanently discards these changes.
 2) Alternatively, if you want to hide the changes now, but might come back to them, you can use:
 git stash  This creates a list of changes which are stored, but not committed, and which you can recover later.</description>
-    </item>
-    
-    <item>
-      <title>Continuous Integration</title>
-      <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
-      <description>Continuous Integration What is Continuous Integration?
- Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
-    </item>
-    
-    <item>
-      <title>Writing Tests</title>
-      <link>https://scientific-programming.github.io/testing/writing-tests/</link>
-      <pubDate>Fri, 26 Oct 2018 10:56:03 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/testing/writing-tests/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Generating Docs</title>
-      <link>https://scientific-programming.github.io/documentation/generating-docs/</link>
-      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/documentation/generating-docs/</guid>
-      <description>How can we generate documentation from code? There are a number of different tools for automatically generating documentation for different languages. For Python, a common tool is Sphinx. For projects which combine several languages, sometimes the tool Doxygen is preferred.
-Here, we&amp;rsquo;ll focus on Sphinx, but generally all tools work by similar principles; the source code of a library is parsed, and the author of code annotates it in order to provide the documentation.</description>
-    </item>
-    
-    <item>
-      <title>Generating documentation with Sphinx</title>
-      <link>https://scientific-programming.github.io/documentation/generating-sphinx/</link>
-      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/documentation/generating-sphinx/</guid>
-      <description>Quick Notes  Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well  fromubuntu:18.04RUN apt-get update &amp;amp;&amp;amp; apt-get install python3 python3-pipRUN pip3 installWORKDIR/app Then
-docker build . -t documentation docker run -v `pwd`:/app -it documentation sphinx-quickstart  Most defaults are OK but:
- We want to set default document to markdown rather than RST We want to enable MathJax  Now Edit conf.py:</description>
-    </item>
-    
-    <item>
-      <title>Sphinx: Python documentation</title>
-      <link>https://scientific-programming.github.io/documentation/writing-docs/</link>
-      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/documentation/writing-docs/</guid>
-      <description>Installing Sphinx We&amp;rsquo;ll start with a Docker container (again!). Build the following:
-fromubuntu:18.04ENVTZ &amp;#34;Europe/London&amp;#34;RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezoneRUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pip python3-sphinxWORKDIR/app with the command:
-docker build . -t sphinx Note that we&amp;rsquo;ve had to add some timezone information into the container here; don&amp;rsquo;t worry too much about this.
-Now, go to the repository in which you have your Python files.</description>
     </item>
     
   </channel>

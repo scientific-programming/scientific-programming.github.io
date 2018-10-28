@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Writing Tests :: Scientific Programming</title>
+<title>Setting up the Software :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/testing/writing-tests/">
+  <body data-url="/containers/tutorial1/">
     
       <header>
   <div class="logo">
@@ -72,53 +72,24 @@
       <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/containers/" class="dd-item haschildren
+    <li data-nav-id="/containers/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
-        <div>
-          <a href="/containers/tutorial/">
-            Getting Started with Docker
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item parent haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a>
+      <a href="/containers/">Containers</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item active">
         <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
+          <a href="/containers/tutorial1/">
+            Setting up the Software
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item">
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
         <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item active">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
+          <a href="/containers/tutorial2/">
+            Getting Started with Docker
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -153,35 +124,6 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/documentation/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/documentation/">Documentation</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
-        <div>
-          <a href="/documentation/generating-docs/">
-            Generating Docs
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
-        <div>
-          <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
-        <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
     <li data-nav-id="/cheatsheet/" class="dd-item
         ">
       <div>
@@ -205,18 +147,12 @@
     <option value="/introduction/" >
    Software Engineering in Science</option>
     <option value="/containers/" >
-   Containers</option>
-    <option value="/testing/" >
-   Testing Scientific Code</option> 
-      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
-      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
-      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
-      <option value="/testing/writing-tests/"  selected>- Writing Tests</option>
+   Containers</option> 
+      <option value="/containers/tutorial1/"  selected>- Setting up the Software</option>
+      <option value="/containers/tutorial2/" >- Getting Started with Docker</option>
   
     <option value="/version-control/" >
    Version Control</option>
-    <option value="/documentation/" >
-   Documentation</option>
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -241,18 +177,34 @@
       </div>
     
 
-    <h1>Writing Tests</h1>
+    <h1>Setting up the Software</h1>
     
     
     
     
 
+<p>
+<figure>
+    
+        <img src="../docker.jpeg" width="300px" />
+    
+    
+</figure>
+
+For all of the following tutorials, we will use Docker as the container software
+of choice. How to install Docker varies quite a lot between different operating systems.</p>
+
+<p>Please follow the instructions relevant to you:</p>
+
+<h1 id="linux">Linux</h1>
+
+
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/testing/continuous-integration/" title="Continuous Integration"> <i class="fa fa-chevron-left"></i><label>Continuous Integration</label></a>
-    <a class="nav nav-next" href="/version-control/" title="Version Control" style="margin-right: 0px;"><label>Version Control</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/containers/" title="Containers"> <i class="fa fa-chevron-left"></i><label>Containers</label></a>
+    <a class="nav nav-next" href="/containers/tutorial2/" title="Getting Started with Docker" style="margin-right: 0px;"><label>Getting Started with Docker</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -273,7 +225,7 @@
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/testing/writing-tests.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/containers/tutorial1.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     
