@@ -92,6 +92,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/version-control/" class="dd-item parent haschildren
@@ -186,7 +193,13 @@
 
 <h1 id="getting-started-with-version-control">Getting Started with Version Control</h1>
 
-<p>1) Open your terminal, or Git Bash.</p>
+<p><img src="../git-xkcd.png" alt="Git XKCD" style="width:350px;"/></p>
+
+<p>We&rsquo;re going to use the software Git. It&rsquo;s not really important to know how it
+works underneath. This comic is actually surprisingly accurate, although we&rsquo;ll try
+to teach you how to avoid having to do any deleting&hellip;</p>
+
+<p>1) Open your terminal, or Git Bash if you&rsquo;re using Windows.</p>
 
 <p>2) Set your name and username with Git. This labels modifications to files you do and
 associates them with you!</p>
@@ -290,6 +303,19 @@ this:</p>
 
 <p>Personally, this is my preferred way of doing it as it&rsquo;s a bit quicker.</p>
 
+<div class="panel panel-info">
+	<div class="panel-heading">Commit Messages</div>
+	<div class="panel-body"><p><img src="../commit-xkcd.png"></p>
+
+<p>It&rsquo;s really worth trying to use informative commit messages. It helps you if
+you need to come back later and work out what changes you made at a previous date.
+If you&rsquo;re collaborating with multiple people, it&rsquo;s much quicker for them to read
+your informative commit messages than it is for them to read your code!</p>
+</div>
+	
+</div>
+
+
 <p>11) Now make some more changes - add another line of text to the file
 workshop.txt, and commit them again.</p>
 
@@ -348,7 +374,7 @@ from the master branch at any point.</p>
 
 <figure>
     
-        <img src="../branch1.png" alt="Each circle here represents a commit. At a particular commit, you can split off and create a new branch of work while other people work on the master branch. Then, later, you can merge your work back into the master branch." />
+        <img src="../branch1.png" alt="Each circle here represents a commit. At a particular commit, you can split off and create a new branch of work while other people work on the master branch. Then, later, you can merge your work back into the master branch." width="500px" />
     
     
     <figcaption>
@@ -415,16 +441,33 @@ Added another line to the file.
 <p>The &ldquo;&lt;&lt;&lt;&lt;&lt; HEAD&rdquo; means that what follows is text on the head of the
 current branch - i.e. mynewbranch.</p>
 
-<p>The &ldquo;=======&rdquo; acts as a seperator</p>
+<p>The &ldquo;=======&rdquo; acts as a separator</p>
 
 <p>The &ldquo;&gt;&gt;&gt;&gt;&gt; master&rdquo; signals the end of the conflicting changes on the
 master branch.</p>
 
 <p>To reconcile, simply delete these three lines, to make a definitive version of
-the file, and save it. Do a &lsquo;git add&rsquo; and then &lsquo;git commit&rsquo;. It&rsquo;s worth mentioning
-that when working on code projects, the longer you work on a branch for, the more
-likely it is to diverge from the master branch, which can make reconciling your
-changes harder.</p>
+the file, and save it.</p>
+
+<pre><code>Hello, we've got a file in here!
+Adding a line of text.
+Adding another line of text.
+</code></pre>
+
+<p>Do a &lsquo;git add&rsquo; and then &lsquo;git commit&rsquo;.</p>
+
+<div class="panel panel-warning">
+	<div class="panel-heading">Practically working in branches</div>
+	<div class="panel-body"><p>When working in branches, it&rsquo;s really useful to keep merging in the master branch
+into your feature branch every so often, so that the code doesn&rsquo;t diverge too much.
+It&rsquo;s much harder to merge a single large change than it is many small ones.</p>
+
+<p>It depends on how rapidly the project you are working on is changing,
+but merging every couple of days is probably a good rule of thumb.</p>
+</div>
+	
+</div>
+
 
 
     

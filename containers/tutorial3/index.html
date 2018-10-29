@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Tags :: Scientific Programming</title>
+<title>Saving and Sharing Images :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     
   </head>
-  <body data-url="/tags/">
+  <body data-url="/containers/tutorial3/">
     
       <header>
   <div class="logo">
@@ -72,10 +72,11 @@
       <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/containers/" class="dd-item haschildren
+    <li data-nav-id="/containers/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/containers/">Containers</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/containers/tutorial1/" class="dd-item">
@@ -92,7 +93,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/containers/tutorial3/" class="dd-item">
+      <li data-nav-id="/containers/tutorial3/" class="dd-item active">
         <div>
           <a href="/containers/tutorial3/">
             Saving and Sharing Images
@@ -153,7 +154,11 @@
     <option value="/introduction/" >
    Software Engineering in Science</option>
     <option value="/containers/" >
-   Containers</option>
+   Containers</option> 
+      <option value="/containers/tutorial1/" >- Setting up the Software</option>
+      <option value="/containers/tutorial2/" >- Getting Started with Docker</option>
+      <option value="/containers/tutorial3/"  selected>- Saving and Sharing Images</option>
+  
     <option value="/version-control/" >
    Version Control</option>
     <option value="/cheatsheet/" >
@@ -180,40 +185,73 @@
       </div>
     
 
-    <h1>Tags</h1>
+    <h1>Saving and Sharing Images</h1>
     
     
     
+    
 
+<h3 id="saving-the-container">Saving the Container</h3>
 
+<p>1) We can save the docker container to a file with</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker save myimage &gt; myimage.tar</code></pre></div>
+<p>You can load it again with</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker load myimage.tar</code></pre></div>
+<p>2) However, it&rsquo;s not normally necessary to save containers like this - much easier just to use Docker Hub. Free uploads of containers if public, one private container per account. Create an account on <a href="https://hub.docker.com">Dockerhub</a></p>
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
+<p>Make a repository called &lsquo;mycontainer&rsquo; on your Dockerhub account.</p>
 
-</div>
+<p><img alt="Docker Hub Create Repo" src="../docker-hub.png" width="600px"></p>
 
+<p>3) Now, on your computer, run the command:</p>
 
+<pre><code>docker login
+</code></pre>
 
-<div style="margin-bottom:2rem"></div>
+<p>You will be prompted for your username and password for Dockerhub. Enter them.</p>
 
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
+<p>4) We now need to relabel your image. The format for this needs to match your Dockerhub username:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker tag myimage ryanpepper/myimage</code></pre></div>
+<p>Now, we can publish the container online using:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker push ryanpepper/myimage</code></pre></div>
+<p>12) Your container should now be available online. That means, someone else can download it using the <code>docker pull</code> command, and run the same programmes as you in the same way.</p>
 
+<p>13) Just to prove it to you, let&rsquo;s now delete the containers.</p>
 
+<p>There are lots of commands for deleting containers and images - this is quite confusing!</p>
+
+<p>If you want to remove <em>everything</em>, you can run:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker system prune</code></pre></div>
+<p>Deletes everything that are not associated with a running container - &ldquo;dangling&rdquo;. Add the &ldquo;-a&rdquo; flag to remove additionally any stopped containers and all unused images.</p>
+
+<p>If you just want to remove a specific image, you can run</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">docker images</code></pre></div>
+<p>This gives a list of all images you&rsquo;ve created, including intermediate layers.
+Copy the image id (the long string of numbers) of the image you want to remove
+and run:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker rmi IMAGEID</code></pre></div>
+<p>You may need to add the flag &lsquo;-f&rsquo; if you get an error here:</p>
+
+<pre><code>docker rmi IMAGEID -f
+</code></pre>
+
+<p>Note: if other images depend on the image you are deleting, they will also be deleted!</p>
+
+<p>Remove all images:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker images -a
+docker rmi <span style="color:#00a8c8">$(</span>docker images -a -q<span style="color:#00a8c8">)</span></code></pre></div>
+<p>14) Now pull the image we uploaded:</p>
+
+<pre><code>docker pull ryanpepper/myimage
+</code></pre>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/introduction/" title="Software Engineering in Science" style="margin-right: 0px;"><label>Software Engineering in Science</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/containers/tutorial2/" title="Getting Started with Docker"> <i class="fa fa-chevron-left"></i><label>Getting Started with Docker</label></a>
+    <a class="nav nav-next" href="/version-control/" title="Version Control" style="margin-right: 0px;"><label>Version Control</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -227,10 +265,14 @@
     
 
     
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 26/10/2018
+    </div>
+    
 
     
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/containers/tutorial3.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

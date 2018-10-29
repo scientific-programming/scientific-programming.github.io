@@ -17,10 +17,9 @@
       <pubDate>Thu, 25 Oct 2018 17:49:03 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/version-control/tutorial1/</guid>
-      <description>Getting Started with Version Control 1) Open your terminal, or Git Bash.
-2) Set your name and username with Git. This labels modifications to files you do and associates them with you!
-git config --global user.name &amp;#34;Ryan Pepper&amp;#34; git config --global user.email &amp;#34;ryan.pepper@soton.ac.uk&amp;#34; 3) Set your favourite text editor by running the appropriate command below:
-# Atom git config --global core.editor &amp;#34;atom --wait&amp;#34; # nano git config --global core.editor &amp;#34;nano -w&amp;#34; # Sublime Text (Mac) git config --global core.</description>
+      <description>Getting Started with Version Control We&amp;rsquo;re going to use the software Git. It&amp;rsquo;s not really important to know how it works underneath. This comic is actually surprisingly accurate, although we&amp;rsquo;ll try to teach you how to avoid having to do any deleting&amp;hellip;
+1) Open your terminal, or Git Bash if you&amp;rsquo;re using Windows.
+2) Set your name and username with Git. This labels modifications to files you do and associates them with you!</description>
     </item>
     
     <item>
@@ -31,7 +30,7 @@ git config --global user.name &amp;#34;Ryan Pepper&amp;#34; git config --global 
       <guid>https://scientific-programming.github.io/version-control/tutorial2/</guid>
       <description>Storing your repository somewhere safe You have a history of your changes locally, but that&amp;rsquo;s not much good if your hard drive fails. We&amp;rsquo;ll now show you how keep a history remotely.
 Git is known as a &amp;lsquo;distributed version control&amp;rsquo; system. Generally, you host a repository somewhere online. There are lots of different providers for this.
- GitHub - free! Lots of integrations with other services. Limited number or private repositories, but you can send off proof of academic status to get an unlimited number.</description>
+Version Control Websites GitHub - free! Now owned by Microsoft. Lots of integrations with other services.</description>
     </item>
     
     <item>
@@ -41,9 +40,8 @@ Git is known as a &amp;lsquo;distributed version control&amp;rsquo; system. Gene
       
       <guid>https://scientific-programming.github.io/version-control/tutorial3/</guid>
       <description>Discarding channges 1) If you make some changes to the file workshop.txt, but then decide that they weren&amp;rsquo;t correct or were unnecessary, you can easily get back to the head of the branch with the following command:
-git reset HEAD workshop.txt This permanently discards these changes.
-2) Alternatively, if you want to hide the changes now, but might come back to them, you can use:
-git stash  This creates a list of changes which are stored, but not committed, and which you can recover later.</description>
+git reset HEAD workshop.txt This permanently discards these changes!
+Resetting the whole repository If you have multiple files that have been changed, and you want to reset all of them, you can use:</description>
     </item>
     
   </channel>

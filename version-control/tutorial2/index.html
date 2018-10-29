@@ -92,6 +92,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/version-control/" class="dd-item parent haschildren
@@ -194,46 +201,69 @@ remotely.</p>
 host a repository somewhere online. There are lots of different
 providers for this.</p>
 
-<ul>
-<li><p>GitHub - free! Lots of integrations with other services. Limited
-number or private repositories, but you can send off proof of academic
-status to get an unlimited number.</p></li>
+<div class="panel panel-info">
+	<div class="panel-heading">Version Control Websites</div>
+	<div class="panel-body"><p><img src="../github-logo.jpg" alt="GitHub" style="width:200px;"/> <a href="https://github.com">GitHub</a> - free! Now owned by Microsoft. Lots of integrations with other services. Limited number of private repositories, but you gain <a href="https://education.github.com/">education status</a> to get an unlimited number.
+Probably the widest used, and has best social features because of this.</p>
 
-<li><p>GitLab - also free. Unlimited number of private repositories.  Also
+<p><img src="../gitlab-logo.jpg" alt="GitLab" style="width:200px;"/>
+<a href="https://about.gitlab.com/">GitLab</a> - also free. Unlimited number of private repositories.  Also
 allows local hosting - for e.g. in the University of Southampton,
 there is a private GitLab instance hosted internally, which can be
-used for sensitive projects.</p></li>
+used for sensitive projects.</p>
 
-<li><p>BitBucket - Has a lot of commercial products that are used in
-industry - good issue trackers.</p></li>
-</ul>
+<p><img src="../bitbucket-logo.png" alt="BitBucket" style="width:200px;"/>
+<a href="https://bitbucket.org/">BitBucket</a> - Owners Atlassian have a lot of commercial products that are used in
+industry such as <a href="https://www.atlassian.com/software/jira">JIRA</a> which integrate well with this service.</p>
+</div>
+	
+</div>
+
 
 <p>For this exercise, we&rsquo;ll use GitHub, but in practice there is not much
 between them.</p>
 
-<p>1) Create an account on github.com</p>
+<p>1) Create an account on <a href="https://www.github.com">https://www.github.com</a></p>
 
 <p>2) Once done, click the &ldquo;+&rdquo; arrow in the top right hand corner, and click &ldquo;New repository&rdquo;</p>
 
 <p>3) Type in a name and description for your repository:</p>
 
-<p><img src="drawing.jpg" alt="Image showing repository creation" style="width:300px;"/></p>
+<p><img src="../Github-new-repo.png" alt="Image showing repository creation" style="width:600px;"/></p>
 
-<p>You&rsquo;ll now get a list of commands to type; the ones you want are:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git remote add origin https://github.com/rpep/mytestrepo.git
+<p>Don&rsquo;t touch the other settings yet!</p>
+
+<p>4) You&rsquo;ll now get a page with a list of commands to type; the ones you want are:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git remote add origin https://github.com/rpep/my-new-repository.git
 git push -u origin master</code></pre></div>
-<p>You&rsquo;ll get asked for your username and password for GitHub - enter these.</p>
+<p>the other options are used when you have not yet created a repository on your local machine.</p>
 
-<p>Now refresh the page, and you&rsquo;ll see the file you had has appeared online!</p>
+<p>When you run &lsquo;git push&rsquo;, you will be asked for your username and password for GitHub - enter these.</p>
 
-<p>4) Now - in pairs - one of you go to the Git repository of your neighbour. This will be</p>
+<p>Now refresh the page, and you&rsquo;ll see the repository you were working on has appeared online!</p>
+
+<h3 id="collaborating-partner-up">Collaborating - Partner Up</h3>
+
+<p>1) Now - in pairs - each go to the Git repository of your neighbour. This will be</p>
 
 <p><a href="https://github.com/their-username/their-repository-name">https://github.com/their-username/their-repository-name</a></p>
+
+<p><img src="../fork.png" width="600px"></p>
 
 <p>Click &lsquo;Fork&rsquo;. This will make a copy of their repository on your GitHub.</p>
 
 <p>5) Now, copy their repository to your computer with the command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/yourusername/their-repository-name.git</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">cd</span> ..
+git clone https://github.com/yourusername/their-repository-name.git</code></pre></div>
+<div class="panel panel-warning">
+	<div class="panel-heading">Cloning to an alternate folder</div>
+	<div class="panel-body"><p>You can only clone a repository like this from GitHub if a folder by the same name doesn&rsquo;t exist in the directory where you are working.
+You can get around this via:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/yourusername/their-repository-name.git my-alternate-folder-name</code></pre></div></div>
+	
+</div>
+
+
 <p>6) Move into the folder:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">cd</span> their-repository-name</code></pre></div>
 <p>And make your own change to the file.</p>
@@ -248,12 +278,22 @@ git push -u origin master</code></pre></div>
 
 <p>Add in some information about the changes you made, and then &ldquo;Create pull request&rdquo;</p>
 
-<p>10) Now, your partner needs to go back to their version of the repository, and look at
+<p>10) Now, each of you go back to your own version of the repository, and look at
     the tab labelled &ldquo;Pull Requests&rdquo;</p>
 
 <p>Scroll to the bottom, and then press &ldquo;Merge pull request&rdquo;</p>
 
-<p>12) Pull these changes to your repository using &lsquo;git pull&rsquo;.</p>
+<p>12) Pull these changes to your repository using &lsquo;git pull&rsquo;, and your partners changes
+will now be on your computer as well.</p>
+
+<p>If you choose to make your code public, there are a number of files that are an absolute must have. These are normally written in <a href="https://guides.github.com/features/mastering-markdown/">Markdown</a> format (.md).</p>
+
+<ul>
+<li><p>A License - A license just describes the terms under which others can use your code.
+There are many types of Open Source licence, but common ones for academic projects, the GNU <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL</a> and <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">LGPL</a>, <a href="https://en.wikipedia.org/wiki/MIT_License">MIT</a>, <a href="https://apache.org/licenses/LICENSE-2.0">Apache</a> and <a href="https://opensource.org/licenses/BSD-3-Clause">3-clause BSD</a> licenses are some common ones.</p></li>
+
+<li><p>A README.</p></li>
+</ul>
 
 
     

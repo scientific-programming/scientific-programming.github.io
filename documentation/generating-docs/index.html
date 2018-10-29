@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scientific Programming</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.49.2" />
+<title>Generating Docs :: Scientific Programming</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/scientific-programming.github.io";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/documentation/generating-docs/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://scientific-programming.github.io">Scientific Programming</a>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/scientific-programming"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/introduction/" class="dd-item
+        ">
+      <div>
+      <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/containers/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/containers/tutorial/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial/">
+            Getting Started with Docker
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
+        <div>
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/writing-tests/" class="dd-item">
+        <div>
+          <a href="/testing/writing-tests/">
+            Writing Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/version-control/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/version-control/">Version Control</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/version-control/tutorial1/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial1/">
+            Getting Started
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/version-control/tutorial2/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial2/">
+            GitHub and Collaborating
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/version-control/tutorial3/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial3/">
+            Discarding Temporary Changes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/documentation/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/documentation/">Documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/documentation/generating-docs/" class="dd-item active">
+        <div>
+          <a href="/documentation/generating-docs/">
+            Generating Docs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-sphinx/">
+            Generating documentation with Sphinx
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/writing-docs/">
+            Sphinx: Python documentation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/cheatsheet/" class="dd-item
+        ">
+      <div>
+      <a href="/cheatsheet/">Command Cheatsheet</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/introduction/" >
+   Software Engineering in Science</option>
+    <option value="/containers/" >
+   Containers</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option>
+    <option value="/version-control/" >
+   Version Control</option>
+    <option value="/documentation/" >
+   Documentation</option> 
+      <option value="/documentation/generating-docs/"  selected>- Generating Docs</option>
+      <option value="/documentation/generating-sphinx/" >- Generating documentation with Sphinx</option>
+      <option value="/documentation/writing-docs/" >- Sphinx: Python documentation</option>
+  
+    <option value="/cheatsheet/" >
+   Command Cheatsheet</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/scientific-programming.github.io";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Generating Docs</h1>
+    
+    
+    
+    
+
+<h4 id="how-can-we-generate-documentation-from-code">How can we generate documentation from code?</h4>
+
+<p>There are a number of different tools for automatically generating documentation
+for different languages. For Python, a common tool is <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>.
+For projects which combine several languages, sometimes the tool <a href="http://www.doxygen.org/">Doxygen</a> is preferred.</p>
+
+<p>Here, we&rsquo;ll focus on Sphinx, but generally all tools work by similar principles;
+the source code of a library is parsed, and the author of code annotates it
+in order to provide the documentation.</p>
+
+<p>In Python, we can document a function with a documentation string, or &lsquo;docstring.&rsquo;
+These are provided as a multi-line string just under the function signature in
+the source code.</p>
+
+<p>Consider our simple &lsquo;squared&rsquo; and &lsquo;power&rsquo; functions from the testing tutorial:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#00a8c8">def</span> <span style="color:#75af00">squared</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span>
+
+<span style="color:#00a8c8">def</span> <span style="color:#75af00">power</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">n</span><span style="color:#111">):</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">**</span> <span style="color:#111">n</span></code></pre></div>
+<p>An annotated version of &lsquo;squared&rsquo;, using the NumPy documentation standard, could be:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#00a8c8">def</span> <span style="color:#75af00">squared</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+    <span style="color:#d88200">&#34;&#34;&#34;
+</span><span style="color:#d88200">    Returns the square of the input x
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Parameters:
+</span><span style="color:#d88200">    -----------
+</span><span style="color:#d88200">    x, float:
+</span><span style="color:#d88200">       Base number
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Returns:
+</span><span style="color:#d88200">    --------
+</span><span style="color:#d88200">    float:
+</span><span style="color:#d88200">       Base number raised to power 2
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    See Also:
+</span><span style="color:#d88200">    ------
+</span><span style="color:#d88200">    pow : raise an argument to an arbitrary power
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Examples
+</span><span style="color:#d88200">    --------
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(2)
+</span><span style="color:#d88200">    4
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(8)
+</span><span style="color:#d88200">    64
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt; squared(-1)
+</span><span style="color:#d88200">    1
+</span><span style="color:#d88200">    &#34;&#34;&#34;</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span><span style="color:#f92672">*</span><span style="color:#111">x</span></code></pre></div>
+<p>This might seem verbose, but, everything that&rsquo;s needed is there.</p>
+
+<h3 id="accessing-the-documentation-from-python">Accessing the documentation from Python</h3>
+
+<div class="panel panel-info">
+	<div class="panel-heading">Accessing Documentation from Python</div>
+	<div class="panel-body"><p>If you&rsquo;re in a Python interpreter, you can access the documentation by calling the
+help function with the name of the function or class you&rsquo;re interested in:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">help</span><span style="color:#111">(</span><span style="color:#111">function_name</span><span style="color:#111">)</span></code></pre></div></div>
+	
+</div>
+
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/documentation/" title="Documentation"> <i class="fa fa-chevron-left"></i><label>Documentation</label></a>
+    <a class="nav nav-next" href="/documentation/generating-sphinx/" title="Generating documentation with Sphinx" style="margin-right: 0px;"><label>Generating documentation with Sphinx</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 26/10/2018
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/documentation/generating-docs.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

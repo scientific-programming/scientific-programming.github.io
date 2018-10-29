@@ -17,9 +17,10 @@
       <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/containers/tutorial1/</guid>
-      <description>    For all of the following tutorials, we will use Docker as the container software of choice. How to install Docker varies quite a lot between different operating systems.
+      <description>For all of the following tutorials, we will use Docker as the container software of choice. How to install Docker varies quite a lot between different operating systems.
 Please follow the instructions relevant to you:
-Linux </description>
+Windows  Windows: https://docs.docker.com/docker-for-windows/install/  Note: If you are using Windows 10 Home Edition, please install Docker Toolbox instead.
+MacOS  MacOS: https://docs.docker.com/docker-for-mac/  Linux:  Ubuntu CentOS Debian Fedora  You will probably need to restart your computer as part of the installation process.</description>
     </item>
     
     <item>
@@ -30,9 +31,20 @@ Linux </description>
       <guid>https://scientific-programming.github.io/containers/tutorial2/</guid>
       <description>First Steps 1) Make an account on the website https://hub.docker.com
 Make the username something sensible as we&amp;rsquo;ll have to use it soon!
-1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04.
-2) Now, we&amp;rsquo;ll create a file called &amp;ldquo;Dockerfile&amp;rdquo; in a single folder. The Dockerfile is a configuration script for building an image.
- Create a directory by doing:  mkdir docker-tutorial  Change directory into the folder:  cd docker-tutorial 3) Create a file called Dockerfile in this directory, and put as the first line:</description>
+1) If you haven&amp;rsquo;t already, try &amp;ldquo;docker run ubuntu:18.04&amp;rdquo;. This downloads an image containing Ubuntu 18.04. If it it is the first time you have done this, you should see some output:
+What is happening here? Have a look here. Docker Hub is a centralised repository for storing container images, and many are provided for you as a basis for creating your own.</description>
+    </item>
+    
+    <item>
+      <title>Saving and Sharing Images</title>
+      <link>https://scientific-programming.github.io/containers/tutorial3/</link>
+      <pubDate>Fri, 26 Oct 2018 09:41:56 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/containers/tutorial3/</guid>
+      <description>Saving the Container 1) We can save the docker container to a file with
+docker save myimage &amp;gt; myimage.tar You can load it again with
+docker load myimage.tar 2) However, it&amp;rsquo;s not normally necessary to save containers like this - much easier just to use Docker Hub. Free uploads of containers if public, one private container per account. Create an account on Dockerhub
+Make a repository called &amp;lsquo;mycontainer&amp;rsquo; on your Dockerhub account.</description>
     </item>
     
   </channel>

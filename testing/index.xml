@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Testing Scientific Code on Scientific Programming</title>
+    <link>https://scientific-programming.github.io/testing/</link>
+    <description>Recent content in Testing Scientific Code on Scientific Programming</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 26 Oct 2018 10:55:14 +0100</lastBuildDate>
+    
+	<atom:link href="https://scientific-programming.github.io/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Writing Complex Tests</title>
+      <link>https://scientific-programming.github.io/testing/complex-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/complex-tests/</guid>
+      <description>Principles of Software Testing What are the main principles of software testing? Generally, people don&amp;rsquo;t start out writing software with no idea what it should do - they should have some idea of the requirements. The written software must then:
+ Meet the original requirements Must respond correctly to different inputs Software must run in a reasonable amount of time Can be installed and run in the intended environment  Static vs Dynamic Testing [Static Testing]{}</description>
+    </item>
+    
+    <item>
+      <title>Writing Simple Tests</title>
+      <link>https://scientific-programming.github.io/testing/simple-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/simple-tests/</guid>
+      <description>Starting off simply: Squaring a number Consider as a really simple example, a function which takes a number and computes the square of that number.
+def square(x): return x * x Various appropriate tests of this could check:
+ Is the correct answer given for positive integers? Is the correct answer given for negative integers? Is the correct answer given for zero? Is the correct answer given for positive and negative decimals?</description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
+      <description>Continuous Integration What is Continuous Integration?
+ Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
+    </item>
+    
+    <item>
+      <title>Writing Tests</title>
+      <link>https://scientific-programming.github.io/testing/writing-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:03 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/writing-tests/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -92,6 +92,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/version-control/" class="dd-item parent haschildren
@@ -188,24 +195,28 @@
 
 <p>1) If you make some changes to the file workshop.txt, but then decide that they weren&rsquo;t correct or were unnecessary, you can easily get back to the head of the branch with the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git reset HEAD workshop.txt</code></pre></div>
-<p>This permanently discards these changes.</p>
+<p>This permanently discards these changes!</p>
+
+<div class="panel panel-warning">
+	<div class="panel-heading">Resetting the whole repository</div>
+	<div class="panel-body"><p>If you have multiple files that have been changed, and you want to reset all of them, you can use:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git reset --hard HEAD</code></pre></div>
+<p>Use with caution!</p>
+</div>
+	
+</div>
+
 
 <p>2) Alternatively, if you want to hide the changes now, but might come back to them, you can use:</p>
-
-<pre><code>git stash
-</code></pre>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash</code></pre></div>
 <p>This creates a list of changes which are stored, but not committed, and which you can recover later. You can stash multiple times. Change your file and then stash it, and then repeat that again a few times.</p>
 
 <p>3) To look at a list of the stashes you&rsquo;ve made, just type:</p>
-
-<pre><code>git stash list
-</code></pre>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash list</code></pre></div>
 <p>4) To recover the most recent set of changes, you can just type</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash apply</code></pre></div>
 <p>If you want a different set, you can type:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git stash apply stash@<span style="color:#f92672">{</span><span style="color:#ae81ff">2</span><span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git stash apply stash@<span style="color:#f92672">{</span><span style="color:#ae81ff">2</span><span style="color:#f92672">}</span></code></pre></div>
 <p>If there is a clash between your current commit and the stashed code,
 you will get a merge conflict which you&rsquo;ll need to resolve.</p>
 

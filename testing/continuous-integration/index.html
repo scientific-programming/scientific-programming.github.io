@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scientific Programming</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.49.2" />
+<title>Continuous Integration :: Scientific Programming</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/scientific-programming.github.io";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/testing/continuous-integration/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://scientific-programming.github.io">Scientific Programming</a>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/scientific-programming"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/introduction/" class="dd-item
+        ">
+      <div>
+      <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/containers/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/containers/tutorial/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial/">
+            Getting Started with Docker
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
+        <div>
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item active">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/writing-tests/" class="dd-item">
+        <div>
+          <a href="/testing/writing-tests/">
+            Writing Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/version-control/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/version-control/">Version Control</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/version-control/tutorial1/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial1/">
+            Getting Started
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/version-control/tutorial2/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial2/">
+            GitHub and Collaborating
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/version-control/tutorial3/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial3/">
+            Discarding Temporary Changes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/documentation/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/documentation/">Documentation</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-docs/">
+            Generating Docs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-sphinx/">
+            Generating documentation with Sphinx
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/writing-docs/">
+            Sphinx: Python documentation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/cheatsheet/" class="dd-item
+        ">
+      <div>
+      <a href="/cheatsheet/">Command Cheatsheet</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/introduction/" >
+   Software Engineering in Science</option>
+    <option value="/containers/" >
+   Containers</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option> 
+      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
+      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
+      <option value="/testing/continuous-integration/"  selected>- Continuous Integration</option>
+      <option value="/testing/writing-tests/" >- Writing Tests</option>
+  
+    <option value="/version-control/" >
+   Version Control</option>
+    <option value="/documentation/" >
+   Documentation</option>
+    <option value="/cheatsheet/" >
+   Command Cheatsheet</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/scientific-programming.github.io";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Continuous Integration</h1>
+    
+    
+    
+    
+
+<h3 id="continuous-integration">Continuous Integration</h3>
+
+<p>What is Continuous Integration?</p>
+
+<ul>
+<li>Runs the tests repeatedly, every time you make a change.</li>
+<li>You use a remote service, to avoid having to run all tests locally - useful if they take some time to run.</li>
+<li>Generally, CI services send you angry emails when tests fail!</li>
+<li>It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</li>
+<li>If you are developing a new feature, tests also get run when you&rsquo;re developing features in a branch/fork.</li>
+</ul>
+
+<p>There are a number of ways to do CI. If you don&rsquo;t have a server, and you&rsquo;re happy for your project to be hosted remotely on GitHub or on another site, you can use remote services such as TravisCI, CircleCI and GitLab. If you have your own server, and you need everything to be private (sometimes this is the case if you&rsquo;re working on academic work with industry partners), then there are services you can host locally such as Jenkins and Buildbot.</p>
+
+<h3 id="travisci">TravisCI</h3>
+
+<p>We&rsquo;ll here pick this, as it’s easy to set up from what we’ve already done:</p>
+
+<p>First, log in to <a href="https://travis-ci.org/">Travis CI</a> with your GitHub account.</p>
+
+<p>Now, to build our repository, we&rsquo;ll need to put a very simple Travis configuration file into the root of the Git repository. Create a file called &lsquo;.travis.yml&rsquo;. This is written in a markup language called YAML, but the syntax for this is very simple.</p>
+
+<p>Travis comes preinstalled with many programming languages, but uses an older version of Ubuntu. Because we have used Docker throughout to run our software, however, we can just use this as the basis on Travis to run our software. We need to specify only a few options, and everything is set up for us:</p>
+
+<pre><code>sudo: required
+
+services:
+  - docker
+</code></pre>
+
+<p>These options just tell travis that root permissions are needed (a requirement for Docker itself), and we need Docker to be installed.</p>
+
+<p>When Travis builds first start, they clone the latest commit from the Git repository, and then change directory into that folder. So from then on, you can write out commands referring to files in that folder.</p>
+
+<p>So now, we want to get the right environment to run our tests. Let&rsquo;s build the Docker container from the Dockerfile in our repository. Add the following lines.</p>
+
+<pre><code>before_install:
+  - docker build . -t build
+</code></pre>
+
+<p>The before_install section here tells Travis to run the bash command on the subsequent line. This is normally where you run any setup which is needed to run the tests.</p>
+
+<p>Now, we&rsquo;ve done everything we need to do before running the tests, so let&rsquo;s put in the command to run them. We do this in a &lsquo;script&rsquo; block:</p>
+
+<pre><code>script:
+  - docker run -v`pwd`:/io build pytest -v .
+</code></pre>
+
+<p>The total file should now look like:</p>
+
+<pre><code>sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build . -t build
+
+script:
+  - docker run -v`pwd`:/io build pytest -v .
+</code></pre>
+
+<p>Stage this file in your Git repository and commit it. Push it to GitHub, then navigate to the Travis website again. You should now see that your repository has appeared, and that a build is in progress. If everything is correct, your Python tests should run remotely!</p>
+
+<p>Clearly, we could have much more complex build processes than this, and you run Python inside the build environment rather than in a Docker container. However, it&rsquo;s in general a good idea to delegate these into a container, as it avoids you having to duplicate the install script in multiple places, and keeps the development environment where you work the same as the test environment.</p>
+
+<h3 id="showing-this-on-github">Showing this on GitHub.</h3>
+
+<p>One common thing to do is to add a readme file to a GitHub repository. Generally these just give some information for people who come across the project, such as install instructions. These files are typically written in Markdown - a simple syntax which is widely used online in forums and in many other places. A simple README.md, written in Markdown, for this project could be:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># Testing and CI
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>This repository follows the material on https://scientific-programming.github.io<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>to create a repository with simple Python tests and Continuous Integration set up.</code></pre></div>
+<p>We can add a badge to this to show the status of the build (i.e. passing or failing). Go to the Travis page for your repository.</p>
+
+<h3 id="workflow">Workflow</h3>
+
+<p>A normal workflow for continuous integration is often something like:</p>
+
+<ul>
+<li>Create a branch or a fork of a repository to work on a new feature.</li>
+<li>Write some tests, and run ones relevant to the changes you&rsquo;re making on your local machine.</li>
+<li>Commit changes, and push to the remote repository.</li>
+<li>If any tests fail, you&rsquo;ll get a notification of this, and you can fix them.</li>
+</ul>
+
+<p>However, it can also be useful to set up tests to run at periodic intervals - i.e. nightly.
+This means that if a dependency unexpectedly changes in a repository that you&rsquo;re not actively contributing to,</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/testing/simple-tests/" title="Writing Simple Tests"> <i class="fa fa-chevron-left"></i><label>Writing Simple Tests</label></a>
+    <a class="nav nav-next" href="/testing/writing-tests/" title="Writing Tests" style="margin-right: 0px;"><label>Writing Tests</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 26/10/2018
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/testing/continuous-integration.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

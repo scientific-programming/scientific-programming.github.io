@@ -93,6 +93,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/version-control/" class="dd-item haschildren
@@ -150,6 +157,7 @@
    Containers</option> 
       <option value="/containers/tutorial1/" >- Setting up the Software</option>
       <option value="/containers/tutorial2/"  selected>- Getting Started with Docker</option>
+      <option value="/containers/tutorial3/" >- Saving and Sharing Images</option>
   
     <option value="/version-control/" >
    Version Control</option>
@@ -189,9 +197,13 @@
 
 <p>Make the username something sensible as we&rsquo;ll have to use it soon!</p>
 
-<p>1) If you haven&rsquo;t already, try &ldquo;docker run ubuntu:18.04&rdquo;. This downloads an image containing Ubuntu 18.04.</p>
+<p>1) If you haven&rsquo;t already, try &ldquo;docker run ubuntu:18.04&rdquo;. This downloads an image containing Ubuntu 18.04. If it it is the first time you have done this, you should see some output:</p>
 
-<p>2) Now, we&rsquo;ll create a file called &ldquo;Dockerfile&rdquo; in a single folder. The Dockerfile is a configuration script for building an image.</p>
+<p><img src="../pulling-image.png" alt="Pulling an image" /></p>
+
+<p>What is happening here? Have a look <a href="https://hub.docker.com/explore/">here</a>. Docker Hub is a centralised repository for storing container images, and many are provided for you as a basis for creating your own. So here, we&rsquo;re downloading the Ubuntu 18.04 container image as the starting point for our software.</p>
+
+<p>2) So, now we want to create our own Docker image and install some software into it. How do we do so?</p>
 
 <ul>
 <li>Create a directory by doing:</li>
@@ -201,17 +213,48 @@
 <li>Change directory into the folder:</li>
 </ul>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">cd</span> docker-tutorial</code></pre></div>
-<p>3) Create a file called Dockerfile in this directory, and put as the first line:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04&#39;</span></code></pre></div>
-<p>4) Now, we can start installing things inside the image. We do this by adding lines to the Dockerfile; a command to run is prefaced by &ldquo;RUN&rdquo;. If you&rsquo;re not familiar with Linux, and are primarily a Windows or Mac user, it may seem a little odd to install programmes using typed out commands, but it can be very powerful. For Ubuntu, there are basically two commands you need to know.</p>
+<ul>
+<li>Start tracking the files in the folder with
+<code>bash
+git init
+</code></li>
+</ul>
 
-<p>First, we&rsquo;ll update the list of Ubuntu packages which can be installed; note that this is almost always necessary. To do this, add:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">RUN</span> apt-get update</code></pre></div>
-<p>to the file.</p>
+<p>Create a file called Dockerfile in this directory, and put as the first line:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span></code></pre></div>
+<p>4) Now, we can start installing things inside the image. We do this by adding subsequent lines to the Dockerfile; a command to run a particular application is prefaced by &ldquo;RUN&rdquo;. If you&rsquo;re not familiar with Linux, and are primarily a Windows or Mac user, it may seem a little odd to install programmes using typed out commands, but it can be very powerful. For Ubuntu, there are basically two commands you <em>need</em> to know.</p>
 
-<p>6) Once this is completed, you can then choose to install programmes. We&rsquo;re going to use Python for this example, but you can pick any programmes you like for your own Docker containers. Here, we just add the line:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#00a8c8">RUN</span> apt-get install -y python3</code></pre></div>
-<p>which tells Ubuntu to install Python 3 in the container. The &ldquo;-y&rdquo; flag here just tells apt-get, the programme used in Ubuntu for installing programmes, not to prompt for confirmation.</p>
+<p>First, we&rsquo;ll need to get an up to date the list of Ubuntu packages which can be installed; note that this is almost always necessary. To do this, add:</p>
+
+<p>The Ubuntu command for doing so is:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile">apt-get update</code></pre></div>
+<p>However, it is not a good idea to add this as an isolated command in Dockerfiles. We&rsquo;ll come to why later.</p>
+
+<p>To install programmes in Ubuntu, you run the command:</p>
+
+<pre><code>apt-get install NameOfApplication
+</code></pre>
+
+<p>To see what applications are available on Ubuntu 18.04, you can have a look <a href="here">https://packages.ubuntu.com/bionic/</a></p>
+
+<div class="panel panel-info">
+	<div class="panel-heading">Ubuntu Packaging</div>
+	<div class="panel-body"><p>Ubuntu sees a release once every 6 months. However, it&rsquo;s not a good idea to upgrade that frequently. Most scientists using Ubuntu pick a Long Term Stable (LTS) release which is updated about every two years. With a LTS release, software you install through package repositories sees security updates, but not feature updates, and these are provided for three years after release. This means that you can rely on software built in that ecosystem continuing to work.</p>
+
+<p>If you need updated versions of packages, you can still do so by either installing it manually, or using Personal Package Archives (PPAs) which are often provided by software authors.</p>
+</div>
+	
+</div>
+
+
+<p>First of all, we&rsquo;re just going to install Python 3. The <a href="https://packages.ubuntu.com/bionic/python/python3">package name</a> for this is just &lsquo;python3&rsquo;</p>
+
+<p>To do this, add the following line to your Dockerfile</p>
+
+<pre><code>RUN apt-get update &amp;&amp; apt-get install -y python3
+</code></pre>
+
+<p>Breaking this down, we&rsquo;ve just put the two commands together - the &lsquo;&amp;&amp;&rsquo; just runs the two commands as a single command, in order. Note that we&rsquo;ve here added a flag - &lsquo;-y&rsquo; to the install. This just means &lsquo;yes&rsquo; - if we try to install without this flag, the programme apt-get would expect us to confirm that we want to install the software, but the build of the image would fail because we&rsquo;re not in an interactive terminal during the container build process.</p>
 
 <p>Now, you have a script which tells Docker to build a container which:
 * Is based on Ubuntu 18.04. You could change this to another Linux distribution if you wanted, such as CentOS.
@@ -219,32 +262,53 @@
 
 <p>This is the general principle of containers - you build them up in steps until they have everything you need to run real applications.</p>
 
-<p>Now, we can tell Docker to run a command when the container is launched. We do this using a slightly different syntax:</p>
+<p>Now, we can tell Docker to run a default command when the container is launched. We do this using a slightly different syntax - instead of using RUN, we set a programme using the &lsquo;CMD&rsquo; command.</p>
 
 <pre><code>CMD /bin/bash
 </code></pre>
 
 <p>This just tells Docker to launch the Bash shell. From this, we can launch all of the programmes installed into the container. Alternatively, we could just as easily write:</p>
 
-<pre><code>CMD /
-
-7) Now let's actually build the container image from the script file. We do this using the following command - replace &quot;YOURUSERNAME&quot; with your username for the account we created with Dockerhub earlier.
-
-```Bash
-docker build . -t YOURUSERNAME/myimage
+<pre><code>CMD /usr/local/python3
 </code></pre>
 
+<div class="panel panel-warning">
+	<div class="panel-heading">CMD Warning</div>
+	<div class="panel-body"><p>If you specify multiple commands in a Dockerfile with CMD, then all but the last are ignored!</p>
+</div>
+	
+</div>
+
+
+<p>Use the &lsquo;/bin/bash&rsquo; line in your Dockerfile.</p>
+
+<p>7) Now let&rsquo;s actually build the container image from the script file. We do this using the following command - replace &ldquo;YOURUSERNAME&rdquo; with your username for the account we created with Dockerhub earlier.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">docker build . -t myimage</code></pre></div>
 <p>Breaking this command down:</p>
 
 <ul>
 <li><p>Docker is the application.</p></li>
 
-<li><p>We&rsquo;re running Docker&rsquo;s build command</p></li>
+<li><p>We&rsquo;re running Docker&rsquo;s &lsquo;build&rsquo; command</p></li>
 
 <li><p>&rdquo;.&rdquo; refers to the file location - it&rsquo;s saying &ldquo;build the Dockerfile in this folder&rdquo;</p></li>
 
-<li><p>-t YOURUSERNAME/myimage - if you&rsquo;re not familiar with Linux, adding a dash is a common way of signalling how to pass information to a command. Here, &ldquo;-t&rdquo; just means build the image with the tag YOURUSERNAME/myimage</p></li>
+<li><p>-t myimage - if you&rsquo;re not familiar with Linux, adding a dash is a common way of signalling how to pass information to a command. Here, &ldquo;-t&rdquo; just means build the image with the tag myimage</p></li>
 </ul>
+
+<div class="panel panel-warning">
+	<div class="panel-heading">CMD Warning</div>
+	<div class="panel-body"><p>If you ever need help about a particular command, you can add the &lsquo;&ndash;help&rsquo; flag which gives you a bit more information. For example,
+if we wanted to see what all of the Docker &lsquo;build&rsquo; options were, we can run:</p>
+
+<pre><code>docker build --help
+</code></pre>
+
+<p>and you get a long list of flags and what they mean.</p>
+</div>
+	
+</div>
+
 
 <h3 id="more-concepts">More concepts</h3>
 
@@ -253,14 +317,22 @@ A layer is the essentially just a list of differences between the previous comma
 
 <p>That means though, if you change the programmes installed with apt-get on the second line of the script, all subsequent steps must be repeated, because Docker can&rsquo;t work out if subsequent steps are independent or not of each other.</p>
 
-<p>7) Now we&rsquo;ve installed python3 in the image, how do we use it?</p>
+<div class="panel panel-warning">
+	<div class="panel-heading">Looking back&hellip;</div>
+	<div class="panel-body"><p>Earlier we had to specify <code>apt-get update</code> and <code>apt-get install</code> on a single line in our Dockerfile. This is due to the layers; if you try to modify a Dockerfile a few hours or days after creating it, some software may fail to install because Ubuntu sees frequent updates, and the apt package caches stored in the Dockerfile would be out of date. By always prefacing <code>apt-get install</code> with <code>apt-get update</code> we avoid having to worry about this.</p>
+</div>
+	
+</div>
 
-<p>We can do this in two ways - similar but quite different!</p>
+
+<p>7) Let&rsquo;s launch a container, and try and run some software.</p>
+
+<p>We can do this in two ways - similar but quite different.</p>
 
 <p>1) Start a container from the image interactively, and launch the programme:</p>
 
-<p>To run interactively, we must add the &ldquo;-i&rdquo; flag. If we don&rsquo;t do this, the programme will launch, but will freeze!</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i -t YOURUSERNAME/myimage</code></pre></div>
+<p>To run interactively, we must add the &ldquo;-i -t&rdquo; flag. If we don&rsquo;t do this, the programme will launch, but will freeze!</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i -t myimage bash</code></pre></div>
 <p>Then, just run</p>
 
 <pre><code>python3
@@ -268,73 +340,84 @@ A layer is the essentially just a list of differences between the previous comma
 
 <p>to launch the Python interpreter.</p>
 
-<p>2)
-* Create a container from the image, and give it the name &lsquo;mytest&rsquo;</p>
+<p>2) To create a container from the image, and give it the name &lsquo;mytest&rsquo;</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker create --name mytest YOURUSERNAME/myimage</code></pre></div>
 <ul>
 <li>Then, start the container:</li>
 </ul>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker start --name mytest</code></pre></div>
-<p>*</p>
+<ul>
+<li>Then run a command in that container:</li>
+</ul>
 
-<h3 id="saving-the-container">Saving the Container</h3>
+<p>Often, we want to install programmes in the container in order to manage dependencies, but we need to have them act on files stored on the host computer itself. This can easily be achieved by mounting folders into the container, so that they are visible inside it. The syntax for this is:</p>
 
-<p>1) We can save the docker container to a file with</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker save YOURUSERNAME/mycontainer &gt; myimage.tar</code></pre></div>
-<p>You can compress the image if you want with the command</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gzip -f myimage.tar</code></pre></div>
-<p>You can load it again with</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker load myimage.tar.gz</code></pre></div>
-<p>2) However, it&rsquo;s not normally necessary to save containers like this - much easier just to use Docker Hub. Free uploads of containers if public, one private container per account.</p>
-
-<p>Make a repository called &lsquo;mycontainer&rsquo; on your Dockerhub account</p>
-
-<p>3) Now, on your computer, run the command:</p>
-
-<pre><code>docker login
+<pre><code>docker run -it -v FOLDER_ON_HOST:FOLDER_IN_CONTAINER myimage
 </code></pre>
 
-<p>You will be prompted for your username and password for Dockerhub. Enter them.</p>
+<p>A really common use case is to mount the current directory inside the container. Normally we make the directory inside the container the default working directory for that container. You can do this by adding the following line to your Dockerfile:</p>
 
-<p>11) Now, we can publish the container online using:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker push YOURUSERNAME/mycontainer</code></pre></div>
-<p>12) Your container should now be available online. That means, someone else can download it using the &lsquo;docker pull&rsquo; command, and run the same programmes as you in the same way.</p>
-
-<p>13) Just to prove it to you, let&rsquo;s now delete the containers.</p>
-
-<p>There are lots of commands for deleting containers and images - this is quite confusing!</p>
-
-<p>If you want to remove <em>everything</em>, you can run:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker system prune</code></pre></div>
-<p>Deletes everything that are not associated with a running container - &ldquo;dangling&rdquo;. Add the &ldquo;-a&rdquo; flag to remove additionally any stopped containers and all unused images.</p>
-
-<p>If you just want to remove a specific image, you can run</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">docker images</code></pre></div>
-<p>This gives a list of all images you&rsquo;ve created, including intermediate layers.
-Copy the image id (the long string of numbers) of the image you want to remove:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker rmi IMAGEID</code></pre></div>
-<p>You may need to add the flag &lsquo;-f&rsquo; if you get an error here:</p>
-
-<pre><code>docker rmi IMAGEID -f
+<pre><code>WORKDIR /app
 </code></pre>
 
-<p>Note: if other images depend on the image you are deleting, they will also be deleted!</p>
+<p>If you&rsquo;re using Linux, we can then mount the current directory on the host system to this folder with:</p>
 
-<p>Remove all images:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker images -a
-docker rmi <span style="color:#00a8c8">$(</span>docker images -a -q<span style="color:#00a8c8">)</span></code></pre></div>
-<p>14) Now pull the image we uploaded:</p>
-
-<pre><code>docker pull YOURUSERNAME/dependencies
+<pre><code>docker run -it -v $(pwd):/app
 </code></pre>
 
-<h3 id="further-steps">Further steps</h3>
+<p>On Windows this is slightly different:</p>
 
-<p>TBD: Check Windows mount path syntax</p>
+<pre><code>docker run -it -v %cd%:/app
+</code></pre>
 
-<p>Often, we want to install programmes in the container in order to manage dependencies, but we need to have them act on files stored on the computer itself. This can easily be achieved by mounting folders into the container, so that they are visible inside it.</p>
+<p>Another common use case is to open make a port from the container visible on the host system.</p>
 
-<p>TBD: Mounting Ports: Explain what ports are? Networking end points - send messags between? Is this sufficient? TCP vs UDB - Docker uses TCP by default. Not sure this is relevant to mention.</p>
+<div class="panel panel-info">
+	<div class="panel-heading">What is a port?</div>
+	<div class="panel-body"><p>Ports are used to pass messages from one application to another. They are denoted by numbers, and there are two types:</p>
+
+<ul>
+<li>Transmission Control Protocol (TCP) - Messages sent from one application to another in order. If they arrive in the wrong order they are unjumbled by the reciever and if some are missing because of network issues, the receiver lets the sender know and they are resent. Think of it a bit like having a conversation.</li>
+<li>UDP - Messages sent from one application to another but no acknowledgemnt from the reciever. Think of it a bit like one application shouting at another.</li>
+</ul>
+
+<p>Ports can be <em>forwarded</em> - think of this like rerouting your post from one address to another.</p>
+</div>
+	
+</div>
+
+
+<p>To open a TCP port when running a container you can do it via the command:</p>
+
+<pre><code>docker run -it -p 4000:8000 myimage
+</code></pre>
+
+<p>Here, 4000 is the port on the host machine, and 8000 is the port inside the container which is being forwarded.</p>
+
+<p>Just to prove this working, create a new file called &lsquo;index.html&rsquo; in your folder with the following contents:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#111">&lt;</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span>
+<span style="color:#111">&lt;</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+  Testing out Port Forwarding with Docker
+<span style="color:#111">&lt;/</span><span style="color:#f92672">head</span><span style="color:#111">&gt;</span>
+<span style="color:#111">&lt;</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
+Here is some text in a web page.
+<span style="color:#111">&lt;/</span><span style="color:#f92672">body</span><span style="color:#111">&gt;</span>
+<span style="color:#111">&lt;/</span><span style="color:#f92672">html</span><span style="color:#111">&gt;</span></code></pre></div>
+<p>Launch the docker container with the following:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Linux and Mac
+</span><span style="color:#75715e"></span>docker run -it -p <span style="color:#ae81ff">4000</span>:8000 -v <span style="color:#00a8c8">$(</span><span style="color:#111">pwd</span><span style="color:#00a8c8">)</span>:/app myimage python3 -m http.server
+<span style="color:#75715e"># Windows
+</span><span style="color:#75715e"></span>docker run -it -p <span style="color:#ae81ff">4000</span>:8000 -v %cd%:/app myimage python3 -m http.server</code></pre></div>
+<p>Now, go to the URL localhost:4000 and you should see the webpage!</p>
+
+<div class="panel panel-info">
+	<div class="panel-heading">UDP Forwarding</div>
+	<div class="panel-body"><p>It&rsquo;s not likely you&rsquo;ll have to use UDP ports very much, but for completeness, the syntax you would use to forward a UDP port is:
+docker run -it -p 4000:8000/udp</p>
+</div>
+	
+</div>
+
 
 
     
@@ -342,7 +425,7 @@ docker rmi <span style="color:#00a8c8">$(</span>docker images -a -q<span style="
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/containers/tutorial1/" title="Setting up the Software"> <i class="fa fa-chevron-left"></i><label>Setting up the Software</label></a>
-    <a class="nav nav-next" href="/version-control/" title="Version Control" style="margin-right: 0px;"><label>Version Control</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/containers/tutorial3/" title="Saving and Sharing Images" style="margin-right: 0px;"><label>Saving and Sharing Images</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

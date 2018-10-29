@@ -93,6 +93,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/version-control/" class="dd-item haschildren
@@ -150,6 +157,7 @@
    Containers</option> 
       <option value="/containers/tutorial1/" >- Setting up the Software</option>
       <option value="/containers/tutorial2/" >- Getting Started with Docker</option>
+      <option value="/containers/tutorial3/" >- Saving and Sharing Images</option>
   
     <option value="/version-control/" >
    Version Control</option>
@@ -231,16 +239,18 @@ doing anything else.</li>
 <ul>
 <li><p><em>They use Kernel features of the host</em> - Linux supports process and
 resource partitioning and isolation (cgroups, OverlayFS, kernel
-namespacing), which allows containers to use a subset of resources.</p></li>
+namespacing), which allows containers to use a subset of resources. If you&rsquo;re really
+interested in the underlying mechanism by which Docker works, have a look <a href="https://docs.google.com/presentation/d/10vFQfEUvpf7qYyksNqiy-bAxcy-bvF0OnUElCOtTTRc/edit?usp=sharing">here</a></p></li>
 
 <li><p><em>VMs require a Hypervisor</em> - The hypervisor is a software based
-emulation layer for computer hardware and so it is generally  20% slower
+emulation layer for computer hardware and so it is generally slower
 running software in a VM than natively, even with Intel Vf-X, Sun
-GridEngine. Free hypervisors slow; commercial are expensive!</p></li>
+GridEngine. Free hypervisors slow; commercial ones are expensive! VirtualBox
+is common free one; VMWare Workstation is a commercial one.</p></li>
 
-<li><p><em>Generally containers are command-line only</em> - With VMs it is very easy
-to get a full desktop environment. With containers this use case is generally not
-well supported.</p></li>
+<li><p><em>Generally containers are used in command-line only</em> - With VMs it is very easy
+to get a full desktop environment. With containers this is more difficult.
+If we have time, may show a demo of this.</p></li>
 
 <li><p><em>They take up much less space</em> - Virtual Machines have to bundle the whole operating system,
 including components which would be the same on the host system. Containers, by virtue of using the
@@ -273,8 +283,7 @@ this script into a container, and use that as the basis for running the data ana
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/introduction/" title="Software Engineering in Science"> <i class="fa fa-chevron-left"></i><label>Software Engineering in Science</label></a>
-    <a class="nav nav-next" href="/containers/tutorial1/" title="Setting up the Software" style="margin-right: 0px;"><label>Setting up the Software</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-next" href="/containers/tutorial1/" title="Setting up the Software" style="margin-right: 0px;"><label>Setting up the Software</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

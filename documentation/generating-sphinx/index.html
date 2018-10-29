@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scientific Programming</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.49.2" />
+<title>Generating documentation with Sphinx :: Scientific Programming</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/scientific-programming.github.io";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/documentation/generating-sphinx/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://scientific-programming.github.io">Scientific Programming</a>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/scientific-programming"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/introduction/" class="dd-item
+        ">
+      <div>
+      <a href="/introduction/">Software Engineering in Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/containers/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/containers/tutorial/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial/">
+            Getting Started with Docker
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
+        <div>
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/writing-tests/" class="dd-item">
+        <div>
+          <a href="/testing/writing-tests/">
+            Writing Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/version-control/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/version-control/">Version Control</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/version-control/tutorial1/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial1/">
+            Getting Started
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/version-control/tutorial2/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial2/">
+            GitHub and Collaborating
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/version-control/tutorial3/" class="dd-item">
+        <div>
+          <a href="/version-control/tutorial3/">
+            Discarding Temporary Changes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/documentation/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/documentation/">Documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/documentation/generating-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/generating-docs/">
+            Generating Docs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/generating-sphinx/" class="dd-item active">
+        <div>
+          <a href="/documentation/generating-sphinx/">
+            Generating documentation with Sphinx
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        <div>
+          <a href="/documentation/writing-docs/">
+            Sphinx: Python documentation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/cheatsheet/" class="dd-item
+        ">
+      <div>
+      <a href="/cheatsheet/">Command Cheatsheet</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/introduction/" >
+   Software Engineering in Science</option>
+    <option value="/containers/" >
+   Containers</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option>
+    <option value="/version-control/" >
+   Version Control</option>
+    <option value="/documentation/" >
+   Documentation</option> 
+      <option value="/documentation/generating-docs/" >- Generating Docs</option>
+      <option value="/documentation/generating-sphinx/"  selected>- Generating documentation with Sphinx</option>
+      <option value="/documentation/writing-docs/" >- Sphinx: Python documentation</option>
+  
+    <option value="/cheatsheet/" >
+   Command Cheatsheet</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/scientific-programming.github.io";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Generating documentation with Sphinx</h1>
+    
+    
+    
+    
+
+<h1 id="quick-notes">Quick Notes</h1>
+
+<ul>
+<li>Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well</li>
+</ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install python3 python3-pip<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> pip3 install<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">WORKDIR</span><span style="color:#d88200"> /app</span></code></pre></div>
+<p>Then</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build . -t documentation
+docker run -v <span style="color:#d88200">`</span><span style="color:#111">pwd</span><span style="color:#d88200">`</span>:/app -it documentation
+sphinx-quickstart</code></pre></div>
+<ul>
+<li><p>Most defaults are OK but:</p>
+
+<ul>
+<li>We want to set default document to markdown rather than RST</li>
+<li>We want to enable MathJax</li>
+</ul></li>
+
+<li><p>Now Edit conf.py:</p></li>
+</ul>
+
+<p>Uncomment these lines of code in conf.py</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span style="color:#75715e"># add these directories to sys.path here. If the directory is relative to the</span>
+<span style="color:#75715e"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># import os</span>
+<span style="color:#75715e"># import sys</span>
+<span style="color:#75715e"># sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span></code></pre></div>
+<ul>
+<li>to extensions add sphinx.extensions.doctest and sphinx.extensions.napoleon</li>
+<li>napoleon allows NumPy style documentation</li>
+<li>after extension declarations add following:</li>
+</ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">napoleon_google_docstring</span> <span style="color:#f92672">=</span> <span style="color:#111">False</span>
+
+<span style="color:#111">doctest_global_setup</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;&#34;&#34;
+</span><span style="color:#d88200">from quicktest import *
+</span><span style="color:#d88200">&#34;&#34;&#34;</span></code></pre></div>
+<p>Then, from root dir:</p>
+
+<pre><code>sphinx-apidoc -s md -o source ../quicktest
+make html
+</code></pre>
+
+<p>Note: -s flag changes suffix from rst autodoc to md autodoc.
+source is output directory
+quicktest is source code directory</p>
+
+<ul>
+<li>Create a file called tutorial.rst</li>
+</ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">Tutorial
+========
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>This is a tutorial.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>Subheading
+----------
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>Here is some text under a subheading</code></pre></div>
+<p>In index, change the toctree (table of contents tree) to:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst"><span style="color:#111">..</span> <span style="color:#f92672">toctree</span><span style="color:#111">::</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:maxdepth:</span> <span style="color:#75af00">2</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:caption:</span> <span style="color:#75af00">Contents:</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   tutorial</code></pre></div>
+<p>Now, &lsquo;make html&rsquo;</p>
+
+<p>You can see that the tutorial page has appeared in the documentation.</p>
+
+<h1 id="putting-online">Putting online</h1>
+
+<ul>
+<li><p>Log in to RTD with GitHub acct</p></li>
+
+<li><p>Import Repository</p></li>
+
+<li><p>Select correct repo</p></li>
+
+<li><p>Click build</p></li>
+
+<li><p>Builds automatically</p></li>
+</ul>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/documentation/generating-docs/" title="Generating Docs"> <i class="fa fa-chevron-left"></i><label>Generating Docs</label></a>
+    <a class="nav nav-next" href="/documentation/writing-docs/" title="Sphinx: Python documentation" style="margin-right: 0px;"><label>Sphinx: Python documentation</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 26/10/2018
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/documentation/generating-sphinx.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
