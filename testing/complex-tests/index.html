@@ -290,7 +290,7 @@
 </ul>
 
 <div class="panel panel-warning">
-	
+	<div class="panel-heading">Exercise: Convergence</div>
 	<div class="panel-body"><p>How would you test the convergence? Write a test which checks the error on the derivative of Sin at a known point for different values of h. What can you check numerically? Write an implementation of the numerical function.</p>
 
 <p>If you struggle, it may help first to implement the CentralDiff function and look at the results, and plot the error.</p>
@@ -299,19 +299,21 @@
 </div>
 
 
-<p>### Exercise: Newton-Raphson
-The Newton-Raphson algorithm finds minima of functions with the following recursion relation:</p>
+<div class="panel panel-warning">
+	<div class="panel-heading">Exercise: Newton Raphson</div>
+	<div class="panel-body"><p>The Newton-Raphson algorithm finds minima of functions with the following recursion relation:</p>
 
-<p>$$ x<em>{n+1} = x</em>{n} - \frac{f(x_n)}{f&rsquo;(x_n)}</p>
+<p>$$ x<em>{n+1} = x</em>{n} - \frac{f(x_n)}{f&rsquo;(x_n)} $$</p>
 
 <p>We normally check convergence by looking at the difference between the last step and the previous step, and stopping when we reach a tolerance for
 $$ abs(f(x_n)) &lt; \epsilon $$</p>
 
-<p>Implement the algorithm as a function. Write a test that checks this works.</p>
+<p>Implement the algorithm as a function. Write a test that checks this works.
+{% /panel %}</p>
 
-<h3 id="exercise-testing-ode-solvers-an-integration-test">Exercise: Testing ODE Solvers: An integration test</h3>
-
-<p>How would one go about testing an ODE solver?
+<div class="panel panel-warning">
+    <div class="panel-heading">Exercise: Euler ODE Solver</div>
+    <div class="panel-body"><p>How would one go about testing an ODE solver?
 Consider the prototypical simple 2nd order ODE - the simple harmonic oscillator:</p>
 
 <p>$$ m \frac{\mathrm{d}^2 x}{dt^2} + k x = 0  $$</p>
@@ -336,6 +338,14 @@ $$ v(t = 0) = 0.0 $$</p>
 how the error on the position of a mass increases as you uses. You need to have at least two functions to unit test here!</p>
 
 <p>Hint: Think about both the solution and properties you can compute about the system you&rsquo;re simulating!</p>
+</div>
+    
+
+<p></div></p>
+</div>
+	
+</div>
+
 
 
     
