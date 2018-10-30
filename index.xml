@@ -80,5 +80,57 @@ git reset HEAD workshop.txt This permanently discards these changes!
 Resetting the whole repository If you have multiple files that have been changed, and you want to reset all of them, you can use:</description>
     </item>
     
+    <item>
+      <title>Documenting Code</title>
+      <link>https://scientific-programming.github.io/documentation/generating-docs/</link>
+      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/documentation/generating-docs/</guid>
+      <description>Writing some documentation There are a number of different tools for automatically generating documentation for different languages. For Python, a common tool is Sphinx. For projects which combine several languages, sometimes the tool Doxygen is preferred.
+Here, we&amp;rsquo;ll focus on Sphinx, but generally all tools work by similar principles; the source code of a library is parsed, and the author of code annotates it in order to provide the documentation.</description>
+    </item>
+    
+    <item>
+      <title>Writing Simple Tests</title>
+      <link>https://scientific-programming.github.io/testing/simple-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/simple-tests/</guid>
+      <description>Set up Create a folder for this lecture:
+mkdir python-testing cd python-testing-tutorial git init  For this workshop, build the following Dockerfile, and label it &amp;lsquo;testing&amp;rsquo;. Pip is a package manager for Python; using it, we can install Python libraries. We&amp;rsquo;ll install the following:
+fromubuntu:18.04RUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pipRUN pip install numpy matplotlibWORKDIR/app Starting off simply: Squaring a number (a pathological example&amp;hellip;) def squared(x): return x*x  Consider just squaring a number.</description>
+    </item>
+    
+    <item>
+      <title>Generating documentation webpages with Sphinx</title>
+      <link>https://scientific-programming.github.io/documentation/generating-sphinx/</link>
+      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/documentation/generating-sphinx/</guid>
+      <description>Setting up a Python Module 1) Create a new folder called &amp;lsquo;codedocs&amp;rsquo; to work in for this exercise. Change into this folder and &amp;lsquo;git init&amp;rsquo; in it to keep track of files.
+2) In order to document some code, we&amp;rsquo;re going to arrange our Git repository in a common way, so that the code is separate from the documentation. Create a folder called &amp;lsquo;codedocs&amp;rsquo; and create a file called &amp;lsquo;functions.</description>
+    </item>
+    
+    <item>
+      <title>Writing More Complex Tests</title>
+      <link>https://scientific-programming.github.io/testing/complex-tests/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:09 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/complex-tests/</guid>
+      <description>Convergence Because of the ubiquity of differential equations in physical problems, it&amp;rsquo;s a common exercise to calculate the numerical derivatives of functions via a Central difference formula:
+$$ f&amp;rsquo;(x) = \frac{f(x + h) - f(x - h)}{2h} + \mathcal{O}(h^2) $$
+How can we test this? We&amp;rsquo;ll decide to call our function CentralDiff. First we can think about simple tests that check that an error is raised if input arguments do not make sense.</description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://scientific-programming.github.io/testing/continuous-integration/</link>
+      <pubDate>Fri, 26 Oct 2018 10:56:15 +0100</pubDate>
+      
+      <guid>https://scientific-programming.github.io/testing/continuous-integration/</guid>
+      <description>Continuous Integration What is Continuous Integration?
+ Runs the tests repeatedly, every time you make a change. You use a remote service, to avoid having to run all tests locally - useful if they take some time to run. Generally, CI services send you angry emails when tests fail! It requires you to be using version control, and all tests are run when you push your changes to the remote repository.</description>
+    </item>
+    
   </channel>
 </rss>

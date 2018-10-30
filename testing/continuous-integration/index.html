@@ -78,47 +78,24 @@
       <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item">
         <div>
-          <a href="/containers/tutorial/">
+          <a href="/containers/tutorial1/">
+            Setting up the Software
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial2/">
             Getting Started with Docker
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item parent haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
         <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item">
-        <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item active">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,21 +139,44 @@
       <li data-nav-id="/documentation/generating-docs/" class="dd-item">
         <div>
           <a href="/documentation/generating-docs/">
-            Generating Docs
+            Documenting Code
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
+            Generating documentation webpages with Sphinx
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
         <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing More Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item active">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -206,17 +206,16 @@
    Software Engineering in Science</option>
     <option value="/containers/" >
    Containers</option>
-    <option value="/testing/" >
-   Testing Scientific Code</option> 
-      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
-      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
-      <option value="/testing/continuous-integration/"  selected>- Continuous Integration</option>
-      <option value="/testing/writing-tests/" >- Writing Tests</option>
-  
     <option value="/version-control/" >
    Version Control</option>
     <option value="/documentation/" >
    Documentation</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/" >- Writing More Complex Tests</option>
+      <option value="/testing/continuous-integration/"  selected>- Continuous Integration</option>
+  
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -313,14 +312,22 @@ script:
 
 <p>Clearly, we could have much more complex build processes than this, and you run Python inside the build environment rather than in a Docker container. However, it&rsquo;s in general a good idea to delegate these into a container, as it avoids you having to duplicate the install script in multiple places, and keeps the development environment where you work the same as the test environment.</p>
 
-<h3 id="showing-this-on-github">Showing this on GitHub.</h3>
-
-<p>One common thing to do is to add a readme file to a GitHub repository. Generally these just give some information for people who come across the project, such as install instructions. These files are typically written in Markdown - a simple syntax which is widely used online in forums and in many other places. A simple README.md, written in Markdown, for this project could be:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># Testing and CI
+<div class="panel panel-info">
+	<div class="panel-heading">Writing a README file</div>
+	<div class="panel-body"><p>One common thing to do is to add a readme file to a GitHub repository. Create a Generally these just give some information for people who come across the project, such as install instructions. These files are typically written in Markdown - a simple syntax which is widely used online in forums and in many other places. A simple README.md, written in Markdown, for this project could be:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># Functions
 <span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>This repository follows the material on https://scientific-programming.github.io<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>![<span style="color:#f92672">Travis Build Status</span>](<span style="color:#75af00">https://travis-ci.com/rpep/mytestrepo.svg?branch=master</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>Writing a simple package. This repository follows the material on https://scientific-programming.github.io<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>to create a repository with simple Python tests and Continuous Integration set up.</code></pre></div>
-<p>We can add a badge to this to show the status of the build (i.e. passing or failing). Go to the Travis page for your repository.</p>
+<p>The URL here points to my repository on Travis; replace it with the one from yours.
+You can find this by clicking the following when you are on a repository page
+on Travis.</p>
+</div>
+	
+</div>
+
 
 <h3 id="workflow">Workflow</h3>
 
@@ -333,16 +340,17 @@ script:
 <li>If any tests fail, you&rsquo;ll get a notification of this, and you can fix them.</li>
 </ul>
 
-<p>However, it can also be useful to set up tests to run at periodic intervals - i.e. nightly.
-This means that if a dependency unexpectedly changes in a repository that you&rsquo;re not actively contributing to,</p>
+<p>It can also be useful to set up tests to run at periodic intervals - i.e. nightly.
+This means that if a dependency unexpectedly changes in a repository that you&rsquo;re using,
+it is picked up as early as possible.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/testing/simple-tests/" title="Writing Simple Tests"> <i class="fa fa-chevron-left"></i><label>Writing Simple Tests</label></a>
-    <a class="nav nav-next" href="/testing/writing-tests/" title="Writing Tests" style="margin-right: 0px;"><label>Writing Tests</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/testing/complex-tests/" title="Writing More Complex Tests"> <i class="fa fa-chevron-left"></i><label>Writing More Complex Tests</label></a>
+    <a class="nav nav-next" href="/cheatsheet/" title="Command Cheatsheet" style="margin-right: 0px;"><label>Command Cheatsheet</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

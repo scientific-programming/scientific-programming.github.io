@@ -12,36 +12,23 @@
     
     
     <item>
-      <title>Generating Docs</title>
+      <title>Documenting Code</title>
       <link>https://scientific-programming.github.io/documentation/generating-docs/</link>
       <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/documentation/generating-docs/</guid>
-      <description>How can we generate documentation from code? There are a number of different tools for automatically generating documentation for different languages. For Python, a common tool is Sphinx. For projects which combine several languages, sometimes the tool Doxygen is preferred.
+      <description>Writing some documentation There are a number of different tools for automatically generating documentation for different languages. For Python, a common tool is Sphinx. For projects which combine several languages, sometimes the tool Doxygen is preferred.
 Here, we&amp;rsquo;ll focus on Sphinx, but generally all tools work by similar principles; the source code of a library is parsed, and the author of code annotates it in order to provide the documentation.</description>
     </item>
     
     <item>
-      <title>Generating documentation with Sphinx</title>
+      <title>Generating documentation webpages with Sphinx</title>
       <link>https://scientific-programming.github.io/documentation/generating-sphinx/</link>
       <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
       
       <guid>https://scientific-programming.github.io/documentation/generating-sphinx/</guid>
-      <description>Quick Notes  Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well  fromubuntu:18.04RUN apt-get update &amp;amp;&amp;amp; apt-get install python3 python3-pipRUN pip3 installWORKDIR/app Then
-docker build . -t documentation docker run -v `pwd`:/app -it documentation sphinx-quickstart  Most defaults are OK but:
- We want to set default document to markdown rather than RST We want to enable MathJax  Now Edit conf.py:</description>
-    </item>
-    
-    <item>
-      <title>Sphinx: Python documentation</title>
-      <link>https://scientific-programming.github.io/documentation/writing-docs/</link>
-      <pubDate>Fri, 26 Oct 2018 22:07:04 +0100</pubDate>
-      
-      <guid>https://scientific-programming.github.io/documentation/writing-docs/</guid>
-      <description>Installing Sphinx We&amp;rsquo;ll start with a Docker container (again!). Build the following:
-fromubuntu:18.04ENVTZ &amp;#34;Europe/London&amp;#34;RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezoneRUN apt-get update &amp;amp;&amp;amp; apt-get install -y python3 python3-pip python3-sphinxWORKDIR/app with the command:
-docker build . -t sphinx Note that we&amp;rsquo;ve had to add some timezone information into the container here; don&amp;rsquo;t worry too much about this.
-Now, go to the repository in which you have your Python files.</description>
+      <description>Setting up a Python Module 1) Create a new folder called &amp;lsquo;codedocs&amp;rsquo; to work in for this exercise. Change into this folder and &amp;lsquo;git init&amp;rsquo; in it to keep track of files.
+2) In order to document some code, we&amp;rsquo;re going to arrange our Git repository in a common way, so that the code is separate from the documentation. Create a folder called &amp;lsquo;codedocs&amp;rsquo; and create a file called &amp;lsquo;functions.</description>
     </item>
     
   </channel>

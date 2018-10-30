@@ -78,47 +78,24 @@
       <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item">
         <div>
-          <a href="/containers/tutorial/">
+          <a href="/containers/tutorial1/">
+            Setting up the Software
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial2/">
             Getting Started with Docker
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item parent haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
         <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item active">
-        <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,21 +139,44 @@
       <li data-nav-id="/documentation/generating-docs/" class="dd-item">
         <div>
           <a href="/documentation/generating-docs/">
-            Generating Docs
+            Documenting Code
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
+            Generating documentation webpages with Sphinx
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item active">
         <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing More Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -206,17 +206,16 @@
    Software Engineering in Science</option>
     <option value="/containers/" >
    Containers</option>
-    <option value="/testing/" >
-   Testing Scientific Code</option> 
-      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
-      <option value="/testing/simple-tests/"  selected>- Writing Simple Tests</option>
-      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
-      <option value="/testing/writing-tests/" >- Writing Tests</option>
-  
     <option value="/version-control/" >
    Version Control</option>
     <option value="/documentation/" >
    Documentation</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/"  selected>- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/" >- Writing More Complex Tests</option>
+      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
+  
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -247,20 +246,36 @@
     
     
 
-<h4 id="starting-off-simply-squaring-a-number">Starting off simply: Squaring a number</h4>
+<h4 id="set-up">Set up</h4>
 
-<p>Consider as a really simple example, a function which takes a number and computes the square of that number.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">square</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
-    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span></code></pre></div>
-<p>Various appropriate tests of this could check:</p>
+<p>Create a folder for this lecture:</p>
+
+<pre><code>mkdir python-testing
+cd python-testing-tutorial
+git init
+</code></pre>
+
+<p>For this workshop, build the following Dockerfile, and label it &lsquo;testing&rsquo;. Pip is a package manager for Python; using it, we can install Python libraries.
+We&rsquo;ll install the following:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y python3 python3-pip<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> pip install numpy matplotlib<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">WORKDIR</span><span style="color:#d88200"> /app</span></code></pre></div>
+<h4 id="starting-off-simply-squaring-a-number-a-pathological-example">Starting off simply: Squaring a number (a pathological example&hellip;)</h4>
+
+<pre><code>def squared(x):
+    return x*x
+</code></pre>
+
+<p>Consider just squaring a number. This is so simple, it wouldn&rsquo;t really be tested in a real piece of software, but we&rsquo;ll show it here just as an example of how to do it. What could we check?</p>
 
 <ul>
-<li>Is the correct answer given for positive integers?</li>
-<li>Is the correct answer given for negative integers?</li>
-<li>Is the correct answer given for zero?</li>
-<li>Is the correct answer given for positive and negative decimals?</li>
-<li>What is the behaviour for complex numbers?</li>
-<li>How does the function behave when an input argument is not of the type specified is passed in (such as a string)?</li>
+<li>Do we get the correct answer for positive numbers?</li>
+<li>Do we get the correct answer for negative numbers?</li>
+<li>Do the input arguments make sense?</li>
 </ul>
 
 <p>It&rsquo;s clear that all of these would be sensible, but considering it carefully, it shows immediately the difficulty of actually applying testing in practice. There are an infinite amount of numerical input arguments - we cannot reasonably test them all.</p>
@@ -273,16 +288,16 @@
 
 <p>So, to keep track of what we&rsquo;re doing, we&rsquo;ll create a new folder and a new Git repository:</p>
 
-<pre><code>mkdir python-testing-tutorial
-cd python-testing-tutorial
-git init
-</code></pre>
-
 <p>In this folder, we&rsquo;ll create &lsquo;functions.py&rsquo; and &lsquo;test_functions.py&rsquo;</p>
 
 <p>In functions.py add the function from above.</p>
 
-<p>Now, in test_functions.py, we&rsquo;ll write a test. As mentioned before, you write a normal Python function. However, we use something that you may not have seen before - the assert statement:</p>
+<p>Now, in test_functions.py, we&rsquo;ll write a test. As mentioned before, you write a normal Python function. However, we use something that you may not have seen before - the assert statement. Asserts just check that something is true; for example:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+<span style="color:#00a8c8">assert</span> <span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span></code></pre></div>
+<p>If you need to, you can provide an error message if an assertion fails:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">assert</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;The number 2 does not equal 1...&#34;</span></code></pre></div>
+<p>Add the following function to test_functions.py:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">test_square_positive_integers</span><span style="color:#111">():</span>
     <span style="color:#00a8c8">assert</span> <span style="color:#111">square</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
     <span style="color:#75715e"># Note the mistake here! We&#39;ll leave this here to</span>
@@ -303,7 +318,7 @@ git init
 <p>Build the container:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build . -t python-testing</code></pre></div>
 <p>Now, we can run the tests with:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v<span style="color:#d88200">`</span><span style="color:#111">pwd</span><span style="color:#d88200">`</span>:/io python-testing pytest -v .</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v<span style="color:#00a8c8">$(</span><span style="color:#111">pwd</span><span style="color:#00a8c8">)</span>:/io python-testing pytest -v .</code></pre></div>
 <p>You should see output something like this:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">=============================</span> <span style="color:#111">test</span> session <span style="color:#111">starts</span> <span style="color:#f92672">==============================</span>
 platform linux -- Python <span style="color:#ae81ff">3</span>.6.6, pytest-3.9.2, py-1.7.0, pluggy-0.8.0 -- /usr/bin/python3
@@ -344,13 +359,53 @@ test_functions.py::test_square_positive_integers PASSED                  <span s
 <span style="color:#f92672">===========================</span> <span style="color:#ae81ff">1</span> passed in <span style="color:#ae81ff">0</span>.21 <span style="color:#111">seconds</span> <span style="color:#f92672">===========================</span></code></pre></div>
 <p>As many tests as are necessary can be written.</p>
 
+<p>{{ panel theme=&ldquo;warning&rdquo; title=&ldquo;Exercise: Normalising a vector.&rdquo; }}</p>
+
+<p>Consider as a really simple example, a function which normalises a vector. We&rsquo;re going to start and thing about how it should work.</p>
+
+<p>If there are n elements in a vector, the norm is given by:
+$$\sqrt{x_1^2 + x_2^2 + x_3^2 + x_4^2 + \cdots + x_n^2}$$</p>
+
+<p>Various appropriate tests of this could check the results:</p>
+
+<ul>
+<li>If we pass an array full of integers or floating point numbers.</li>
+<li>If we pass an array which is full of zeros.</li>
+</ul>
+
+<p>Write a test for each of these cases for a function with the function signature:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#00a8c8">def</span> <span style="color:#75af00">normalise</span><span style="color:#111">(</span><span style="color:#111">v</span><span style="color:#111">):</span></code></pre></div>
+<p>Then, implement the normalise function and see if your tests pass!</p>
+
+<p>Note: To create an array in Python, you can use the following syntax:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> <span style="color:#111">numpy</span> <span style="color:#00a8c8">as</span> <span style="color:#111">np</span>
+
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">np</span><span style="color:#f92672">.</span><span style="color:#111">array</span><span style="color:#111">([</span><span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">1.0</span><span style="color:#111">])</span>
+<span style="color:#75715e"># We can perform element-wise operations on NumPy arrays:</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">x</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+<span style="color:#111">array</span><span style="color:#111">([</span><span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">])</span></code></pre></div>
+<p>{{ /panel }}</p>
+
 <h3 id="exceptions">Exceptions</h3>
 
-<p>Most programming languages have the concept of exceptions. An exception is just a way of handling conditions which happen while a programme is running which require special handling.</p>
+<p>Most programming languages have the concept of exceptions. An exception is just a way of dealing erroneous conditions which happen while a programme is running which require special handling. In Python doing this in your own code is really straightforward. For example, when calculating the Coulomb potential in 1-D, we need to make sure that if the input distance is zero, the function raises an error, because the input argument is invalid. We can do this like:</p>
 
-<h3 id="aside-debug-mode">Aside: Debug Mode</h3>
+<pre><code>def CoulombPotential(r):
+    if (r == 0):
+        raise ValueError(&quot;r cannot equal zero.&quot;)
+    return 1 / abs(r)
+</code></pre>
 
-<p>Many people do not know that the Python interpreter runs in &lsquo;debug&rsquo; mode by default. When it is disabled, by running Python with the &lsquo;-O&rsquo; flag, all asserts are skipped, and the flag &lsquo;<strong>debug</strong>&rsquo; is set to True. Utilising this can be useful when you want to check code for correctness, but know that some checks you are running can be costly in performance. It can also be used to provide more</p>
+<p>Now, when we run this code, if 0 is passed as an input argument:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">CoulombPotential</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">)</span>
+<span style="color:#111">Traceback</span> <span style="color:#111">(</span><span style="color:#111">most</span> <span style="color:#111">recent</span> <span style="color:#111">call</span> <span style="color:#111">last</span><span style="color:#111">):</span>
+  <span style="color:#111">File</span> <span style="color:#d88200">&#34;&lt;stdin&gt;&#34;</span><span style="color:#111">,</span> <span style="color:#111">line</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#f92672">in</span> <span style="color:#f92672">&lt;</span><span style="color:#111">module</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#111">File</span> <span style="color:#d88200">&#34;&lt;stdin&gt;&#34;</span><span style="color:#111">,</span> <span style="color:#111">line</span> <span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#f92672">in</span> <span style="color:#111">CoulombPotential</span>
+<span style="color:#75af00">ValueError</span><span style="color:#111">:</span> <span style="color:#111">r</span> <span style="color:#111">cannot</span> <span style="color:#111">equal</span> <span style="color:#111">zero</span><span style="color:#f92672">.</span></code></pre></div>
+<h3 id="debug-mode">Debug Mode</h3>
+
+<p>Many people do not know that the Python interpreter runs in &lsquo;debug&rsquo; mode by default. When it is disabled, by running Python with the &lsquo;-O&rsquo; flag, <em>all asserts in code</em> are skipped, and the flag &lsquo;<strong>debug</strong>&rsquo; is set to True. Utilising this can be useful when you want to check code for correctness, but know that some checks you are running can be costly in performance. It can also be used to provide more</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">square</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
   <span style="color:#00a8c8">if</span> <span style="color:#111">__debug__</span><span style="color:#111">:</span>
     <span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;We&#39;re in debug mode!&#34;</span><span style="color:#111">)</span>
@@ -380,28 +435,46 @@ Traceback (most recent call last):
 TypeError: can't multiply sequence by non-int of type 'str'
 </code></pre>
 
-<p>We can see that the print statement is completely skipped, and instead of our helpful error message which resulted from our check, we get Python&rsquo;s slightly less helpful one.</p>
+<p>We can see that the print statement is completely skipped, and instead of our helpful error message which resulted from our check, we get Python&rsquo;s less helpful one.</p>
 
-<h3 id="exercise-write-a-first-function-and-test">Exercise: Write a first function and test</h3>
+<div class="panel panel-info">
+	<div class="panel-heading">C, C++ and FORTRAN Compilers</div>
+	<div class="panel-body"><p>Achieving the same in compiled languages is also straightforward, because a preprocessor runs over the code before the compilation stage when a compiler is invoked. Macros can be used to disable code under certain conditions, and this is widely used to disable costly code paths that diagnose errors, which can be turned on when an issue is noticed. See for example the following code which multiplies two vectors in C++:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#00a8c8">void</span> <span style="color:#75af00">multiply_vector</span><span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#111">std</span><span style="color:#f92672">::</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">double</span><span style="color:#f92672">&gt;</span> <span style="color:#111">a</span><span style="color:#111">,</span>
+                     <span style="color:#00a8c8">double</span> <span style="color:#111">b</span><span style="color:#111">,</span>
+                     <span style="color:#111">std</span><span style="color:#f92672">::</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">double</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span><span style="color:#111">c</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 
-<p>The Couloumb potential is given by $$ V\left(r\right) = \frac{q}{|r|} $$</p>
+  <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#111">c</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">*</span> <span style="color:#111">b</span><span style="color:#111">;</span>
+    <span style="color:#75715e">#ifdef MYPROJECT_DEBUG
+</span><span style="color:#75715e"></span>        <span style="color:#111">std</span><span style="color:#f92672">::</span><span style="color:#111">cout</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#d88200">&#34;c[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#d88200">&#34;] = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#111">c</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#111">std</span><span style="color:#f92672">::</span><span style="color:#111">endl</span><span style="color:#111">;</span>
+    <span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>  <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div>
+<p>Compiling with g++, you can enable the printing of the array in this function just by passing a flag:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-g++" data-lang="g++">g++ file.cpp -DMYPROJECT_DEBUG -c</code></pre></div></div>
+	
+</div>
+
+
+<h3 id="exercise-2-lennard-jones-6-12-potential">Exercise 2: Lennard-Jones 6-12 potential</h3>
+
+<p>The Lennard-Jones potential is given by $$ V\left(r\right) = \epsilon \left[\left(\frac{r_m}{r}\right)^{12} - 2\left(\frac{r_m}{r}\right)^6\right]$$</p>
 
 <ul>
-<li><p>Write a function that takes two parameters, x and q, and returns this potential.</p></li>
-
-<li><p>Write a test for the function, and</p></li>
+<li>Write a function that takes three numbers - $$\epsilon$$, $$r_m$$ and $$r$$, and returns this potential.</li>
+<li>Write a test for this function which checks values against known quantities.</li>
+<li>Write a test that checks that the function throws a ValueError if numerical arguments are not passed.</li>
 </ul>
 
-<p>Note: The power operator in Python is &ldquo;**&ldquo;, so to take the square root:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>
-<span style="color:#ae81ff">2</span></code></pre></div>
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/testing/complex-tests/" title="Writing Complex Tests"> <i class="fa fa-chevron-left"></i><label>Writing Complex Tests</label></a>
-    <a class="nav nav-next" href="/testing/continuous-integration/" title="Continuous Integration" style="margin-right: 0px;"><label>Continuous Integration</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/testing/" title="Testing Scientific Code"> <i class="fa fa-chevron-left"></i><label>Testing Scientific Code</label></a>
+    <a class="nav nav-next" href="/testing/complex-tests/" title="Writing More Complex Tests" style="margin-right: 0px;"><label>Writing More Complex Tests</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

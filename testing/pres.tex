@@ -1,0 +1,265 @@
+\documentclass[ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\newif\ifbibliography
+\hypersetup{
+            pdftitle={Testing Scientific Code},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \let\insertsectionnumber\relax
+    \let\sectionname\relax
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\title{Testing Scientific Code}
+
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{What is a software test?}
+
+\begin{itemize}
+\item A sanity check that everything is working.
+\item Guard against dangerous behaviour.
+\item Checks inputs and outputs and makes sure answers are sensible.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Scientific Method}
+\begin{itemize}
+\tightlist
+\item
+  Ask a question.
+\item
+  Form a hypothesis.
+\item
+  Make a prediction based on the hypothesis.
+\item
+  Design an experiment to test the hypothesis.
+\item
+  Build the equipment
+\item
+  \textbf{Calibrate equipment by testing it}
+\item
+  Run the experiment
+\item
+  Detail carefully the procedures and record information.
+\item
+  Draw conclusions from results.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\framtitle{Scientific Method - Computational Science}
+
+Do you check your `equipment' is calibrated? In many cases, the answer will be no.
+
+Why?
+
+\begin{itemize}
+\item Ad-hoc changes are made to code which mean things stop working. 
+\item Have you ever come back to a script that you wrote and found it no longer works because you changed a file somewhere
+else?
+\item Have These issues become especially common when multiple people, who
+might not have oversight over what you are using it for, are working on
+software. 
+
+\emph{It's important to test the relevant parts of your code.}
+\end{frame}
+
+\begin{frame}{Principles of Software Testing}
+
+\begin{itemize}
+\tightlist
+\item
+  Software must meet the requirements set out (i.e. solve some problem)
+\item  Software must respond correctly to different inputs.
+\item  Output should be logically consistent with inputs.
+\item  Software must run in a reasonable amount of time.
+\item  Can be installed and run in the intended environment.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Static vs Dynamic Testing}
+
+\begin{block}{Static Testing}
+
+\begin{itemize}
+\tightlist
+\item
+  Reviews - Reviewing the code manually as a group - check for
+  correctness.
+\item
+  Walthrough - Parties go through a products specification to give
+  feedback on potential defects.
+\item
+  \textbf{Verification of design}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Dynamic Testing}
+
+\begin{itemize}
+\tightlist
+\item
+  Executing portions of the code and checking the response.
+\item
+  \textbf{Validation of design}
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Why is it difficult for science?}
+
+\begin{itemize}
+\tightlist
+\item
+  Much of the time you don't know what the results will be.
+\item
+  Realistic problems can take time to run.
+\item
+  Testing requires computation of \emph{aggregate statistics}.
+\item  If running simulations, then the behaviour should make sense over different timescales.
+\item Simulations can be big and the results are not perfectly deterministic! Floating point error.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Why is it crucial for science?}
+\begin{itemize}
+\tightlist
+\item
+  Often need to implement new algorithms or change things.
+\item
+  Changing without testing will break things.
+\item
+  You might need to come back to a previous experiment to use it as the
+  basis for a new one; if the code is broken, you will have issues!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dynamic Testing: Types of Test}
+\begin{block}{Unit Tests}
+\begin{itemize}
+\tightlist
+\item
+  Code is written in small, independent functions
+\item
+  Each function has tests that check that the result makes sense
+\item
+  For e.g.~a test of a function that calculates sin could check
+  \(\sin{\left(n\pi\right)} = 0 \,\,\,\,\, \forall n \in \mathbb{Z}\)
+\end{itemize}
+\end{block}
+
+\begin{block}{Integration Tests}
+\begin{itemize}
+\tightlist
+\item
+  Tests check that the system as a whole works convincingly.
+\item For e.g.~for a simulation, a single integration test would check that
+  the inputs to the simulation are correctly processed, the simulation
+  proceeds without any errors, and that the results make sense.
+\item Multiple integration tests are necessary for a large simulation
+  package, such that all of the different potential combinations of
+  algorithms are constructed.
+\item Much, much harder to design, but essential - can be written so that
+  they also serve as examples of how to use the software.
+\end{itemize}
+\end{block}
+
+\begin{block}{Regression Tests}
+
+\begin{itemize}
+\tightlist
+\item Check that results don't get less accurate over time.
+\item Check that performance stays the same or gets better over time.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Aside: Test Driven Development}
+
+Methodology for testing where \textbf{tests are written before writing
+any code}. This means....
+\begin{itemize}
+\tightlist
+\item
+  Before writing any code you need to plan out what the interface should
+  be (i.e.~what arguments get passed to functions).
+\item
+  You must work out what the \emph{output} should be before writing any
+  code.
+\item
+  Can form part of the 'agile' methodology for software development.
+\item
+  Can be difficult for developing scientific code where answers can be
+  difficult to determine in advance.
+\end{itemize}
+\end{frame}
+
+\end{document}

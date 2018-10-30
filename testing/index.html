@@ -78,47 +78,24 @@
       <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item">
         <div>
-          <a href="/containers/tutorial/">
+          <a href="/containers/tutorial1/">
+            Setting up the Software
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial2/">
             Getting Started with Docker
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item parent active haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
         <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item">
-        <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,21 +139,44 @@
       <li data-nav-id="/documentation/generating-docs/" class="dd-item">
         <div>
           <a href="/documentation/generating-docs/">
-            Generating Docs
+            Documenting Code
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
+            Generating documentation webpages with Sphinx
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent active haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
         <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing More Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -206,17 +206,16 @@
    Software Engineering in Science</option>
     <option value="/containers/" >
    Containers</option>
-    <option value="/testing/"  selected>
-   Testing Scientific Code</option> 
-      <option value="/testing/complex-tests/" >- Writing Complex Tests</option>
-      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
-      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
-      <option value="/testing/writing-tests/" >- Writing Tests</option>
-  
     <option value="/version-control/" >
    Version Control</option>
     <option value="/documentation/" >
    Documentation</option>
+    <option value="/testing/"  selected>
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/" >- Writing More Complex Tests</option>
+      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
+  
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -276,81 +275,54 @@
 
 <p>Consider whether, when writing software to do science, you check that your &lsquo;equipment&rsquo; is calibrated? In many cases, the answer will be no.</p>
 
-<p>Why might this be the case? Often ad-hoc changes are made to code which mean things stop working. Have you ever come back to a script that you wrote and found it no longer works because you changed a file somewhere else? These issues become especially common when multiple people, who might not have oversight over what you are using it for, are working on software.</p>
+<p>Why might this be the case? Often ad-hoc changes are made to code which mean things stop working. Have you ever come back to a script that you wrote and found it no longer works because you changed a file somewhere else? These issues become especially common when multiple people, who might not have oversight over what you are using it for, are working on software. It&rsquo;s important to test the <em>relevant</em> parts of your code.</p>
 
 <p>In this tutorial, we&rsquo;ll step through some examples in the Python language which aim to show how you can write tests, and incorporate them into your own software in practice.</p>
-
-<h3 id="starting-off-simply-squaring-a-number">Starting off simply: Squaring a number</h3>
-
-<p>Consider as an example, a function which takes a number and computes the square of that number.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">def</span> <span style="color:#75af00">square</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
-    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span></code></pre></div>
-<p>Various appropriate tests of this could check:</p>
-
-<ul>
-<li>Is the correct answer given for positive integers?</li>
-<li>Is the correct answer given for negative integers?</li>
-<li>Is the correct answer given for zero?</li>
-<li>Is the correct answer given for positive and negative decimals?</li>
-<li>What is the behaviour for complex numbers?</li>
-<li>How does the function behave when an input argument is not of the type specified is passed in (such as a string)?</li>
-</ul>
-
-<p>It&rsquo;s clear that all of these would be sensible, but considering it carefully, it shows immediately the difficulty of actually applying testing in practice. There are an infinite amount of numerical input arguments - we cannot reasonably test them all.</p>
 
 <h3 id="principles-of-software-testing">Principles of Software Testing</h3>
 
 <ul>
-<li><p>Software must meet the requirements</p></li>
-
-<li><p>Software must respond correctly to different inputs</p></li>
-
-<li><p>Software must run in a reasonable amount of time</p></li>
-
-<li><p>Can be installed and run in the intended environment</p></li>
+<li>Software must meet the requirements.</li>
+<li>Software must respond correctly to different inputs.</li>
+<li>Software must run in a reasonable amount of time.</li>
+<li>Can be installed and run in the intended environment.</li>
+<li>If running simulations, then the behaviour should make sense.</li>
 </ul>
 
 <h3 id="static-vs-dynamic-testing">Static vs Dynamic Testing</h3>
 
-<p>[Static Testing]{}</p>
+<h4 id="static-testing">Static Testing</h4>
 
 <ul>
-<li><p>Reviews - Reviewing the code manually as a group.</p></li>
-
-<li><p>Walthrough - Parties go through a products specification to give
-feedback on potential defects.</p></li>
-
-<li><p><strong>Verification of design</strong></p></li>
+<li>Reviews - Reviewing the code manually as a group - check for correctness.</li>
+<li>Walthrough - Parties go through a products specification to give
+feedback on potential defects.</li>
+<li><strong>Verification of design</strong></li>
 </ul>
 
-<p>[Dynamic Testing]{}</p>
+<h4 id="dynamic-testing">Dynamic Testing</h4>
 
 <ul>
-<li><p>Executing portions of the code and checking the response.</p></li>
-
-<li><p><strong>Validation of design</strong></p></li>
+<li>Executing portions of the code and checking the response.</li>
+<li><strong>Validation of design</strong></li>
 </ul>
 
 <h3 id="why-is-it-difficult-for-science">Why is it difficult for science?</h3>
 
 <ul>
-<li><p>Much of the time you don’t know what the results will be.</p></li>
-
-<li><p>Realistic problems can take time to run.</p></li>
+<li>Much of the time you don’t know what the results will be.</li>
+<li>Realistic problems can take time to run.</li>
+<li>Testing requires computation of <em>aggregate statistics</em>.</li>
 </ul>
-
-<p>-</p>
 
 <h3 id="why-is-it-crucial-for-science">Why is it crucial for science?</h3>
 
 <ul>
-<li><p>Often need to implement new algorithms or change things.</p></li>
-
-<li><p>Changing without testing will break things.</p></li>
-
-<li><p>You might need to come back to a previous experiment to use it as
+<li>Often need to implement new algorithms or change things.</li>
+<li>Changing without testing will break things.</li>
+<li>You might need to come back to a previous experiment to use it as
 the basis for a new one; if the code is broken, you will have
-issues!</p></li>
+issues!</li>
 </ul>
 
 <h3 id="dynamic-testing-types-of-test">Dynamic Testing: Types of Test</h3>
@@ -358,32 +330,32 @@ issues!</p></li>
 <h5 id="unit-tests">Unit Tests</h5>
 
 <ul>
-<li><p>Code is written in small, independent functions</p></li>
-
-<li><p>Each function has tests that check that the result makes sense</p></li>
-
-<li><p>For e.g. a test of a function that calculates sin could check
-$\sin{\left(n\pi\right)} = 0 \,\,\,\,\, \forall n \in \mathbb{Z}$</p></li>
+<li>Code is written in small, independent functions</li>
+<li>Each function has tests that check that the result makes sense</li>
+<li>For e.g. a test of a function that calculates sin could check:</li>
 </ul>
+
+<p>$$\sin{\left(n\pi\right)} = 0 \,\,\,\,\, \forall n \in \mathbb{Z}$$</p>
 
 <h5 id="integration-tests">Integration Tests</h5>
 
 <ul>
-<li><p>Tests check that the system as a whole works convincingly.</p></li>
-
-<li><p>For e.g. a test of a molecular dynamics code might test that the
-pressure is close to the expected value after some equilibrium time.</p></li>
-
-<li><p>Much, much harder to design, but essential - can be written so that
-they also serve as examples of how to use the software.</p></li>
+<li>Tests check that the system as a whole works convincingly.</li>
+<li>For e.g. for a simulation, a single integration test would check that
+the inputs to the simulation are correctly processed, the simulation proceeds
+without any errors, and that the results make sense.</li>
+<li>Multiple integration tests are necessary for a large simulation package,
+such that all of the different potential combinations of algorithms are
+constructed.</li>
+<li>Much, much harder to design, but essential - can be written so that
+they also serve as examples of how to use the software.</li>
 </ul>
 
 <h5 id="regression-tests">Regression Tests</h5>
 
 <ul>
-<li><p>Check that results don’t get less accurate over time.</p></li>
-
-<li><p>Check that performance stays the same or gets better over time.</p></li>
+<li>Check that results don’t get less accurate over time.</li>
+<li>Check that performance stays the same or gets better over time.</li>
 </ul>
 
 <h3 id="aside-test-driven-development">Aside: Test Driven Development</h3>
@@ -406,8 +378,8 @@ code</strong>.</p>
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/containers/tutorial/" title="Getting Started with Docker"> <i class="fa fa-chevron-left"></i><label>Getting Started with Docker</label></a>
-    <a class="nav nav-next" href="/testing/complex-tests/" title="Writing Complex Tests" style="margin-right: 0px;"><label>Writing Complex Tests</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/documentation/generating-sphinx/" title="Generating documentation webpages with Sphinx"> <i class="fa fa-chevron-left"></i><label>Generating documentation webpages with Sphinx</label></a>
+    <a class="nav nav-next" href="/testing/simple-tests/" title="Writing Simple Tests" style="margin-right: 0px;"><label>Writing Simple Tests</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

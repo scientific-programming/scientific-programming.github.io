@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Generating documentation with Sphinx :: Scientific Programming</title>
+<title>Generating documentation webpages with Sphinx :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -78,46 +78,24 @@
       <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item">
         <div>
-          <a href="/containers/tutorial/">
+          <a href="/containers/tutorial1/">
+            Setting up the Software
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial2/">
             Getting Started with Docker
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
         <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item">
-        <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,21 +140,43 @@
       <li data-nav-id="/documentation/generating-docs/" class="dd-item">
         <div>
           <a href="/documentation/generating-docs/">
-            Generating Docs
+            Documenting Code
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item active">
         <div>
           <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
+            Generating documentation webpages with Sphinx
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
         <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing More Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -206,16 +206,15 @@
    Software Engineering in Science</option>
     <option value="/containers/" >
    Containers</option>
-    <option value="/testing/" >
-   Testing Scientific Code</option>
     <option value="/version-control/" >
    Version Control</option>
     <option value="/documentation/" >
    Documentation</option> 
-      <option value="/documentation/generating-docs/" >- Generating Docs</option>
-      <option value="/documentation/generating-sphinx/"  selected>- Generating documentation with Sphinx</option>
-      <option value="/documentation/writing-docs/" >- Sphinx: Python documentation</option>
+      <option value="/documentation/generating-docs/" >- Documenting Code</option>
+      <option value="/documentation/generating-sphinx/"  selected>- Generating documentation webpages with Sphinx</option>
   
+    <option value="/testing/" >
+   Testing Scientific Code</option>
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -240,110 +239,268 @@
       </div>
     
 
-    <h1>Generating documentation with Sphinx</h1>
+    <h1>Generating documentation webpages with Sphinx</h1>
     
     
     
     
 
-<h1 id="quick-notes">Quick Notes</h1>
+<h4 id="setting-up-a-python-module">Setting up a Python Module</h4>
 
-<ul>
-<li>Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well</li>
-</ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install python3 python3-pip<span style="color:#960050;background-color:#1e0010">
+<p>1) Create a new folder called &lsquo;codedocs&rsquo; to work in for this exercise. Change into this folder and &lsquo;git init&rsquo; in it to keep track
+of files.</p>
+
+<p>2) In order to document some code, we&rsquo;re going to arrange our Git repository in a common way, so that
+the code is separate from the documentation. Create a folder called &lsquo;codedocs&rsquo; and create a file called &lsquo;functions.py&rsquo; Create a Python file with the example we showed earlier inside.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#00a8c8">def</span> <span style="color:#75af00">squared</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">):</span>
+    <span style="color:#d88200">&#34;&#34;&#34;
+</span><span style="color:#d88200">    Returns the square of the input x
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Longer description - the square is found by multiplying x by x...
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Parameters:
+</span><span style="color:#d88200">    -----------
+</span><span style="color:#d88200">    x, float:
+</span><span style="color:#d88200">       Base number
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Returns:
+</span><span style="color:#d88200">    --------
+</span><span style="color:#d88200">    float:
+</span><span style="color:#d88200">       Base number raised to power 2
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    See Also:
+</span><span style="color:#d88200">    ---------
+</span><span style="color:#d88200">    pow : raise an argument to an arbitrary power
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    Examples
+</span><span style="color:#d88200">    --------
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(2)
+</span><span style="color:#d88200">    4
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(8)
+</span><span style="color:#d88200">    64
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">    &gt;&gt;&gt; squared(-1)
+</span><span style="color:#d88200">    1
+</span><span style="color:#d88200">    &#34;&#34;&#34;</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">x</span><span style="color:#f92672">*</span><span style="color:#111">x</span></code></pre></div>
+<p>Add and commit this file to your Git repository.</p>
+
+<p>4) In order that we can make our Python code importable as a module and use the functions in it directly,
+create another Python file in the &lsquo;codedocs&rsquo; subdirectory called &lsquo;<strong>init</strong>.py&rsquo;, with the following content:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">from</span> <span style="color:#111">.functions</span> <span style="color:#00a8c8">import</span> <span style="color:#f92672">*</span></code></pre></div>
+<p>5) With this file layout, we can now use the code in Python. Just to show you, launch a container:</p>
+
+<pre><code># Linux and Mac
+docker run --rm -v $(pwd):/app sphinx python3
+# Windows
+docker run --rm -v %cd%:/app sphinx python3
+</code></pre>
+
+<p>Now you can import and test out the function:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> <span style="color:#111">codedocs</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#111">codedocs</span><span style="color:#f92672">.</span><span style="color:#111">squared</span><span style="color:#111">(</span><span style="color:#ae81ff">2.0</span><span style="color:#111">)</span>
+<span style="color:#ae81ff">4.0</span></code></pre></div>
+<p>5) We can make the module an installable Python package just by adding a file called setup.py
+at the root directory of the Git repository:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">from</span> <span style="color:#111">distutils.core</span> <span style="color:#00a8c8">import</span> <span style="color:#111">setup</span>
+<span style="color:#111">setup</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;codedocs&#39;</span><span style="color:#111">,</span>
+      <span style="color:#111">version</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;1.0&#39;</span><span style="color:#111">,</span>
+      <span style="color:#111">py_modules</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#d88200">&#39;codedocs&#39;</span><span style="color:#111">],</span>
+      <span style="color:#111">)</span></code></pre></div>
+<p>This means that someone can come along and install your repository onto their computer just by running the command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install .</code></pre></div>
+<p>inside the folder.</p>
+
+<h3 id="setting-up-sphinx">Setting up Sphinx</h3>
+
+<p>1) Put a Dockerfile in the root directory of your repository:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#00a8c8">from</span><span style="color:#d88200"> ubuntu:18.04</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y python3 python3-pip<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> pip3 install<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">RUN</span> pip3 install numpy matplotlib sphinx<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#00a8c8">WORKDIR</span><span style="color:#d88200"> /app</span></code></pre></div>
-<p>Then</p>
+<p>Add the Dockerfile to your repository and commit it. Build and start the container with:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build . -t documentation
-docker run -v <span style="color:#d88200">`</span><span style="color:#111">pwd</span><span style="color:#d88200">`</span>:/app -it documentation
-sphinx-quickstart</code></pre></div>
-<ul>
-<li><p>Most defaults are OK but:</p>
+<span style="color:#75715e"># Linux and Mac
+</span><span style="color:#75715e"></span>docker run -v <span style="color:#00a8c8">$(</span><span style="color:#111">pwd</span><span style="color:#00a8c8">)</span>:/app -it documentation
+<span style="color:#75715e"># Windows
+</span><span style="color:#75715e"></span>docker run -v %cd%:/app -it documentation</code></pre></div>
+<p>2) Now in the container, we&rsquo;re going to run a configuration application, which sets up everything we need to build documentation from our code. Create a folder, then run the sphinx configuration application. You only ever have to do this once; it&rsquo;s just a quick way of getting what you need to get started.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir docs
+sphinx-quickstart docs</code></pre></div>
+<p>Sphinx now prompts you with <em>a lot</em> of questions, which set up the generation of documentation. The default suggestion is given in square brackets at the end of the line. To each question, answer it. For most, you can use the default, but some you cannot and must type a response; if there is no text specified after the end colon for the question below, use the default value (just press &lsquo;Enter&rsquo; on your keyboard)</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; Separate <span style="color:#111">source</span> and build directories <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; Name prefix <span style="color:#00a8c8">for</span> templates and static dir <span style="color:#f92672">[</span>_<span style="color:#f92672">]</span>:
+&gt; Project name: My Documentation Example
+&gt; Author name<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>: Ryan Pepper
+&gt; Project release <span style="color:#f92672">[]</span>: <span style="color:#ae81ff">0</span>.0.1
+&gt; Source file suffix <span style="color:#f92672">[</span>.rst<span style="color:#f92672">]</span>:
+&gt; Name of your master document <span style="color:#f92672">(</span>without suffix<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>index<span style="color:#f92672">]</span>:
+&gt; Do you want to use the epub builder <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+Indicate which of the following Sphinx extensions should be enabled:
+&gt; autodoc: automatically insert docstrings from modules <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>: y
+&gt; doctest: automatically <span style="color:#111">test</span> code snippets in doctest blocks <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>: y
+&gt; intersphinx: link between Sphinx documentation of different projects <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; todo: write <span style="color:#d88200">&#34;todo&#34;</span> entries that can be shown or hidden on build <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; coverage: checks <span style="color:#00a8c8">for</span> documentation coverage <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; imgmath: include math, rendered as PNG or SVG images <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; mathjax: include math, rendered in the browser by MathJax <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>: y
+&gt; ifconfig: conditional inclusion of content based on config values <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; viewcode: include links to the <span style="color:#111">source</span> code of documented Python objects <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>: y
+&gt; githubpages: create .nojekyll file to publish the document on GitHub pages <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>n<span style="color:#f92672">]</span>:
+&gt; Create Makefile? <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>y<span style="color:#f92672">]</span>:
+&gt; Create Windows <span style="color:#111">command</span> file? <span style="color:#f92672">(</span>y/n<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>y<span style="color:#f92672">]</span>:</code></pre></div>
+<p>Inside the &lsquo;docs&rsquo; folder, Sphinx has now created several folders and files, which are where documentation gets built.</p>
+
+<p>3) The file &lsquo;conf.py&rsquo; is just a Python script which contains all of the configuration options you set in the quickstart script, so don&rsquo;t worry if you want to change something. We need to make a few changes to conf.py which mean that we can autogenerate some documentation for the code.</p>
 
 <ul>
-<li>We want to set default document to markdown rather than RST</li>
-<li>We want to enable MathJax</li>
-</ul></li>
-
-<li><p>Now Edit conf.py:</p></li>
+<li>Change the contents of the section &lsquo;Path Setup&rsquo; to the following:</li>
 </ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">os</span>
+<span style="color:#f92672">import</span> <span style="color:#111">sys</span>
+<span style="color:#111">sys</span><span style="color:#f92672">.</span><span style="color:#111">path</span><span style="color:#f92672">.</span><span style="color:#111">insert</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">os</span><span style="color:#f92672">.</span><span style="color:#111">path</span><span style="color:#f92672">.</span><span style="color:#111">abspath</span><span style="color:#111">(</span><span style="color:#d88200">&#39;..&#39;</span><span style="color:#111">))</span></code></pre></div>
+<p>These commands make our module &lsquo;codedocs&rsquo; visible to Sphinx, so that it can see all of the source files.</p>
 
-<p>Uncomment these lines of code in conf.py</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># If extensions (or modules to document with autodoc) are in another directory,</span>
-<span style="color:#75715e"># add these directories to sys.path here. If the directory is relative to the</span>
-<span style="color:#75715e"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
-<span style="color:#75715e">#</span>
-<span style="color:#75715e"># import os</span>
-<span style="color:#75715e"># import sys</span>
-<span style="color:#75715e"># sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span></code></pre></div>
 <ul>
-<li>to extensions add sphinx.extensions.doctest and sphinx.extensions.napoleon</li>
-<li>napoleon allows NumPy style documentation</li>
-<li>after extension declarations add following:</li>
+<li><p>There is a list of extensions that looks like this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">extensions</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span>
+<span style="color:#d88200">&#39;sphinx.ext.autodoc&#39;</span><span style="color:#111">,</span>
+<span style="color:#d88200">&#39;sphinx.ext.doctest&#39;</span><span style="color:#111">,</span>
+<span style="color:#d88200">&#39;sphinx.ext.mathjax&#39;</span><span style="color:#111">,</span>
+<span style="color:#d88200">&#39;sphinx.ext.viewcode&#39;</span><span style="color:#111">,</span>
+<span style="color:#111">]</span></code></pre></div>
+<p>We need to add an extension which makes our nice NumPy documentation work. Do this by adding &lsquo;sphinx.ext.napoleon&rsquo; to this list.</p></li>
+
+<li><p>Just after this, add the lines:</p></li>
 </ul>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">napoleon_google_docstring</span> <span style="color:#f92672">=</span> <span style="color:#111">False</span>
 
 <span style="color:#111">doctest_global_setup</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;&#34;&#34;
-</span><span style="color:#d88200">from quicktest import *
+</span><span style="color:#d88200">from codedocs import *
 </span><span style="color:#d88200">&#34;&#34;&#34;</span></code></pre></div>
-<p>Then, from root dir:</p>
+<p>Later, we&rsquo;re going to run something called Doctest. Remember the lines of code we put into the squared function? Doctest runs these and checks that the output is consistent with what we wrote.</p>
 
-<pre><code>sphinx-apidoc -s md -o source ../quicktest
-make html
+<p>4) We&rsquo;re now done configuring the conf.py, so let&rsquo;s actually generate some files. Sphinx has an application called &lsquo;apidoc&rsquo;. An API (application programme interface) is the defined inputs and outputs of functions in software. We&rsquo;ve already specified these in the function docstring for &lsquo;squared&rsquo;. So all sphinx-apidoc is doing is reading our source code files, and generating &lsquo;rst&rsquo; files from them.</p>
+
+<p>Making sure you&rsquo;re in the &lsquo;docs&rsquo; folder in your container, run the following command.</p>
+
+<pre><code>sphinx-apidoc -o source ../codedocs
 </code></pre>
 
-<p>Note: -s flag changes suffix from rst autodoc to md autodoc.
-source is output directory
-quicktest is source code directory</p>
+<p>Now, we can get a very &lsquo;simple&rsquo; version of our documentation by just running:</p>
 
-<ul>
-<li>Create a file called tutorial.rst</li>
-</ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">Tutorial
-========
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>This is a tutorial.<span style="color:#960050;background-color:#1e0010">
+<pre><code>make html
+</code></pre>
+
+<p>This turns all of our generated files into HTML files that can be read and displayed by a web browser. Find the folder in your file explorer, and open &lsquo;index.html&rsquo; inside docs/_build/html. You should see a website that looks something like the following; at the moment it does not look like much!</p>
+
+<p><img src="../homepage-1.png" alt="Sphinx Default Homepage" /></p>
+
+<p>However, have a look around the &lsquo;Module Page&rsquo; - you should be able to spot our module. Clicking it should show us the documentation we wrote for the squared function!</p>
+
+<h3 id="broader-documentation">Broader documentation</h3>
+
+<p>1) We can edit the homepage to make it a bit more informative. We&rsquo;ll edit &lsquo;index.rst&rsquo;. This file is written in the ReStructured Text format.</p>
+
+<p>This file at the moment should look like this:</p>
+
+<pre><code>.. codedocs documentation master file, created by
+   sphinx-quickstart on Tue Oct 30 00:05:22 2018.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to codedocs's documentation!
+====================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+</code></pre>
+
+<p>Add in some text after the Welcome message like below to describe that we&rsquo;re setting up documentation with Sphinx.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">Welcome to codedocs&#39;s documentation!
+====================================
+codedocs is an example project that we&#39;re setting up at a workshop on the<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>30th October 2019.<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>Subheading
-----------
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>Here is some text under a subheading</code></pre></div>
-<p>In index, change the toctree (table of contents tree) to:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst"><span style="color:#111">..</span> <span style="color:#f92672">toctree</span><span style="color:#111">::</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>What is the point of this?
+--------------------------
+Documentation is crucial to using software!<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#111">..</span> <span style="color:#f92672">toctree</span><span style="color:#111">::</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:maxdepth:</span> <span style="color:#75af00">2</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:caption:</span> <span style="color:#75af00">Contents:</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#75af00">:caption:</span> <span style="color:#75af00">Contents:</span></code></pre></div>
+<p>Save the file, and run &lsquo;make html&rsquo; again, and refresh the page. You can see that
+the &lsquo;===&rsquo; under a title makes it a page title, and the &lsquo;&mdash;&rsquo; a subtitle. Here,
+we can see some complex looking stuff called a &lsquo;toctree&rsquo;. This is just a pointer
+to Sphinx to place the table of contents here.</p>
+
+<p>3) We&rsquo;re now going to add a new file. Creating tutorials with examples is a good
+way to build up documentation for large projects.</p>
+
+<p>First, create a file called &lsquo;tutorial.rst&rsquo; and inside it put some contents:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rst" data-lang="rst">Tutorial!
+=========
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>On this page we&#39;re going to do some tutorial stuff!<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>   tutorial</code></pre></div>
-<p>Now, &lsquo;make html&rsquo;</p>
+</span><span style="color:#960050;background-color:#1e0010"></span>The following few lines are some code.<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#111">..</span> <span style="color:#f92672">code-block</span><span style="color:#111">::</span> python<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   print(&#34;This is some Python code&#34;)</code></pre></div>
+<p>At the moment, if we run &lsquo;make html&rsquo;, we wouldn&rsquo;t see a link to it anywhere on
+the homepage of our site. We need to add our file to the table of contents
+somewhere! In index.rst, modify the &lsquo;toctree&rsquo; to the following.</p>
 
-<p>You can see that the tutorial page has appeared in the documentation.</p>
+<pre><code>.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-<h1 id="putting-online">Putting online</h1>
+   tutorial
+</code></pre>
 
-<ul>
-<li><p>Log in to RTD with GitHub acct</p></li>
+<p>Note the blank line - Sphinx is quite sensitive! It will often fail to build if you miss this.
+You can add as many things as you like to your web page - just add more rst files, and
+add them to the toctree. Run <code>make html</code> again and you should see your changes on the webpage.</p>
 
-<li><p>Import Repository</p></li>
+<h3 id="hosting-the-documentation">Hosting the Documentation</h3>
 
-<li><p>Select correct repo</p></li>
+<p>You&rsquo;ve created a web page full of documentation, but how can you put it online?</p>
 
-<li><p>Click build</p></li>
+<p>A free ad-powered service called Read The Docs exists exactly for this purpose. It
+is very easy and quick to set up, if you have your repository set up in the correct format.</p>
 
-<li><p>Builds automatically</p></li>
-</ul>
+<p>1) Create a repository called <code>codedocs-yoursurname</code> on GitHub and add all of the files (but NOT the _build directory), and push our local repository to it.</p>
+
+<p>2) Go to <a href="https://readthedocs.org/">Read the Docs</a>, and log in with your GitHub account.</p>
+
+<p>3) Click &lsquo;Import Repository&rsquo;, and select <code>codedocs</code>.</p>
+
+<p>4) If the build doesn&rsquo;t start automatically, start the build.</p>
+
+<p>5) Now go to codedocs-yoursurname.rtfd.org to see your documentation!</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/documentation/generating-docs/" title="Generating Docs"> <i class="fa fa-chevron-left"></i><label>Generating Docs</label></a>
-    <a class="nav nav-next" href="/documentation/writing-docs/" title="Sphinx: Python documentation" style="margin-right: 0px;"><label>Sphinx: Python documentation</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/documentation/generating-docs/" title="Documenting Code"> <i class="fa fa-chevron-left"></i><label>Documenting Code</label></a>
+    <a class="nav nav-next" href="/testing/" title="Testing Scientific Code" style="margin-right: 0px;"><label>Testing Scientific Code</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

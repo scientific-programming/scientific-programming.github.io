@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.49.2" />
-<title>Writing Complex Tests :: Scientific Programming</title>
+<title>Writing More Complex Tests :: Scientific Programming</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -78,47 +78,24 @@
       <a href="/containers/">Containers</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/containers/tutorial/" class="dd-item">
+      <li data-nav-id="/containers/tutorial1/" class="dd-item">
         <div>
-          <a href="/containers/tutorial/">
+          <a href="/containers/tutorial1/">
+            Setting up the Software
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/containers/tutorial2/" class="dd-item">
+        <div>
+          <a href="/containers/tutorial2/">
             Getting Started with Docker
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-        </ul>
-    </li>
-    <li data-nav-id="/testing/" class="dd-item parent haschildren
-        ">
-      <div>
-      <a href="/testing/">Testing Scientific Code</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/testing/complex-tests/" class="dd-item active">
+      <li data-nav-id="/containers/tutorial3/" class="dd-item">
         <div>
-          <a href="/testing/complex-tests/">
-            Writing Complex Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/simple-tests/" class="dd-item">
-        <div>
-          <a href="/testing/simple-tests/">
-            Writing Simple Tests
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
-        <div>
-          <a href="/testing/continuous-integration/">
-            Continuous Integration
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/testing/writing-tests/" class="dd-item">
-        <div>
-          <a href="/testing/writing-tests/">
-            Writing Tests
+          <a href="/containers/tutorial3/">
+            Saving and Sharing Images
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,21 +139,44 @@
       <li data-nav-id="/documentation/generating-docs/" class="dd-item">
         <div>
           <a href="/documentation/generating-docs/">
-            Generating Docs
+            Documenting Code
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="/documentation/generating-sphinx/" class="dd-item">
         <div>
           <a href="/documentation/generating-sphinx/">
-            Generating documentation with Sphinx
+            Generating documentation webpages with Sphinx
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/documentation/writing-docs/" class="dd-item">
+        </ul>
+    </li>
+    <li data-nav-id="/testing/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/testing/">Testing Scientific Code</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/testing/simple-tests/" class="dd-item">
         <div>
-          <a href="/documentation/writing-docs/">
-            Sphinx: Python documentation
+          <a href="/testing/simple-tests/">
+            Writing Simple Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/complex-tests/" class="dd-item active">
+        <div>
+          <a href="/testing/complex-tests/">
+            Writing More Complex Tests
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/testing/continuous-integration/" class="dd-item">
+        <div>
+          <a href="/testing/continuous-integration/">
+            Continuous Integration
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -206,17 +206,16 @@
    Software Engineering in Science</option>
     <option value="/containers/" >
    Containers</option>
-    <option value="/testing/" >
-   Testing Scientific Code</option> 
-      <option value="/testing/complex-tests/"  selected>- Writing Complex Tests</option>
-      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
-      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
-      <option value="/testing/writing-tests/" >- Writing Tests</option>
-  
     <option value="/version-control/" >
    Version Control</option>
     <option value="/documentation/" >
    Documentation</option>
+    <option value="/testing/" >
+   Testing Scientific Code</option> 
+      <option value="/testing/simple-tests/" >- Writing Simple Tests</option>
+      <option value="/testing/complex-tests/"  selected>- Writing More Complex Tests</option>
+      <option value="/testing/continuous-integration/" >- Continuous Integration</option>
+  
     <option value="/cheatsheet/" >
    Command Cheatsheet</option>
 
@@ -241,120 +240,110 @@
       </div>
     
 
-    <h1>Writing Complex Tests</h1>
+    <h1>Writing More Complex Tests</h1>
     
     
     
     
 
-<h3 id="principles-of-software-testing">Principles of Software Testing</h3>
+<h3 id="convergence">Convergence</h3>
 
-<p>What are the main principles of software testing? Generally, people don&rsquo;t start out writing software with no idea what it should do - they should have some idea of the requirements. The written software must then:</p>
+<p>Because of the ubiquity of differential equations in physical problems, it&rsquo;s a common exercise to calculate the numerical derivatives of functions via a Central difference formula:</p>
 
-<ul>
-<li>Meet the original requirements</li>
-<li>Must respond correctly to different inputs</li>
-<li>Software must run in a reasonable amount of time</li>
-<li>Can be installed and run in the intended environment</li>
-</ul>
+<p>$$ f&rsquo;(x) = \frac{f(x + h) - f(x - h)}{2h} + \mathcal{O}(h^2) $$</p>
 
-<h3 id="static-vs-dynamic-testing">Static vs Dynamic Testing</h3>
+<p>How can we test this? We&rsquo;ll decide to call our function CentralDiff. First we can think about simple tests that check that an error is raised if input arguments do not make sense. We know what parameters our function will take, so we define an &lsquo;interface&rsquo; to the function:</p>
 
-<p>[Static Testing]{}</p>
+<pre><code>def CentralDiff(func, x, h):
+    &quot;&quot;&quot;
+    Code to be implemented
+    &quot;&quot;&quot;
+    pass
 
-<ul>
-<li><p>Reviews - Reviewing the code manually as a group.</p></li>
+</code></pre>
 
-<li><p>Walthrough - Parties go through a products specification to give
-feedback on potential defects.</p></li>
+<p>We&rsquo;ll need to pass a function, the x position where the derivative is computed and the step size. Tests of the input arguments are:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">numpy</span> <span style="color:#f92672">as</span> <span style="color:#111">np</span>
+<span style="color:#f92672">import</span> <span style="color:#111">pytest</span>
 
-<li><p><strong>Verification of design</strong></p></li>
-</ul>
+<span style="color:#00a8c8">def</span> <span style="color:#75af00">test_inputs_error_raised</span><span style="color:#111">():</span>
+    <span style="color:#75715e"># It does not make sense for h to be exactly zero, so this should raise</span>
+    <span style="color:#75715e"># an error.</span>
+    <span style="color:#00a8c8">with</span> <span style="color:#111">pytest</span><span style="color:#f92672">.</span><span style="color:#111">raises</span><span style="color:#111">(</span><span style="color:#75af00">ValueError</span><span style="color:#111">):</span>
+        <span style="color:#111">CentralDiff</span><span style="color:#111">(</span><span style="color:#111">np</span><span style="color:#f92672">.</span><span style="color:#111">sin</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">)</span>
 
-<p>[Dynamic Testing]{}</p>
 
-<ul>
-<li><p>Executing portions of the code and checking the response.</p></li>
+    <span style="color:#75715e"># If an argument other than a function is passed, a TypeEror should be raised.</span>
+    <span style="color:#00a8c8">with</span> <span style="color:#111">pytest</span><span style="color:#f92672">.</span><span style="color:#111">raises</span><span style="color:#111">(</span><span style="color:#75af00">TypeError</span><span style="color:#111">):</span>
+        <span style="color:#111">CentralDiff</span><span style="color:#111">(</span><span style="color:#ae81ff">2.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">1e-5</span><span style="color:#111">)</span>
 
-<li><p><strong>Validation of design</strong></p></li>
-</ul>
+    <span style="color:#75715e"># We check that non-numeric inputs raise a TypeError</span>
+    <span style="color:#00a8c8">with</span> <span style="color:#111">pytest</span><span style="color:#f92672">.</span><span style="color:#111">raises</span><span style="color:#111">(</span><span style="color:#75af00">TypeError</span><span style="color:#111">):</span>
+        <span style="color:#111">CentralDiff</span><span style="color:#111">(</span><span style="color:#111">np</span><span style="color:#f92672">.</span><span style="color:#111">sin</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;0.0&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1e-5</span><span style="color:#111">)</span>
 
-<h3 id="why-is-it-difficult-for-science">Why is it difficult for science?</h3>
-
-<ul>
-<li><p>Much of the time you don’t know what the results will be.</p></li>
-
-<li><p>Realistic problems can take time to run.</p></li>
-</ul>
-
-<p>-</p>
-
-<h3 id="why-is-it-crucial-for-science">Why is it crucial for science?</h3>
+    <span style="color:#00a8c8">with</span> <span style="color:#111">pytest</span><span style="color:#f92672">.</span><span style="color:#111">raises</span><span style="color:#111">(</span><span style="color:#75af00">TypeError</span><span style="color:#111">):</span>
+        <span style="color:#111">CentralDiff</span><span style="color:#111">(</span><span style="color:#111">np</span><span style="color:#f92672">.</span><span style="color:#111">sin</span><span style="color:#111">,</span> <span style="color:#ae81ff">0.0</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;1e-5&#39;</span><span style="color:#111">)</span></code></pre></div>
+<p>Save the non-implemented function to a file called &lsquo;functions.py&rsquo;, and save the test to test_functions.py</p>
 
 <ul>
-<li><p>Often need to implement new algorithms or change things.</p></li>
-
-<li><p>Changing without testing will break things.</p></li>
-
-<li><p>You might need to come back to a previous experiment to use it as
-the basis for a new one; if the code is broken, you will have
-issues!</p></li>
+<li>We can test the function against known derivatives of analytic functions that we calculate by hand.</li>
 </ul>
 
-<h3 id="dynamic-testing-types-of-test">Dynamic Testing: Types of Test</h3>
+<div class="panel panel-warning">
+	
+	<div class="panel-body"><p>How would you test the convergence? Write a test which checks the error on the derivative of Sin at a known point for different values of h. What can you check numerically? Write an implementation of the numerical function.</p>
 
-<h5 id="unit-tests">Unit Tests</h5>
+<p>If you struggle, it may help first to implement the CentralDiff function and look at the results, and plot the error.</p>
+</div>
+	
+</div>
 
-<ul>
-<li><p>Code is written in small, independent functions</p></li>
 
-<li><p>Each function has tests that check that the result makes sense</p></li>
+<p>### Exercise: Newton-Raphson
+The Newton-Raphson algorithm finds minima of functions with the following recursion relation:</p>
 
-<li><p>For e.g. a test of a function that calculates sin could check
-$\sin{\left(n\pi\right)} = 0 \,\,\,\,\, \forall n \in \mathbb{Z}$</p></li>
-</ul>
+<p>$$ x<em>{n+1} = x</em>{n} - \frac{f(x_n)}{f&rsquo;(x_n)}</p>
 
-<h5 id="integration-tests">Integration Tests</h5>
+<p>We normally check convergence by looking at the difference between the last step and the previous step, and stopping when we reach a tolerance for
+$$ abs(f(x_n)) &lt; \epsilon $$</p>
 
-<ul>
-<li><p>Tests check that the system as a whole works convincingly.</p></li>
+<p>Implement the algorithm as a function. Write a test that checks this works.</p>
 
-<li><p>For e.g. a test of a molecular dynamics code might test that the
-pressure is close to the expected value after some equilibrium time.</p></li>
+<h3 id="exercise-testing-ode-solvers-an-integration-test">Exercise: Testing ODE Solvers: An integration test</h3>
 
-<li><p>Much, much harder to design, but essential - can be written so that
-they also serve as examples of how to use the software.</p></li>
-</ul>
+<p>How would one go about testing an ODE solver?
+Consider the prototypical simple 2nd order ODE - the simple harmonic oscillator:</p>
 
-<h5 id="regression-tests">Regression Tests</h5>
+<p>$$ m \frac{\mathrm{d}^2 x}{dt^2} + k x = 0  $$</p>
 
-<ul>
-<li><p>Check that results don’t get less accurate over time.</p></li>
+<p>We know from A Level maths that the general solution to this is:
+$$ x(t) = A \cos{\omega t} + B \sin{\omega t} $$
+with $$\omega = \sqrt{k / m} $$</p>
 
-<li><p>Check that performance stays the same or gets better over time.</p></li>
-</ul>
+<p>To compute the solution numerically, we have to decompose the ODE:</p>
 
-<h3 id="aside-test-driven-development">Aside: Test Driven Development</h3>
+<p>$$\frac{\mathrm{d}v}{\mathrm{d}t} = \frac{-kx}{m} $$
+$$\frac{\mathrm{d}x}{\mathrm{d}t} = v $$</p>
 
-<p>Methodology for testing where <strong>tests are written before writing any
-code</strong>.</p>
+<p>Write a very simple Euler integrator for this problem. Use the initial conditions:</p>
 
-<p>This means that&hellip;</p>
+<p>$$ x(t = 0) = 1.0 $$
+$$ v(t = 0) = 0.0 $$</p>
 
-<ul>
-<li>Before writing any code you need to plan out what the interface should be (i.e. what arguments get passed to functions).</li>
-<li>You must work out what the <em>output</em> should be before writing any code.</li>
-<li>Can form part of the ’agile’ methodology for software development.</li>
-<li>Can be difficult for developing scientific code where answers can be difficult to determine in advance.</li>
-</ul>
+<p>with paramters (k = 1) and (m = 1)</p>
+
+<p>Think about how you would design the interface to this so that it can be generally applied to different problems. We know the analytic solution for this problem, so play around with
+how the error on the position of a mass increases as you uses. You need to have at least two functions to unit test here!</p>
+
+<p>Hint: Think about both the solution and properties you can compute about the system you&rsquo;re simulating!</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/testing/" title="Testing Scientific Code"> <i class="fa fa-chevron-left"></i><label>Testing Scientific Code</label></a>
-    <a class="nav nav-next" href="/testing/simple-tests/" title="Writing Simple Tests" style="margin-right: 0px;"><label>Writing Simple Tests</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/testing/simple-tests/" title="Writing Simple Tests"> <i class="fa fa-chevron-left"></i><label>Writing Simple Tests</label></a>
+    <a class="nav nav-next" href="/testing/continuous-integration/" title="Continuous Integration" style="margin-right: 0px;"><label>Continuous Integration</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
